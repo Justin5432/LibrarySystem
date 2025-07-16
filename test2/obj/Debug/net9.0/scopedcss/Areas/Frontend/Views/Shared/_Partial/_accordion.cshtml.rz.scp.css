@@ -1,0 +1,18 @@
+.accordion-button:focus[b-lhk01efj60] {
+    border-color: var(--bs-border-color);
+    box-shadow: none;
+}
+
+.accordion-button:not(.collapsed)[b-lhk01efj60] {
+    background-color: var(--c-green2-025);
+}
+
+.btn_type[b-lhk01efj60] {
+    display: block;
+    padding: .5rem .25rem;
+    text-decoration: none;
+}
+
+    .btn_type:hover[b-lhk01efj60] {
+        background-color: var(--c-orange-025);
+    }

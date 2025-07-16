@@ -1,0 +1,503 @@
+﻿@model test2.Areas.Frontend.Models.ViewModels.ActivityPagedViewModel; // 修改 Model 型別
+
+@{
+	@if (User.Identity != null && User.Identity.IsAuthenticated)
+	{
+		Layout = "~/Areas/Frontend/Views/Shared/_Layout/_LoginAfter.cshtml";
+	}
+	else
+	{
+		Layout = "~/Areas/Frontend/Views/Shared/_Layout/_LoginBefore.cshtml";
+	}
+
+	// 直接從 Model 取值
+	var currentPage = Model.CurrentPage;
+	var pageSize = Model.PageSize;
+	var displayMode = Model.DisplayMode;
+	var totalPages = Model.TotalPages;
+	var totalCount = Model.TotalCount;
+}
+
+
+@await Html.PartialAsync("~/Areas/Frontend/Views/Shared/_Partial/_modal.cshtml")
+
+<div class="search-section py-5 d-flex align-items-center justify-content-center mb-4">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-8 col-lg-6">
+				<div class="input-group search-container-bs">
+					<input type="text" class="form-control rounded-pill-start border-0 py-2 px-4"
+						   placeholder="搜尋..." aria-label="搜尋" id="input-query">
+					<button class="btn btn-search rounded-pill-end" type="button" id="search-btn">
+						<i class="bi bi-search"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="activities-section py-5">
+	<div class="container">
+		<h2 class="text-center mb-4 section-title-bs">最新活動</h2>
+
+		<div class="text-center mb-4 activity-categories-bs">
+			<button type="button" class="btn btn-category-bs active me-2 mb-2">全部</button>
+			<button type="button" class="btn btn-category-bs me-2 mb-2">講座</button>
+			<button type="button" class="btn btn-category-bs me-2 mb-2">研習</button>
+			<button type="button" class="btn btn-category-bs me-2 mb-2">展覽</button>
+			<button type="button" class="btn btn-category-bs me-2 mb-2">活動</button>
+			<button type="button" class="btn btn-category-bs mb-2">影片欣賞</button>
+		</div>
+
+		<div class="text-center mb-5">
+			<button type="button" class="btn btn-display-toggle active me-2">
+				<i class="bi bi-grid-fill"></i> 圖片式
+			</button>
+			<button type="button" class="btn btn-display-toggle">
+				<i class="bi bi-list"></i> 條列式
+			</button>
+		</div>
+
+		<div id="activityListContainer">
+			@if (displayMode == "image")
+			{
+				@await Html.PartialAsync("~/Areas/Frontend/Views/Shared/_Partial/_activityList_image.cshtml", Model)
+			}
+			else if (displayMode == "table")
+			{
+				@await Html.PartialAsync("~/Areas/Frontend/Views/Shared/_Partial/_activityList_table.cshtml", Model)
+			}
+		</div>
+
+		<div class="pagination-container mb-5">
+			<div class="pagination-info me-3">
+				<span>第</span> <span>@currentPage</span> / <span>@totalPages</span> <span>頁</span>
+			</div>
+			<div class="pagination-buttons">
+				<button type="button" class="btn page-control-btn disabled">
+					<i class="bi bi-caret-left-fill"></i>
+				</button>
+				@for (int i = 1; i <= totalPages; i++)
+				{
+					<button type="button" class="btn @(i == currentPage ? "active" : null)">@i</button>
+				}
+				<button type="button" class="btn page-control-btn">
+					<i class="bi bi-caret-right-fill"></i>
+				</button>
+			</div>
+			<div class="pagination-select-page">
+				<label for="page-selector">跳至</label>
+				<select class="form-select" id="page-selector">
+					@for (int i = 1; i <= totalPages; i++)
+					{
+						if (i == 1)
+						{
+							<option value="1" selected>1</option>
+							continue;
+						}
+						<option value="@i">@i</option>
+					}
+				</select>
+				<span class="ms-2">頁</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+@section Scripts {
+	<script>
+		let currentPage = @Model.CurrentPage;
+		let totalPages = @Model.TotalPages;
+
+		document.addEventListener('DOMContentLoaded', () => {
+			const modeBtns = document.querySelectorAll('.btn-display-toggle');
+			const imageModeBtn = document.querySelector('.btn-display-toggle:nth-child(1)');
+			const tableModeBtn = document.querySelector('.btn-display-toggle:nth-child(2)');
+			const prevPageBtn = document.querySelector('.page-control-btn:nth-child(1)');
+			const nextPageBtn = document.querySelector('.page-control-btn:last-child');
+			const pageButtons = document.querySelectorAll('.pagination-buttons .btn:not(.page-control-btn)'); // 中間的頁碼按鈕
+			const pageSelector = document.getElementById('page-selector'); // 跳至頁碼的下拉選單
+			const typeBtns = document.querySelectorAll('.btn-category-bs');
+			const searchInput = document.getElementById('input-query');
+			const searchBtn = document.getElementById('search-btn');
+
+			// 找出頁碼按鈕原本的 CSS 隔離 ID
+			let cssScopeId = '';
+			Array.from(pageButtons[0].attributes).forEach( attr => {
+				if ( attr.name.startsWith('b-') ){
+					cssScopeId = attr.name;
+				}
+			})
+
+			// 初始化按鈕的 active 狀態，根據目前 displayMode
+			// 從 Model 取得初始模式，而不是 ViewData
+			const initialDisplayMode = "@Model.DisplayMode";
+			if (initialDisplayMode === "table") {
+				if (imageModeBtn) imageModeBtn.classList.remove('active');
+				if (tableModeBtn) tableModeBtn.classList.add('active');
+			} else { // 預設為 image
+				if (imageModeBtn) imageModeBtn.classList.add('active');
+				if (tableModeBtn) tableModeBtn.classList.remove('active');
+			}
+
+			// 監聽顯示模式按鈕的點擊事件
+
+			if (imageModeBtn) {
+				imageModeBtn.addEventListener('click', async () => {
+					await updateActivityList(1, 'image', getCurrentDisplayType());
+					updatePaginationButtons();
+					updateModeBtns("image");
+				});
+			}
+			if (tableModeBtn) {
+				tableModeBtn.addEventListener('click', async () => {
+					await updateActivityList(1, 'table', getCurrentDisplayType());
+					updatePaginationButtons();
+					updateModeBtns("table");
+				});
+			}
+
+			// 監聽換頁按鈕的點擊事件
+
+			if (prevPageBtn) {
+				prevPageBtn.addEventListener('click', async () => {
+					if ( currentPage > 1 ){
+						currentPage--;
+						await updateActivityList(currentPage, getCurrentDisplayMode(), getCurrentDisplayType());
+						updatePaginationButtons();
+					}
+				})
+			}
+
+			if (nextPageBtn) {
+				nextPageBtn.addEventListener('click', async () => {
+					if ( currentPage < totalPages ){
+						currentPage++;
+						await updateActivityList(currentPage, getCurrentDisplayMode(), getCurrentDisplayType());
+						updatePaginationButtons();
+					}
+				})
+			}
+
+			// 監聽搜尋欄的 Enter 事件
+
+			if (searchInput){
+				searchInput.addEventListener('keydown', async (event) => {
+					if (event.key === 'Enter'){
+						const searchQuery = searchInput.value;
+						await updateActivityList(1, getCurrentDisplayMode(), getCurrentDisplayType(), searchQuery);
+						updatePaginationButtons();
+					}
+				})
+			}
+
+			// 監聽搜尋按鈕的點擊事件
+
+			if (searchBtn){
+				searchBtn.addEventListener('click', async () =>{
+					const searchQuery = searchInput.value;
+					await updateActivityList(1, getCurrentDisplayMode(), getCurrentDisplayType(), searchQuery);
+					updatePaginationButtons();
+				})
+			}
+
+			// 監聽跳頁下拉選單
+
+			if (pageSelector) {
+				pageSelector.addEventListener('change', async (event) => {
+					const page = parseInt(event.target.value);
+					if ( page !== currentPage ) {
+						currentPage = page;
+						await updateActivityList(currentPage, getCurrentDisplayMode(), getCurrentDisplayType());
+						updatePaginationButtons();
+					}
+				});
+			}
+
+			// 監聽頁碼按鈕點擊事件
+
+			if (pageButtons){
+				pageButtons.forEach(btn => {
+					btn.addEventListener('click', async (event) => {
+						const page = parseInt(event.target.textContent); // 取得按鈕上的頁碼
+						if (page !== currentPage) {
+							currentPage = page;
+							await updateActivityList(currentPage, getCurrentDisplayMode(), getCurrentDisplayType());
+							updatePaginationButtons();
+						}
+					});
+				});
+			}
+
+
+			// 監聽切換只顯示特定活動類型的按鈕
+
+			typeBtns.forEach(btn => {
+				btn.addEventListener('click', async (event) => { // 這裡加上 async
+					const type = event.target.textContent.trim(); // 取得按鈕文字並去除前後空白
+					if ( type !== getCurrentDisplayType() ){
+						currentPage = 1; // 切換分類時，把頁碼重設為 1
+						await updateActivityList(currentPage, getCurrentDisplayMode(), type);
+						updatePaginationButtons(); // 更新分頁按鈕狀態
+						updateTypeBtns(type);
+					}
+				});
+			});
+
+			// 更新顯示模式按鈕狀態
+			
+			function updateModeBtns(mode){
+				const currentMode = getCurrentDisplayMode();
+				
+				// 如果選擇模式跟當前模式相同 就直接返回
+				if ( currentMode === mode ) return;
+
+				// 移除所有的模式按鈕的 active class
+				modeBtns.forEach( btn => {
+					btn.classList.remove('active');
+				})
+				
+				// 根據接收的 mode 參數更新按鈕狀態
+				if ( mode === "image" ){
+					imageModeBtn.classList.add('active');
+				}
+				else if ( mode === "table" ){
+					tableModeBtn.classList.add('active');
+				}
+			};
+
+			// 更新活動分類模式按鈕狀態
+
+			function updateTypeBtns(type){
+
+				// 移除所有的活動分類模式按鈕 active class
+				typeBtns.forEach( btn => {
+					btn.classList.remove('active');
+				})
+
+				// 根據傳入的 type 參數更新按鈕狀態
+				const targetTypeBtn = Array.from(document.querySelectorAll('.btn-category-bs')).find(btn => btn.textContent.trim() === type);
+				if (targetTypeBtn){
+					targetTypeBtn.classList.add('active');
+				}
+			} 
+
+			// 更新分頁資訊跟分頁按鈕狀態
+
+			function updatePaginationButtons() {
+				// 更新顯示「第 N / M 頁」的資訊
+				const paginationInfo = document.querySelector('.pagination-info');
+				if (paginationInfo) {
+					if (totalPages ===  0){
+						paginationInfo.innerHTML = `<span>第 0 </span> <span> / </span>${totalPages}</span> <span>頁</span>`
+					}
+					else{
+						paginationInfo.innerHTML = `<span>第</span> <span>${currentPage}</span> / <span>${totalPages}</span> <span>頁</span>`;
+					}	
+				}
+
+				// 更新上一頁/下一頁按鈕的 disabled 狀態
+				if (prevPageBtn) {
+					if (totalPages === 0){
+						prevPageBtn.classList.add('disabled');
+					}
+					else if (currentPage === 1) {
+						prevPageBtn.classList.add('disabled');
+					} else {
+						prevPageBtn.classList.remove('disabled');
+					}
+				}
+				if (nextPageBtn) {
+					if (totalPages === 0){
+						nextPageBtn.classList.add('disabled');
+					}
+					else if (currentPage === totalPages) {
+						nextPageBtn.classList.add('disabled');
+					} else {
+						nextPageBtn.classList.remove('disabled');
+					}
+				}
+
+				// 更新頁碼按鈕的狀態
+				// 取得包含整個頁碼按鈕的父元素
+				const pageBtnContainer = document.querySelector(".pagination-buttons");
+
+				if (pageBtnContainer){
+
+					// 移除所有頁碼按鈕
+					Array.from(pageBtnContainer.children).forEach(child => {
+						if (!child.classList.contains('page-control-btn')){
+							child.remove();
+						}
+					})
+
+					// 重新生成頁碼按鈕
+					for(let i = 1 ; i <= totalPages ; i ++){
+						const btn = document.createElement('button');
+						btn.type = 'button';
+						btn.classList.add('btn');
+						if( i === currentPage ){
+							btn.classList.add('active');
+						}
+
+						// 加上 CSS 隔離 ID 
+						if(cssScopeId){
+							btn.setAttribute(cssScopeId, '');
+						}
+						btn.textContent = i;
+						pageBtnContainer.insertBefore(btn, nextPageBtn);
+
+						// 重新綁定事件監聽器，因為這些是新生成的元素
+						btn.addEventListener('click', async (event) => {
+							// 取得按鈕上的頁碼
+							const page = parseInt(btn.textContent);
+							if (page != currentPage){
+								currentPage = page;
+								await updateActivityList(page, getCurrentDisplayMode(), getCurrentDisplayType());
+								updatePaginationButtons();
+							}
+						})
+					}
+				}
+				else {
+					console.error("找不到包含 pagination buttons 的 Html 元素，請確認 Html 結構")
+				};
+
+				// 更新跳頁下拉選單的選項狀態
+				// 取得包含整個跳頁下拉選項的父元素
+				const pageSelectorContainer = document.getElementById('page-selector');
+				if (pageSelectorContainer) {
+					
+					// 清空頁碼選項
+					Array.from(pageSelectorContainer.children).forEach( option => {
+						option.remove();
+					})
+
+					// 重新生成頁碼選項
+					if (totalPages === 0){
+						const option = document.createElement('option');
+						option.setAttribute('selected', '');
+						option.textContent = 0;
+						pageSelectorContainer.append(option);
+					}
+					else{
+						for(let i = 1 ; i <= totalPages ; i ++ ){
+							const option = document.createElement('option');
+							option.setAttribute('value', i);
+							if ( i === currentPage ){
+								option.setAttribute('selected', '');
+							}
+							option.textContent = i;
+
+							pageSelectorContainer.append(option);
+
+							// 重新綁定事件監聽器
+							option.addEventListener('click', async (event) => {
+								// 取得選項上的頁碼
+								const page = parseInt(option.value);
+
+								if (page != currentPage){
+									currentPage = page;
+									updateActivityList(page, getCurrentDisplayMode(), getCurrentDisplayType());
+									updatePaginationButtons();
+								}
+							})
+						}
+					}
+				}
+			}
+
+		});
+
+		function getCurrentDisplayMode() {
+			// 取得目前 active 的按鈕
+			const currentActiveButton = document.querySelector('.btn-display-toggle.active');
+			let currentMode = 'image'; //預設值為 image
+
+			// 根據目前 active 按鈕的 class 來判斷當前模式
+			if (currentActiveButton) {
+				const iconClass = currentActiveButton.querySelector('i').classList;
+				if (iconClass.contains('bi-grid-fill')) {
+					currentMode = 'image';
+				} else if (iconClass.contains('bi-list')) {
+					currentMode = 'table';
+				}
+			}
+			return currentMode;
+		}
+
+		function getCurrentDisplayType(){
+			// 取得目前的 active 類型按鈕
+			const currentActiveBtn = document.querySelector('.btn-category-bs.active');
+			let currentType = "全部"; // 預設值為全部
+
+			// 根據目前的 active 類型按鈕 判斷目前的類型模式
+			if (currentActiveBtn){
+				currentType = currentActiveBtn.textContent;
+			}
+			return currentType;
+		}
+
+		/// <summary>
+		/// 透過 AJAX POST 請求下一頁(或上一頁)活動列表的資料。
+		/// </summary>
+		/// <param name="page">當前頁碼</param>
+		/// <param name="mode">當前顯示模式 ('image' 或 'table')</param>
+		async function updateActivityList(pageNumber, mode, type, searchQuery = null) {
+			try {
+				// 1. 準備 POST 請求的資料，包含當前的分頁資訊
+
+				const formData = new FormData();
+				formData.append('page', pageNumber);
+				formData.append('displayMode', mode);
+				formData.append('displayType', type);
+				formData.append('searchQuery', searchQuery);
+
+				// 2. 發送 POST 請求到 HomeController 的 updateActivityList Action
+				const response = await fetch('/Frontend/Home/updateActivityList', { // 修正路徑為 Home Controller
+					method: 'POST',
+					body: formData
+				});
+
+				// 3. 檢查回應是否成功
+				if (!response.ok) {
+					const errorText = await response.text(); // 取得錯誤訊息
+					throw new Error(`HTTP 錯誤! 狀態碼: ${response.status} - ${errorText}`);
+				}
+
+				// 4. 取得回傳的 HTML 內容
+				const newHtml = await response.text();
+
+				// 5. 更新頁面上的 PartialView 容器
+				const container = document.getElementById('activityListContainer');
+
+				if (container) {
+					container.innerHTML = newHtml;
+					// 重新執行 PartialView 內部可能有的 script 標籤 (如果有的話)
+					Array.from(container.querySelectorAll("script"))
+						.forEach(oldScript => {
+							const newScript = document.createElement("script");
+							Array.from(oldScript.attributes)
+								.forEach(attr => newScript.setAttribute(attr.name, attr.value));
+							newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+							oldScript.parentNode.replaceChild(newScript, oldScript);
+						});
+				} else {
+					console.error("找不到 activityListContainer 元素，請確認 HTML 結構。");
+				}
+
+				// 6. 更新 totalPages 值
+				const partialMeta = document.getElementById('partialMeta');
+				if (partialMeta){
+					const receivedTotalPages = partialMeta.dataset.totalPages;
+					totalPages = parseInt(receivedTotalPages);
+				}
+
+			} catch (error) {
+				console.error('更新活動列表時發生錯誤:', error);
+				alert(`更新活動列表失敗，錯誤訊息: ${error.message}`); // 顯示更詳細的錯誤訊息
+			}
+		}
+	</script>
+}
