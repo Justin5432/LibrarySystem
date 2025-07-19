@@ -1,54 +1,12 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0\\v1.2.3\\test2\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|c:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\my_work\\\u65B0\\v1.2.3\\test2\\areas\\frontend\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|solutionrelative:areas\\frontend\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|c:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\my_work\\\u65B0\\v1.2.3\\test2\\wwwroot\\js\\home\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|solutionrelative:wwwroot\\js\\home\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\github\\v1.2.3\\LibrarySystem\\test2\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 1,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "index.js",
-              "DocumentMoniker": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0\\v1.2.3\\test2\\wwwroot\\js\\Home\\index.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\Home\\index.js",
-              "ToolTip": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0\\v1.2.3\\test2\\wwwroot\\js\\Home\\index.js",
-              "RelativeToolTip": "wwwroot\\js\\Home\\index.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-07-19T04:28:00.094Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0\\v1.2.3\\test2\\Areas\\Frontend\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Areas\\Frontend\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0\\v1.2.3\\test2\\Areas\\Frontend\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Areas\\Frontend\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEcCAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-18T15:30:13.669Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

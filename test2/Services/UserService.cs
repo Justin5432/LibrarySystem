@@ -3,6 +3,8 @@
 using test2.Models;
 using test2.Areas.Frontend.Models.Dtos;
 
+using Isopoh.Cryptography.Argon2;
+
 
 namespace test2.Services
 {
@@ -44,7 +46,7 @@ namespace test2.Services
                 {
                     CName = string.Empty,
                     CAccount = email,
-                    CPassword = password,
+                    CPassword = Argon2.Hash(password), // 使用 Argon2 加密
                     CPhone = phoneNumber,
                     Permission = 1
                 };

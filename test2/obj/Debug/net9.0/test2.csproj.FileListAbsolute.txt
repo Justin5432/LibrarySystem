@@ -269,7 +269,6 @@ C:\職訓局\大專\My_work\新\v1.2.3\test2\obj\Debug\net9.0\scopedcss\Areas\Fr
 C:\職訓局\大專\My_work\新\v1.2.3\test2\obj\Debug\net9.0\scopedcss\Areas\Frontend\Views\Home\ActivityInfo.cshtml.rz.scp.css
 C:\職訓局\大專\My_work\新\v1.2.3\test2\obj\Debug\net9.0\scopedcss\Areas\Frontend\Views\Home\Client.cshtml.rz.scp.css
 C:\職訓局\大專\My_work\新\v1.2.3\test2\obj\Debug\net9.0\scopedcss\Areas\Frontend\Views\Home\Collection.cshtml.rz.scp.css
-C:\職訓局\大專\My_work\新\v1.2.3\test2\obj\Debug\net9.0\scopedcss\Areas\Frontend\Views\Home\Login.cshtml.rz.scp.css
 C:\職訓局\大專\My_work\新\v1.2.3\test2\obj\Debug\net9.0\scopedcss\Areas\Frontend\Views\Home\Query.cshtml.rz.scp.css
 C:\職訓局\大專\My_work\新\v1.2.3\test2\obj\Debug\net9.0\scopedcss\Areas\Frontend\Views\Home\Register.cshtml.rz.scp.css
 C:\職訓局\大專\My_work\新\v1.2.3\test2\obj\Debug\net9.0\scopedcss\Areas\Frontend\Views\Shared\_Partial\_accordion.cshtml.rz.scp.css
@@ -370,6 +369,6 @@ C:\職訓局\大專\My_work\新\v1.2.3\test2\obj\Debug\net9.0\scopedcss\Areas\Fr
 C:\職訓局\大專\My_work\新\v1.2.3\test2\obj\Debug\net9.0\scopedcss\Areas\Frontend\Views\Shared\_Partial\_activityList_table.cshtml.rz.scp.css
 C:\職訓局\大專\My_work\新\v1.2.3\test2\obj\Debug\net9.0\scopedcss\Areas\Frontend\Views\Home\Index.cshtml.rz.scp.css
 C:\職訓局\大專\My_work\新\v1.2.3\test2\obj\Debug\net9.0\scopedcss\Areas\Frontend\Views\Access\LoginC.cshtml.rz.scp.css
-C:\職訓局\大專\My_work\新\v1.2.3\test2\obj\Debug\net9.0\compressed\0zuzw0q4yk-degq2u7ac7.gz
-C:\職訓局\大專\My_work\新\v1.2.3\test2\obj\Debug\net9.0\compressed\4t3unn2v1e-ihmtyrbjfi.gz
-C:\職訓局\大專\My_work\新\v1.2.3\test2\obj\Debug\net9.0\compressed\hw2146yr46-ihmtyrbjfi.gz
+C:\職訓局\大專\My_work\新\v1.2.3\test2\obj\Debug\net9.0\compressed\0zuzw0q4yk-qhmqs6m22r.gz
+C:\職訓局\大專\My_work\新\v1.2.3\test2\obj\Debug\net9.0\compressed\4t3unn2v1e-w8y4d76wu2.gz
+C:\職訓局\大專\My_work\新\v1.2.3\test2\obj\Debug\net9.0\compressed\hw2146yr46-w8y4d76wu2.gz

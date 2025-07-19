@@ -7855,11 +7855,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\職訓局\\大專\\My_work\\新\\v1.2.3\\test2\\test2.csproj",
+      "projectUniqueName": "C:\\職訓局\\大專\\My_work\\github\\v1.2.3\\LibrarySystem\\test2\\test2.csproj",
       "projectName": "test2",
-      "projectPath": "C:\\職訓局\\大專\\My_work\\新\\v1.2.3\\test2\\test2.csproj",
+      "projectPath": "C:\\職訓局\\大專\\My_work\\github\\v1.2.3\\LibrarySystem\\test2\\test2.csproj",
       "packagesPath": "C:\\Users\\justi\\.nuget\\packages\\",
-      "outputPath": "C:\\職訓局\\大專\\My_work\\新\\v1.2.3\\test2\\obj\\",
+      "outputPath": "C:\\職訓局\\大專\\My_work\\github\\v1.2.3\\LibrarySystem\\test2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

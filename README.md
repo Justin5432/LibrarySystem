@@ -16,6 +16,10 @@
 
 ### `Views/Home` 資料夾
 
+#### 以下檔案有更改
+
+- `Dtos`
+
 #### 新增以下檔案
 
 - `Activity.cshtml`
@@ -28,13 +32,24 @@
 - `_LoginAfter.cshtml`
 - `_LoginBefore.cshtml`
 
-### `Views/Shared/_Partial/_header` 資料夾
+### `Views/Shared/_Partial` 資料夾
 
 #### 新增以下檔案
 
 - `_activityList_image.cshtml`
 - `_activityList_table.cshtml`
 - `_activityList_table.cshtml`
+
+### `Views/Shared/_Partial/_header` 資料夾
+
+#### 以下檔案有更改
+
+- `_index.cshtml`
+
+#### 新增以下檔案
+
+- `_loginAfter.cshtml`
+- `_loginBefore.cshtml`
 
 ### `Views/Access` 資料夾
 
@@ -73,16 +88,12 @@
 - `Login()`
 - `[HttpGet] Register()`
 - `[HttpPost] Register()`
-
 #### 報名活動
 - `RegisterActivity()`
-
 #### 活動列表
 - `Activity()`
-
 #### 活動詳細
 - `ActivityInfo()`
-
 #### 按下換頁按鈕時更新列表
 - `UpdateActivityList()`
 - `UpdateAnnouncementList()`
