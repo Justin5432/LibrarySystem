@@ -73,16 +73,16 @@
 - `Login()`
 - `[HttpGet] Register()`
 - `[HttpPost] Register()`
-<br>
+
 #### 報名活動
 - `RegisterActivity()`
-<br>
+
 #### 活動列表
 - `Activity()`
-<br>
+
 #### 活動詳細
 - `ActivityInfo()`
-<br>
+
 #### 按下換頁按鈕時更新列表
 - `UpdateActivityList()`
 - `UpdateAnnouncementList()`
