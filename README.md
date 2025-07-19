@@ -16,10 +16,6 @@
 
 ### `Views/Home` 資料夾
 
-#### 以下檔案有更改
-
-- `Dtos`
-
 #### 新增以下檔案
 
 - `Activity.cshtml`
