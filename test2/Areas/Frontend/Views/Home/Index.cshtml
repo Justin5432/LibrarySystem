@@ -14,7 +14,7 @@
 @await Html.PartialAsync("~/Areas/Frontend/Views/Shared/_Partial/_modal.cshtml")
 
 <div id="main-container">
-    <div id="main-slider" class="d-flex flex-column justify-content-center">
+    <div id="main-slider" class="d-flex flex-column justify-content-center align-items-center">
         <button class="carousel-control-btn my-carousel-control-prev" id="prevBtn">❮</button>
         <div class="carousel-spinner" id="carouselSpinner">
             @if ( Model.Activities != null)
@@ -114,90 +114,50 @@
     <hr />
 
     <div id="NewBook-section" class="section d-flex flex-column justify-content-center">
-        <div>
-            <h2 class="text-center mb-4">新書推薦</h2>
-            <div class="custom-carousel-wrapper">
-                <div id="newBooksCarousel" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row row-cols-1 row-cols-md-3 g-4">
-                                <div class="col">
-                                    <div class="card h-100 shadow-sm">
-                                        <img src="https://picsum.photos/id/237/400/500" class="book-img card-img-top p-3"
-                                             alt="書籍封面 1" style="cursor: pointer;">
-                                        <div class="card-body text-center">
-                                            <h5 class="card-title">未來的想像</h5>
-                                            <p class="card-text text-muted">作者：李小明</p>
-                                        </div>
+    <div>
+        <h2 class="text-center mb-4">新書推薦</h2>
+        <div class="custom-carousel-wrapper">
+            <div id="newBooksCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                        @{
+                            // 總共有幾頁輪播 (每頁3本書)
+                            int totalNewBookPages = 2;
+                            for (int i = 0; i < totalNewBookPages; i++)
+                        {
+                                <div class="carousel-item @(i == 0 ? "active" : "")">
+                                    <div class="row row-cols-1 row-cols-md-3 g-4">
+                                        @foreach (var book in Model.NewBooks.Skip(i * 3).Take(3))
+                                        {
+                                            <div class="col">
+                                                <div class="card shadow-sm d-flex flex-column">
+                                                    <div class="book-image-ratio-container">
+                                                        <img src="data:image/*; base64, @(book?.Collection?.CollectionImg != null ? Convert.ToBase64String(book.Collection.CollectionImg) : string.Empty)"
+                                                             class="book-image"
+                                                             alt="@book?.Collection?.Title 封面"
+                                                             style="cursor: pointer;">
+                                                    </div>
+                                                    <div class="card-body d-flex flex-column">
+                                                        <h5 class="card-title mt-auto">@book?.Collection?.Title</h5>
+                                                        <p class="card-text text-muted">作者：@(book?.Collection?.Author?.Author1 ?? "佚名")</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="card h-100 shadow-sm card-equal-height">
-                                        <img src="https://picsum.photos/id/238/400/500" class="card-img-top p-3"
-                                             alt="書籍封面 2" style="cursor: pointer;">
-                                        <div class="card-body text-center">
-                                            <h5 class="card-title">城市漫遊</h5>
-                                            <p class="card-text text-muted">作者：王大同</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card h-100 shadow-sm card-equal-height">
-                                        <img src="https://picsum.photos/id/239/400/500" class="card-img-top p-3"
-                                             alt="書籍封面 3" style="cursor: pointer;">
-                                        <div class="card-body text-center">
-                                            <h5 class="card-title">大自然的奧秘</h5>
-                                            <p class="card-text text-muted">作者：陳美麗</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row row-cols-1 row-cols-md-3 g-4">
-                                <div class="col">
-                                    <div class="card h-100 shadow-sm card-equal-height">
-                                        <img src="https://picsum.photos/id/240/400/500" class="card-img-top p-3"
-                                             alt="書籍封面 4" style="cursor: pointer;">
-                                        <div class="card-body text-center">
-                                            <h5 class="card-title">歷史的迴響</h5>
-                                            <p class="card-text text-muted">作者：林志強</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card h-100 shadow-sm card-equal-height">
-                                        <img src="https://picsum.photos/id/241/400/500" class="card-img-top p-3"
-                                             alt="書籍封面 5" style="cursor: pointer;">
-                                        <div class="card-body text-center">
-                                            <h5 class="card-title">哲學的思辨</h5>
-                                            <p class="card-text text-muted">作者：張雅雯</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card h-100 shadow-sm card-equal-height">
-                                        <img src="https://picsum.photos/id/242/400/500" class="card-img-top p-3"
-                                             alt="書籍封面 6" style="cursor: pointer;">
-                                        <div class="card-body text-center">
-                                            <h5 class="card-title">程式設計入門</h5>
-                                            <p class="card-text text-muted">作者：吳老師</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#newBooksCarousel"
-                            data-bs-slide="prev">
-                        <span class="newbook-carousel-prew-arrow carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
-                        <span class="visually-hidden">上一頁</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#newBooksCarousel"
-                            data-bs-slide="next">
-                        <span class="newbook-carousel-next-arrow carousel-control-next-icon bg-dark rounded-circle p-3 " aria-hidden="true"></span>
-                        <span class="visually-hidden">下一頁</span>
-                    </button>
+                        }
+                    }
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#newBooksCarousel"
+                        data-bs-slide="prev">
+                    <span class="newbook-carousel-prew-arrow carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
+                    <span class="visually-hidden">上一頁</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#newBooksCarousel"
+                        data-bs-slide="next">
+                    <span class="newbook-carousel-next-arrow carousel-control-next-icon bg-dark rounded-circle p-3 " aria-hidden="true"></span>
+                    <span class="visually-hidden">下一頁</span>
+                </button>
                 </div>
             </div>
         </div>
@@ -210,83 +170,42 @@
         <div>
             <h2 class="text-center mb-4">熱門書籍推薦</h2>
             <div class="row row-cols-1 row-cols-md-4 g-4">
-
-                <div class="col">
-                    <div class="flip-card-container">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="https://picsum.photos/id/243/400/600" class="card-img-top" alt="熱門書籍 1">
-                                <h5 class="card-title">時間簡史</h5>
-                                <p class="card-text text-muted">作者：史蒂芬·霍金</p>
-                            </div>
-                            <div class="flip-card-back">
-                                <h5 class="card-title">時間簡史</h5>
-                                <p><strong>作者：</strong>史蒂芬·霍金</p>
-                                <p><strong>簡介：</strong>一本解釋宇宙起源與結構的科普鉅著，將複雜的物理學概念以淺顯易懂的方式呈現。</p>
-                                <p><stro    ng>ISBN：</stro    ng>978-986-1111-11-1</p>
-                                <button href="#" class="borrow-book-btn btn btn-primary mt-3">詳細頁面</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="flip-card-container">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="https://picsum.photos/id/244/400/600" class="card-img-top" alt="熱門書籍 2">
-                                <h5 class="card-title">人類簡史</h5>
-                                <p class="card-text text-muted">作者：尤瓦爾·諾亞·赫拉利</p>
-                            </div>
-                            <div class="flip-card-back">
-                                <h5 class="card-title">人類簡史</h5>
-                                <p><strong>作者：</strong>尤瓦爾·諾亞·赫拉利</p>
-                                <p><strong>簡介：</strong>探索人類從石器時代至今的演化歷程，以及智人如何成為地球的統治者。</p>
-                                <p><strong>ISBN：</strong>978-986-1111-11-2</p>
-                                <button href="#" class="borrow-book-btn btn btn-primary mt-3">詳細頁面</button>
+                @if (Model.PopularBooks != null)
+                {
+                    @foreach (var book in Model.PopularBooks)
+                    {
+                        <div class="col">
+                            <div class="flip-card-container">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        @* 這裡的圖片路徑需要根據實際儲存方式來調整 *@
+                                        <img src="data:image/*; base64, @(book?.Collection?.CollectionImg != null ? Convert.ToBase64String(book.Collection.CollectionImg) : string.Empty)" class="card-img-top" alt="@book?.Collection?.Title">
+                                        <h5 class="card-title">@book?.Collection?.Title</h5>
+                                        <p class="card-text text-muted">作者：@(book?.Collection?.Author?.Author1 ?? "佚名")</p>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h5 class="card-title">@book?.Collection?.Title</h5>
+                                        <p><strong>作者：</strong>@(book?.Collection?.Author?.Author1 ?? "佚名")</p>
+                                        @if (book?.Collection?.CollectionDesc?.Length > 100 && book.Collection?.CollectionDesc != null)
+                                        {
+                                            string? describe = book?.Collection?.CollectionDesc != null ? book?.Collection?.CollectionDesc.Substring(0, 100) : string.Empty;
+                                            <p><strong>簡介：</strong>@describe...</p>
+                                        }
+                                        else
+                                        {
+                                            <p><strong>簡介：</strong>@book?.Collection?.CollectionDesc</p>
+                                        }
+                                        
+                                        <p><strong>ISBN：</strong>@book?.Collection?.Isbn</p>
+                                        <div class="d-flex justify-content-center w-100">
+                                            <button class="borrow-book-btn btn btn-primary mt-3">詳細頁面</button>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="flip-card-container">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="https://picsum.photos/id/268/400/600" class="card-img-top" alt="熱門書籍 3">
-                                <h5 class="card-title">原子習慣</h5>
-                                <p class="card-text text-muted">作者：詹姆斯·克利爾</p>
-                            </div>
-                            <div class="flip-card-back">
-                                <h5 class="card-title">原子習慣</h5>
-                                <p><strong>作者：</strong>詹姆斯·克利爾</p>
-                                <p><strong>簡介：</strong>透過微小而持續的改變，建立好習慣、戒除壞習慣，達成個人目標的實用指南。</p>
-                                <p><strong>ISBN：</strong>978-986-1111-11-3</p>
-                                <button href="#" class="borrow-book-btn btn btn-primary mt-3">詳細頁面</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="flip-card-container">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="https://picsum.photos/id/269/400/600" class="card-img-top" alt="熱門書籍 4">
-                                <h5 class="card-title">活出意義來</h5>
-                                <p class="card-text text-muted">作者：維克多·弗蘭克</p>
-                            </div>
-                            <div class="flip-card-back">
-                                <h5 class="card-title">活出意義來</h5>
-                                <p><strong>作者：</strong>維克多·弗蘭克</p>
-                                <p><strong>簡介：</strong>一位納粹集中營倖存者的真實經歷，闡述在極端苦難中尋找生命意義的力量。</p>
-                                <p><strong>ISBN：</strong>978-986-1111-11-4</p>
-                                <button class="borrow-book-btn btn btn-primary mt-3">詳細頁面</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                    }
+                }
             </div>
         </div>
     </div>
@@ -294,78 +213,38 @@
 
     <hr />
 
-    <div id="FAQ" class="d-flex flex-column justify-content-sm-center">
+   <div id="FAQ" class="d-flex flex-column justify-content-sm-center">
         <div>
             <h2 class="text-center mb-4">常見問題 (FAQ)</h2>
-            <div class="accordion" id="faqAccordion">
-                <div class="accordion-item shadow-sm mb-2">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Q1：圖書館開放時間是？
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                         data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            <strong>週二至週六 09:00 - 21:00，週日至週一 09:00 - 17:00。</strong> 國定假日及特定休館日請參考本館網站公告。
-                        </div>
+            <div class="faq-list">
+                <div class="faq-item shadow-sm mb-2 p-3">
+                    <h3 class="h5">Q1：圖書館開放時間是？</h3>
+                    <div>
+                        <strong>週二至週六 09:00 - 21:00，週日至週一 09:00 - 17:00。</strong> 國定假日及特定休館日請參考本館網站公告。
                     </div>
                 </div>
-                <div class="accordion-item shadow-sm mb-2">
-                    <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Q2：如何辦理借書證？
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                         data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            請攜帶身分證明文件（身分證、駕照或健保卡），至櫃台填寫申請表即可免費辦理。未滿12歲兒童需由法定代理人陪同辦理。
-                        </div>
+                <div class="faq-item shadow-sm mb-2 p-3">
+                    <h3 class="h5">Q2：如何辦理借書證？</h3>
+                    <div>
+                        請攜帶身分證明文件（身分證、駕照或健保卡），至櫃台填寫申請表即可免費辦理。未滿12歲兒童需由法定代理人陪同辦理。
                     </div>
                 </div>
-                <div class="accordion-item shadow-sm mb-2">
-                    <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Q3：借閱期限和數量有限制嗎？
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                         data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            每張借書證最多可借閱30本書籍，借閱期限為30天。部分熱門書籍可能借閱期限較短或無法續借，請留意借閱規定。
-                        </div>
+                <div class="faq-item shadow-sm mb-2 p-3">
+                    <h3 class="h5">Q3：借閱期限和數量有限制嗎？</h3>
+                    <div>
+                        每張借書證最多可借閱30本書籍，借閱期限為30天。部分熱門書籍可能借閱期限較短或無法續借，請留意借閱規定。
                     </div>
                 </div>
-                <div class="accordion-item shadow-sm mb-2">
-                    <h2 class="accordion-header" id="headingFour">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                            Q4：可以線上預約書籍嗎？
-                        </button>
-                    </h2>
-                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                         data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            是的，您可登入本館網站會員帳號，查詢欲借閱的書籍並進行線上預約。書籍到館後將以簡訊通知您前來取書。
-                        </div>
+                <div class="faq-item shadow-sm mb-2 p-3">
+                    <h3 class="h5">Q4：可以線上預約書籍嗎？</h3>
+                    <div>
+                        是的，您可登入本館網站會員帳號，查詢欲借閱的書籍並進行線上預約。書籍到館後將以簡訊通知您前來取書。
                     </div>
                 </div>
-                <div class="accordion-item shadow-sm mb-2">
-                    <h2 class="accordion-header" id="headingFive">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                            Q5：圖書館有提供電子書服務嗎？
-                        </button>
-                    </h2>
-                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
-                         data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            本館提供豐富的電子書資源，會員可透過本館網站或專屬APP登入，免費借閱各種電子書刊。詳細使用說明請參考電子書專區。
-                        </div>
+                <div class="faq-item shadow-sm mb-2 p-3">
+                    <h3 class="h5">Q5：圖書館有提供電子書服務嗎？</h3>
+                    <div>
+                        本館提供豐富的電子書資源，會員可透過本館網站或專屬APP登入，免費借閱各種電子書刊。詳細使用說明請參考電子書專區。
                     </div>
                 </div>
             </div>
@@ -502,103 +381,154 @@
             // 更新分頁資訊跟分頁按鈕狀態
 
             function updatePaginationButtons() {
-                // 更新顯示「第 N / M 頁」的資訊
-                const paginationInfo = document.querySelector('.pagination-info');
-                if (paginationInfo) {
-                    if (totalPages ===  0){
-                        paginationInfo.innerHTML = `<span>第 0 </span> <span> / </span><span>${totalPages}</span> <span>頁</span>`
-                    }
-                    else{
-                        paginationInfo.innerHTML = `<span>第</span> <span>${currentPage}</span> / <span>${totalPages}</span> <span>頁</span>`;
-                    }    
+
+            // 更新顯示「第 N / M 頁」的資訊
+            const paginationInfo = document.querySelector('.pagination-info');
+            if (paginationInfo) {
+                if (totalPages === 0) {
+                    paginationInfo.innerHTML = `<span>第 0 </span> <span> / </span><span>${totalPages}</span> <span>頁</span>`;
+                } else {
+                    paginationInfo.innerHTML = `<span>第</span> <span>${currentPage}</span> / <span>${totalPages}</span> <span>頁</span>`;
                 }
+            }
 
-                // 更新上一頁/下一頁按鈕的 disabled 狀態
-                if (prevPageBtn) {
-                    if (totalPages === 0){
-                        prevPageBtn.classList.add('disabled');
-                    }
-                    else if (currentPage === 1) {
-                        prevPageBtn.classList.add('disabled');
-                    } else {
-                        prevPageBtn.classList.remove('disabled');
-                    }
+            // 更新上一頁/下一頁按鈕的 disabled 狀態
+            if (prevPageBtn) {
+                if (totalPages === 0 || currentPage === 1) {
+                    prevPageBtn.classList.add('disabled');
+                } else {
+                    prevPageBtn.classList.remove('disabled');
                 }
-                if (nextPageBtn) {
-                    if (totalPages === 0){
-                        nextPageBtn.classList.add('disabled');
-                    }
-                    else if (currentPage === totalPages) {
-                        nextPageBtn.classList.add('disabled');
-                    } else {
-                        nextPageBtn.classList.remove('disabled');
-                    }
+            }
+            if (nextPageBtn) {
+                if (totalPages === 0 || currentPage === totalPages) {
+                    nextPageBtn.classList.add('disabled');
+                } else {
+                    nextPageBtn.classList.remove('disabled');
                 }
+            }
 
-                // 更新頁碼按鈕的狀態
-                // 取得包含整個頁碼按鈕的父元素
-                const pageBtnContainer = document.querySelector(".pagination-buttons");
+            // 更新頁碼按鈕的狀態
+            const pageBtnContainer = document.querySelector(".pagination-buttons");
 
-                if (pageBtnContainer){
+            if (pageBtnContainer) {
+                // 移除所有頁碼按鈕 (除了前後控制按鈕)
+                Array.from(pageBtnContainer.children).forEach(child => {
+                    if (!child.classList.contains('page-control-btn')) {
+                        child.remove();
+                    }
+                });
 
-                    // 移除所有頁碼按鈕 (除了前後控制按鈕)
-                    Array.from(pageBtnContainer.children).forEach(child => {
-                        if (!child.classList.contains('page-control-btn')){
-                            child.remove();
+                // --- 限制顯示頁碼數量 ---
+                const maxPagesToShow = 5; // 可以調整這個數字，例如顯示 5 個頁碼按鈕
+                let startPage, endPage;
+
+                if (totalPages <= maxPagesToShow) {
+                    // 如果總頁數不多，直接顯示所有頁碼
+                    startPage = 1;
+                    endPage = totalPages;
+                } else {
+                    // 計算顯示範圍
+                    const half = Math.floor(maxPagesToShow / 2);
+                    startPage = Math.max(1, currentPage - half);
+                    endPage = Math.min(totalPages, currentPage + half);
+
+                    // 調整邊界情況
+                    if (endPage - startPage + 1 < maxPagesToShow) {
+                        if (startPage === 1) {
+                            endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+                        } else if (endPage === totalPages) {
+                            startPage = Math.max(1, totalPages - maxPagesToShow + 1);
                         }
-                    })
-
-                    // 重新生成頁碼按鈕
-                    for(let i = 1 ; i <= totalPages ; i ++){
-                        const btn = document.createElement('button');
-                        btn.type = 'button';
-                        btn.classList.add('btn');
-                        if( i === currentPage ){
-                            btn.classList.add('active');
-                        }
-
-                        // 加上 CSS 隔離 ID  
-                        if(cssScopeId){
-                            btn.setAttribute(cssScopeId, '');
-                        }
-                        btn.textContent = i;
-                        pageBtnContainer.insertBefore(btn, nextPageBtn); // 插入到 nextPageBtn 之前
                     }
                 }
-                else {
-                    console.error("找不到包含 pagination buttons 的 Html 元素，請確認 Html 結構")
-                };
 
-                // 更新跳頁下拉選單的選項狀態
-                // 取得包含整個跳頁下拉選項的父元素
-                const pageSelectorContainer = document.getElementById('page-selector');
-                if (pageSelectorContainer) {
-                    
-                    // 清空頁碼選項
-                    Array.from(pageSelectorContainer.children).forEach( option => {
-                        option.remove();
-                    })
+                // 重新生成頁碼按鈕
+                // 先處理第一頁和「...」
+                if (startPage > 1) {
+                    const firstPageBtn = createPaginationButton(1, currentPage);
+                    pageBtnContainer.insertBefore(firstPageBtn, nextPageBtn);
+                    if (startPage > 2) {
+                        const ellipsisStart = createEllipsisButton();
+                        pageBtnContainer.insertBefore(ellipsisStart, nextPageBtn);
+                    }
+                }
 
-                    // 重新生成頁碼選項
-                    if (totalPages === 0){
+                // 產生中間的頁碼按鈕
+                for (let i = startPage; i <= endPage; i++) {
+                    const btn = createPaginationButton(i, currentPage);
+                    pageBtnContainer.insertBefore(btn, nextPageBtn);
+                }
+
+                // 再處理「...」和最後一頁
+                if (endPage < totalPages) {
+                    if (endPage < totalPages - 1) {
+                        const ellipsisEnd = createEllipsisButton();
+                        pageBtnContainer.insertBefore(ellipsisEnd, nextPageBtn);
+                    }
+                    const lastPageBtn = createPaginationButton(totalPages, currentPage);
+                    pageBtnContainer.insertBefore(lastPageBtn, nextPageBtn);
+                }
+
+            } else {
+                console.error("找不到包含 pagination buttons 的 Html 元素，請確認 Html 結構");
+            }
+
+            // 更新跳頁下拉選單的選項狀態
+            const pageSelectorContainer = document.getElementById('page-selector');
+            if (pageSelectorContainer) {
+                // 清空頁碼選項
+                Array.from(pageSelectorContainer.children).forEach(option => {
+                    option.remove();
+                });
+
+                // 重新生成頁碼選項
+                if (totalPages === 0) {
+                    const option = document.createElement('option');
+                    option.setAttribute('selected', '');
+                    option.textContent = 0;
+                    pageSelectorContainer.append(option);
+                } else {
+                    for (let i = 1; i <= totalPages; i++) {
                         const option = document.createElement('option');
-                        option.setAttribute('selected', '');
-                        option.textContent = 0;
-                        pageSelectorContainer.append(option);
-                    }
-                    else{
-                        for(let i = 1 ; i <= totalPages ; i ++ ){
-                            const option = document.createElement('option');
-                            option.setAttribute('value', i);
-                            if ( i === currentPage ){
-                                option.setAttribute('selected', '');
-                            }
-                            option.textContent = i;
-                            pageSelectorContainer.append(option);
+                        option.setAttribute('value', i);
+                        if (i === currentPage) {
+                            option.setAttribute('selected', '');
                         }
+                        option.textContent = i;
+                        pageSelectorContainer.append(option);
                     }
                 }
             }
+        }
+
+        // 輔助函數：創建頁碼按鈕
+        function createPaginationButton(pageNumber, currentPage) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.classList.add('btn');
+            if (pageNumber === currentPage) {
+                btn.classList.add('active');
+            }
+            // 加上 CSS 隔離 ID
+            if (cssScopeId) { // 假設 cssScopeId 在全局或父作用域中定義
+                btn.setAttribute(cssScopeId, '');
+            }
+            btn.textContent = pageNumber;
+            return btn;
+        }
+
+        // 輔助函數：創建省略號按鈕
+        function createEllipsisButton() {
+            const ellipsis = document.createElement('span');
+            ellipsis.classList.add('pagination-ellipsis'); // 可以為這個元素添加樣式
+            ellipsis.textContent = '...';
+            // 加上 CSS 隔離 ID
+            if (cssScopeId) {
+                ellipsis.setAttribute(cssScopeId, '');
+            }
+            return ellipsis;
+        }
 
             // 初次載入時更新分頁按鈕狀態
             updatePaginationButtons();

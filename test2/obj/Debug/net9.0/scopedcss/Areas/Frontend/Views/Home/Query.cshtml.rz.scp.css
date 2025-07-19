@@ -1,6 +1,7 @@
 /*sec1*/
 #sec1[b-d8s75ebos9] {
     min-height: 60vh;
+    height: auto;
 }
 
 #box_result[b-d8s75ebos9] {
@@ -30,9 +31,8 @@
 
 /*sec2*/
 #sec2[b-d8s75ebos9] {
-    min-height: 90vh;
+    min-height: 40vh;
     height: auto;
-    margin-top: 1rem;
 }
 
 #box_tab .nav-link[b-d8s75ebos9] {
@@ -54,4 +54,10 @@
 
 #box_relate[b-d8s75ebos9] {
     min-height: 45vh;
+}
+
+/*sec3*/
+#sec3[b-d8s75ebos9] {
+    min-height: 40vh;
+    height: auto;
 }

@@ -1,83 +1,38 @@
-﻿<div id="carousel_relate" class="carousel slide carousel-fade" data-bs-ride="carousel">
+﻿@model IEnumerable<test2.Models.Collection>
+
+@{
+    var bookLimit = 4;
+    var bookPage = 3;
+}
+
+<div id="carousel_relate" class="carousel slide carousel-fade" data-bs-ride="carousel">
     <div class="carousel-inner">
-        <div class="carousel-item d-flex row active" id="relate1" data-bs-interval="5000">
-            <div class="col-6 col-md-4 col-lg-3 mt-3 d-flex" style="justify-content: center; align-items: center">
-                <figure style="text-align: center">
-                    <img src="~/images/book2.png" class="d-block" />
-                    <figcaption class="mt-1">小王子1</figcaption>
-                </figure>
+        @for (var pageIndex = 0; pageIndex < bookPage; pageIndex++)
+        {
+            var activeClass = (pageIndex == 0) ? "active" : "";
+
+            <div class="carousel-item d-flex row @activeClass" id="relate1" data-bs-interval="5000">
+                @{
+                    var bookShow = Model.Skip(pageIndex * bookLimit).Take(bookLimit);
+                }
+
+                @foreach (var book in bookShow)
+                {
+                    <div class="col-6 col-md-4 col-lg-3 mt-3 d-flex" style="justify-content: center; align-items: flex-start">
+                        <figure style="text-align: center">
+                            @{
+                                if (book.CollectionImg != null)
+                                {
+                                    <img src="data:image/*; base64, @(Convert.ToBase64String(book.CollectionImg))" style="width: 200px; height: 300px; text-align: center; margin: 0;" />
+                                }
+                            }
+
+                            <figcaption class="mt-1">@Html.DisplayFor(modelItem => book.Title)</figcaption>
+                        </figure>
+                    </div>
+                }
             </div>
-            <div class="col-6 col-md-4 col-lg-3 mt-3 d-flex" style="justify-content: center; align-items: center">
-                <figure style="text-align: center">
-                    <img src="~/images/book2.png" class="d-block" />
-                    <figcaption class="mt-1">小王子2</figcaption>
-                </figure>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3 mt-3 d-flex" style="justify-content: center; align-items: center">
-                <figure style="text-align: center">
-                    <img src="~/images/book2.png" class="d-block" />
-                    <figcaption class="mt-1">小王子3</figcaption>
-                </figure>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3 mt-3 d-flex" style="justify-content: center; align-items: center">
-                <figure style="text-align: center">
-                    <img src="~/images/book2.png" class="d-block" />
-                    <figcaption class="mt-1">小王子4</figcaption>
-                </figure>
-            </div>
-        </div>
-        <div class="carousel-item d-flex row" id="relate2" data-bs-interval="5000">
-            <div class="col-6 col-md-4 col-lg-3 mt-3 d-flex" style="justify-content: center; align-items: center">
-                <figure style="text-align: center">
-                    <img src="~/images/book2.png" class="d-block" />
-                    <figcaption class="mt-1">小王子5</figcaption>
-                </figure>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3 mt-3 d-flex" style="justify-content: center; align-items: center">
-                <figure style="text-align: center">
-                    <img src="~/images/book2.png" class="d-block" />
-                    <figcaption class="mt-1">小王子6</figcaption>
-                </figure>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3 mt-3 d-flex" style="justify-content: center; align-items: center">
-                <figure style="text-align: center">
-                    <img src="~/images/book2.png" class="d-block" />
-                    <figcaption class="mt-1">小王子7</figcaption>
-                </figure>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3 mt-3 d-flex" style="justify-content: center; align-items: center">
-                <figure style="text-align: center">
-                    <img src="~/images/book2.png" class="d-block" />
-                    <figcaption class="mt-1">小王子8</figcaption>
-                </figure>
-            </div>
-        </div>
-        <div class="carousel-item d-flex row" id="relate3" data-bs-interval="5000">
-            <div class="col-6 col-md-4 col-lg-3 mt-3 d-flex" style="justify-content: center; align-items: center">
-                <figure style="text-align: center">
-                    <img src="~/images/book2.png" class="d-block" />
-                    <figcaption class="mt-1">小王子9</figcaption>
-                </figure>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3 mt-3 d-flex" style="justify-content: center; align-items: center">
-                <figure style="text-align: center">
-                    <img src="~/images/book2.png" class="d-block" />
-                    <figcaption class="mt-1">小王子10</figcaption>
-                </figure>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3 mt-3 d-flex" style="justify-content: center; align-items: center">
-                <figure style="text-align: center">
-                    <img src="~/images/book2.png" class="d-block" />
-                    <figcaption class="mt-1">小王子11</figcaption>
-                </figure>
-            </div>
-            <div class="col-6 col-md-4 col-lg-3 mt-3 d-flex" style="justify-content: center; align-items: center">
-                <figure style="text-align: center">
-                    <img src="~/images/book2.png" class="d-block" />
-                    <figcaption class="mt-1">小王子12</figcaption>
-                </figure>
-            </div>
-        </div>
+        }
     </div>
 
     <button class="carousel-control-prev" type="button" data-bs-target="#carousel_relate" data-bs-slide="prev"></button>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\職訓局\\大專\\My_work\\v7.5.4\\test2\\test2\\test2.csproj": {}
+    "C:\\職訓局\\大專\\My_work\\新\\v1.2.3\\test2\\test2.csproj": {}
   },
   "projects": {
-    "C:\\職訓局\\大專\\My_work\\v7.5.4\\test2\\test2\\test2.csproj": {
+    "C:\\職訓局\\大專\\My_work\\新\\v1.2.3\\test2\\test2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\職訓局\\大專\\My_work\\v7.5.4\\test2\\test2\\test2.csproj",
+        "projectUniqueName": "C:\\職訓局\\大專\\My_work\\新\\v1.2.3\\test2\\test2.csproj",
         "projectName": "test2",
-        "projectPath": "C:\\職訓局\\大專\\My_work\\v7.5.4\\test2\\test2\\test2.csproj",
+        "projectPath": "C:\\職訓局\\大專\\My_work\\新\\v1.2.3\\test2\\test2.csproj",
         "packagesPath": "C:\\Users\\justi\\.nuget\\packages\\",
-        "outputPath": "C:\\職訓局\\大專\\My_work\\v7.5.4\\test2\\test2\\obj\\",
+        "outputPath": "C:\\職訓局\\大專\\My_work\\新\\v1.2.3\\test2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -50,27 +50,27 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
-            "Microsoft.AspNetCore.Authentication.Cookies": {
+            "Isopoh.Cryptography.Argon2": {
               "target": "Package",
-              "version": "[2.3.0, )"
+              "version": "[2.0.0, )"
             },
             "Microsoft.AspNetCore.Authentication.Facebook": {
               "target": "Package",
-              "version": "[9.0.6, )"
+              "version": "[9.0.7, )"
             },
             "Microsoft.AspNetCore.Authentication.Google": {
               "target": "Package",
-              "version": "[9.0.6, )"
+              "version": "[9.0.7, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[9.0.6, )"
+              "version": "[9.0.7, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.6, )"
+              "version": "[9.0.7, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",

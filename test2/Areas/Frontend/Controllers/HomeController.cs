@@ -1,26 +1,22 @@
-﻿using Azure;
-using Microsoft.AspNetCore.Http;
+﻿using Isopoh.Cryptography.Argon2;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Razor.Compilation;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc.ViewEngines;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
-using System.Reflection;
-using System.Xml.Linq;
-using test2.Models;
-using test2.Areas.Frontend.Models.ViewModels;
-using test2.Areas.Frontend.Models.Dtos;
-using test2.Services;
+using System.Security.Claims;
 using System.Threading.Tasks;
-using Microsoft.IdentityModel.Tokens;
+using test2.Areas.Frontend.Models.Dtos;
+using test2.Areas.Frontend.Models.ViewModels;
+using test2.Controllers;
+using test2.Models;
+using test2.Services;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace test2.Areas.Frontend.Controllers
 {
     [Area("Frontend")]
-    public class HomeController : Controller
+    public class HomeController : UserController
     {
         #region field
         public const string sk1 = "query1";
@@ -31,30 +27,293 @@ namespace test2.Areas.Frontend.Controllers
         public const string sk6 = "lang";
         public const string sk7 = "type2";
         public const string sk8 = "status";
+
+        private readonly Test2Context _context;
         #endregion
 
+        #region 新增field
         private readonly ILogger<HomeController> _logger;
         private readonly ActivityService _activityService;
         private readonly AnnouncementService _announcementService;
         private readonly UserService _userService;
+        #endregion
 
-        public HomeController(ILogger<HomeController> logger, ActivityService activityService, AnnouncementService announcementService, UserService userService)
-        {
+        #region constructor
+        public HomeController(ILogger<HomeController> logger, Test2Context context, ActivityService activityService, AnnouncementService announcementService, UserService userService) {
             _logger = logger;
             _activityService = activityService;
             _announcementService = announcementService;
             _userService = userService;
+            _context = context;
         }
+        #endregion
 
         #region action
-        public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 10, string displayType = "", string searchQuery="")
+        //[HttpGet]
+        //public IActionResult Index() { return View(); }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Query(string query1, string type1, string query2, string year1, string year2, string lang, string type2, string status)
+        {
+            if (string.IsNullOrEmpty(query1)) { query1 = string.Empty; }
+            if (string.IsNullOrEmpty(type1)) { type1 = string.Empty; }
+            if (string.IsNullOrEmpty(query2)) { query2 = string.Empty; }
+            if (string.IsNullOrEmpty(year1)) { year1 = string.Empty; }
+            if (string.IsNullOrEmpty(year2)) { year2 = string.Empty; }
+            if (string.IsNullOrEmpty(lang)) { lang = string.Empty; }
+            if (string.IsNullOrEmpty(type2)) { type2 = string.Empty; }
+            if (string.IsNullOrEmpty(status)) { status = string.Empty; }
+
+            HttpContext.Session.SetString(sk1, query1);
+            HttpContext.Session.SetString(sk2, type1);
+            HttpContext.Session.SetString(sk3, query2);
+            HttpContext.Session.SetString(sk4, year1);
+            HttpContext.Session.SetString(sk5, year2);
+            HttpContext.Session.SetString(sk6, lang);
+            HttpContext.Session.SetString(sk7, type2);
+            HttpContext.Session.SetString(sk8, status);
+
+            IQueryable<Collection> query = _context.Collections.Include(x => x.Author).Include(x => x.Language).Include(x => x.Type).Include(x => x.Books);
+
+            if (!string.IsNullOrEmpty(query1)) { query = query.Where(i => i.Title.Contains(query1) || i.Author.Author1.Contains(query1) || i.Publisher.Contains(query1) || i.Isbn.Contains(query1)); }
+            else
+            {
+                bool x = int.TryParse(year1, out int yearX);
+                bool y = int.TryParse(year2, out int yearY);
+
+                if (!string.IsNullOrEmpty(query2))
+                {
+                    switch (type1)
+                    {
+                        case "title":
+                            query = query.Where(i => i.Title.Contains(query2)); break;
+                        case "author":
+                            query = query.Where(i => i.Author.Author1.Contains(query2)); break;
+                        case "publisher":
+                            query = query.Where(i => i.Publisher.Contains(query2)); break;
+                        case "isbn":
+                            query = query.Where(i => i.Isbn.Contains(query2)); break;
+                        default: break;
+                    }
+                }
+                if (x) { query = query.Where(i => i.PublishDate.Year >= yearX); }
+                if (y) { query = query.Where(i => i.PublishDate.Year <= yearY); }
+                if (!string.IsNullOrEmpty(lang)) { query = query.Where(i => i.Language.LanguageId == Convert.ToInt16(lang)); }
+                if (!string.IsNullOrEmpty(type2)) { query = query.Where(i => i.Type.TypeId == Convert.ToInt16(type2)); }
+            }
+
+            return View(await query.ToListAsync());
+        }
+
+        public async Task<IActionResult> Collection(string type, string author, string publisher, string lang, string year1, string year2)
+        {
+            IQueryable<Collection> collection = _context.Collections.Include(x => x.Author).Include(x => x.Language).Include(x => x.Type).Include(x => x.Books);
+
+            bool x = int.TryParse(year1, out int yearX);
+            bool y = int.TryParse(year2, out int yearY);
+
+            if (!string.IsNullOrEmpty(type)) { collection = collection.Where(i => i.Type.Type1.Contains(type)); }
+            if (!string.IsNullOrEmpty(author)) { collection = collection.Where(i => i.Author.Author1.Contains(author)); }
+            if (!string.IsNullOrEmpty(publisher)) { collection = collection.Where(i => i.Publisher.Contains(publisher)); }
+            if (!string.IsNullOrEmpty(lang)) { collection = collection.Where(i => i.Language.Language1.Contains(lang)); }
+            if (x) { collection = collection.Where(i => i.PublishDate.Year >= yearX); }
+            if (y) { collection = collection.Where(i => i.PublishDate.Year <= yearY); }
+
+            return View(await collection.ToListAsync());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateReserve(string user, string collection, string status)
+        {
+            int.TryParse(user, out int cId);
+            int.TryParse(collection, out int collectionId);
+
+            bool reservationStatus = await _context.Reservations.AnyAsync(x => x.CId == cId && x.CollectionId == collectionId && x.ReservationStatusId == 2);
+
+            if (reservationStatus) { return RedirectToAction(status == "C" ? "Collection" : "Query"); }
+
+            var reservationDate = await _context.Reservations.Where(x => x.CId == cId && x.CollectionId == collectionId).OrderByDescending(x => x.ReservationDate).FirstOrDefaultAsync();
+
+            if (reservationDate != null)
+            {
+                TimeSpan reservationDateDiff = DateTime.Now - reservationDate.ReservationDate;
+
+                if (reservationDateDiff.TotalDays < 1) { return RedirectToAction(status == "C" ? "Collection" : "Query"); }
+            }
+
+            var reservation = new Reservation
+            {
+                CId = cId,
+                CollectionId = collectionId,
+                ReservationDate = DateTime.Now,
+                ReservationStatusId = 2
+            };
+
+            _context.Reservations.Add(reservation);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(status == "C" ? "Collection" : "Query");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateReserve(string user, string collection)
+        {
+            int.TryParse(user, out int cId);
+            int.TryParse(collection, out int collectionId);
+
+            var reservationId = await _context.Reservations.FirstOrDefaultAsync(x => x.CId == cId && x.CollectionId == collectionId && x.ReservationStatusId == 2);
+
+            reservationId!.ReservationStatusId = 4;
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Client");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Client()
+        {
+            var userNameX = Convert.ToString(ViewData["UserName"]);
+
+            IQueryable<Client> client = _context.Clients.Include(x => x.Reservations).ThenInclude(y => y.ReservationStatus)
+                                                                                     .Include(x => x.Reservations).ThenInclude(y => y.Collection).ThenInclude(z => z.Author)
+                                                                                     .Include(x => x.Borrows).ThenInclude(y => y.BorrowStatus)
+                                                                                     .Include(w => w.Borrows).ThenInclude(x => x.Book).ThenInclude(y => y.Collection).ThenInclude(z => z.Author)
+                                                                                     .Include(x => x.Borrows).ThenInclude(y => y.Histories)
+                                                                                     .Include(x => x.Favorites).ThenInclude(y => y.Collection).ThenInclude(z => z.Author)
+                                                                                     .Include(x => x.Notifications)
+                                                                                     .Where(x => x.CName.Contains(userNameX!));
+
+            return View(await client.ToListAsync());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdatePassword(string idInput1, string passwordInput3)
+        {
+            int.TryParse(idInput1, out int cId);
+
+            var userId = await _context.Clients.FindAsync(cId);
+
+            userId!.CPassword = Argon2.Hash(passwordInput3);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Client");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdatePhone(string idInput2, string phoneInput2)
+        {
+            int.TryParse(idInput2, out int cId);
+
+            //await _context.Database.ExecuteSqlInterpolatedAsync($"EXEC pr_updatePhone {cId}, {phoneInput2}");
+
+            //var userPhoneX = await _context.Clients.Include(x => x.Borrows).ThenInclude(y => y.BorrowStatus)
+            //                                                                  .Include(w => w.Borrows).ThenInclude(x => x.Book).ThenInclude(y => y.Collection).ThenInclude(z => z.Author)
+            //                                                                  .Include(x => x.Borrows).ThenInclude(y => y.Histories)
+            //                                                                  .Include(x => x.Favorites).ThenInclude(y => y.Collection).ThenInclude(z => z.Author)
+            //                                                                  .Include(x => x.Notifications)
+            //                                                                  .AsNoTracking().FirstOrDefaultAsync(i => i.CId == cId);
+
+            //return RedirectToAction("Client", new List<Client> { userPhoneX! });
+
+            var userId = await _context.Clients.FindAsync(cId);
+
+            userId!.CPhone = phoneInput2;
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Client");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateFavorite(string idInput3, string collectionIdInput1)
+        {
+            int.TryParse(idInput3, out int cId);
+            int.TryParse(collectionIdInput1, out int collectionId);
+
+            var favorites = new Favorite
+            {
+                CId = cId,
+                CollectionId = collectionId
+            };
+
+            _context.Favorites.Add(favorites!);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Client");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteFavorite(string idInput4, string collectionIdInput2)
+        {
+            int.TryParse(idInput4, out int cId);
+            int.TryParse(collectionIdInput2, out int collectionId);
+
+            var favoritesId = await _context.Favorites.FirstOrDefaultAsync(x => x.CId == cId && x.CollectionId == collectionId);
+
+            _context.Favorites.Remove(favoritesId!);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Client");
+        }
+        #endregion
+
+        #region 新增action
+        public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 10, string displayType = "", string searchQuery = "")
         {
             var viewModel = new HomeIndexViewModel();
 
             try
             {
                 // 從 AnnouncementService 獲取公告資料
-                viewModel = await _announcementService.GetPagedAnnouncementsAsync(pageNumber, pageSize, displayType, searchQuery); 
+                viewModel = await _announcementService.GetPagedAnnouncementsAsync(pageNumber, pageSize, displayType, searchQuery);
+
+                // 查詢最新書籍 (分兩階段處理以避免翻譯錯誤)
+                // 第一階段：先從資料庫取出所有書籍及其 Collection 資訊
+                var allBooksWithCollection = await _context.Books
+                                                         .Include(b => b.Collection)
+                                                            .ThenInclude(c => c.Author) // 在 Collection 載入後，再載入 Author 資訊
+                                                         .ToListAsync(); // 這裡會將所有相關書籍載入記憶體
+
+
+                // 第二階段：在記憶體中進行分組、排序和篩選
+                viewModel.NewBooks = allBooksWithCollection
+                                         .GroupBy(b => b.Collection?.CollectionId) // 根據 CollectionId 分組
+                                         .Where(g => g.Key.HasValue) // 過濾掉 CollectionId 為 null 的分組
+                                         .Select(g => g.OrderByDescending(b => b.AccessionDate).First()) // 在每個 CollectionId 組中，取出 AccessionDate 最新的那本
+                                         .OrderByDescending(b => b.Collection?.PublishDate) // 再依出版日期降冪排序
+                                         .Take(6)
+                                         .ToList(); // 轉成 List
+
+                // 查詢熱門書籍 (依照借閱次數 BorrowCount 降冪排序，取前 4 本)    
+
+                viewModel.PopularBooks = await _context.Books
+                                                        .Include(b => b.Collection) // 導覽屬性載入 Collection
+                                                            .ThenInclude(c => c.Author) // 在 Collection 載入後，再載入 Author 資訊
+                                                        .GroupJoin(
+                                                            _context.Borrows,
+                                                            book => book.BookId, // Book 的主鍵是 BookId
+                                                            borrow => borrow.BookId, // Borrow 的外鍵是 BookId
+                                                            (book, borrows) => new
+                                                            {
+                                                                Book = book,
+                                                                BorrowCount = borrows.Count()
+                                                            })
+                                                        .OrderByDescending(x => x.BorrowCount)
+                                                        .Select(x => x.Book)
+                                                        .Take(4)
+                                                        .ToListAsync();
             }
             catch (Exception ex)
             {
@@ -143,8 +402,9 @@ namespace test2.Areas.Frontend.Controllers
             [FromForm] string displayType,
             [FromForm] string searchQuery)
         {
-            try {
-            
+            try
+            {
+
                 // 確保 displayMode 和 displayType 有預設值，避免 null 參考錯誤
                 displayMode ??= "image"; // 預設圖片模式
                 displayType ??= "全部";  // 預設全部類型
@@ -218,6 +478,97 @@ namespace test2.Areas.Frontend.Controllers
                 return View(new ActivityViewModel()); // 即使出錯，回傳一個空的 ViewModel
             }
         }
+
+        /// <summary>
+        /// 處理活動報名請求。
+        /// </summary>
+        /// <param name="activityId">要報名的活動 ID。</param>
+        /// <returns>JSON 格式的報名結果。</returns>
+        [HttpPost]
+        public async Task<IActionResult> RegisterActivity(int activityId)
+        {
+            // 判斷使用者是否未登入
+            if (!(User.Identity != null && User.Identity.IsAuthenticated))
+            {
+                // 未登入：直接告知前端需要登入，並提供登入頁面的 URL
+                return Json(new
+                {
+                    success = false,
+                    message = "請先登入才能報名活動喔！",
+                    redirectToLogin = Url.Action("LoginC", "Access", new { area = "Frontend" }) // 提供正確的登入頁面URL
+                });
+            }
+
+            // 已登入，繼續報名邏輯
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (!int.TryParse(userIdClaim, out int clientId))
+            {
+                // 無法取得使用者 ID (理論上登入後不會發生，但做個防範)
+                return Json(new { success = false, message = "無法取得您的會員資訊，請重新登入。" });
+            }
+
+            var activity = await _context.Activities.FirstOrDefaultAsync(a => a.ActivityId == activityId);
+            if (activity == null)
+            {
+                return Json(new { success = false, message = "找不到該活動。" });
+            }
+
+            // 檢查是否在報名時間內
+            if (DateTime.Now < activity.StartDate || DateTime.Now > activity.EndDate)
+            {
+                return Json(new { success = false, message = "報名時間已過或尚未開始。" });
+            }
+
+            // 檢查名額
+            if (activity.Capacity <= 0 && activity.Capacity != -1) // -1 表示無需報名，不檢查名額
+            {
+                return Json(new { success = false, message = "名額已滿，無法報名！" });
+            }
+
+            // 檢查是否已重複報名
+            var existingRegistration = await _context.ActivityRegistrations
+                                                     .FirstOrDefaultAsync(ar => ar.ClientId == clientId && ar.ActivityId == activityId);
+            if (existingRegistration != null)
+            {
+                return Json(new { success = false, message = "您已經報名過此活動了！" });
+            }
+
+            // 執行報名
+            using (var transaction = await _context.Database.BeginTransactionAsync())
+            {
+                try
+                {
+                    var newRegistration = new ActivityRegistration
+                    {
+                        ClientId = clientId,
+                        ActivityId = activityId,
+                        ActivityRegistrationDate = DateTime.Now,
+                        Status = "已報名" // 預設狀態
+                    };
+                    _context.ActivityRegistrations.Add(newRegistration);
+
+                    // 如果活動需要扣除名額 (Capacity 不是 -1)
+                    if (activity.Capacity > 0)
+                    {
+                        activity.Capacity--; // 名額減一
+                        _context.Activities.Update(activity);
+                    }
+
+                    await _context.SaveChangesAsync();
+                    await transaction.CommitAsync();
+
+                    return Json(new { success = true, message = "恭喜您，報名成功！" });
+                }
+                catch (Exception ex)
+                {
+                    await transaction.RollbackAsync();
+                    // 記錄錯誤 (例如使用 ILogger)
+                    Console.Error.WriteLine($"報名失敗: {ex.Message}");
+                    return Json(new { success = false, message = "報名失敗，請稍後再試。若問題持續請聯繫客服。" });
+                }
+            }
+        }
+
         public IActionResult Login()
         {
             return View();
@@ -260,30 +611,6 @@ namespace test2.Areas.Frontend.Controllers
                 return View(model);
             }
         }
-
-        public IActionResult Query(string query1, string type1, string query2, string year1, string year2, string lang, string type2, string status)
-        {
-            if (string.IsNullOrEmpty(query1)) { query1 = string.Empty; }
-            if (string.IsNullOrEmpty(type1)) { type1 = string.Empty; }
-            if (string.IsNullOrEmpty(query2)) { query2 = string.Empty; }
-            if (string.IsNullOrEmpty(year1)) { year1 = string.Empty; }
-            if (string.IsNullOrEmpty(year2)) { year2 = string.Empty; }
-            if (string.IsNullOrEmpty(lang)) { lang = string.Empty; }
-            if (string.IsNullOrEmpty(type2)) { type2 = string.Empty; }
-            if (string.IsNullOrEmpty(status)) { status = string.Empty; }
-
-            HttpContext.Session.SetString(sk1, query1);
-            HttpContext.Session.SetString(sk2, type1);
-            HttpContext.Session.SetString(sk3, query2);
-            HttpContext.Session.SetString(sk4, year1);
-            HttpContext.Session.SetString(sk5, year2);
-            HttpContext.Session.SetString(sk6, lang);
-            HttpContext.Session.SetString(sk7, type2);
-            HttpContext.Session.SetString(sk8, status);
-
-            return View();
-        }
-        public IActionResult Collection() { return View(); }
         #endregion
     }
 }

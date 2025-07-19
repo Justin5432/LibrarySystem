@@ -9,15 +9,13 @@ public partial class Collection
 
     public string Title { get; set; } = null!;
 
-    public string CollectionDesc { get; set; } = null!;
+    public string? CollectionDesc { get; set; }
 
     public byte[] CollectionImg { get; set; } = null!;
 
     public int TypeId { get; set; }
 
-    public string Author { get; set; } = null!;
-
-    public string Translator { get; set; } = null!;
+    public string? Translator { get; set; }
 
     public string Publisher { get; set; } = null!;
 
@@ -26,6 +24,10 @@ public partial class Collection
     public string Isbn { get; set; } = null!;
 
     public DateTime PublishDate { get; set; }
+
+    public int AuthorId { get; set; }
+
+    public virtual Author Author { get; set; } = null!;
 
     public virtual ICollection<Book> Books { get; set; } = new List<Book>();
 

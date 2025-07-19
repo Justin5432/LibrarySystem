@@ -7,12 +7,34 @@
     background-color: var(--c-green2-025);
 }
 
-.btn_type[b-lhk01efj60] {
+.btn_accordion[b-lhk01efj60] {
     display: block;
     padding: .5rem .25rem;
     text-decoration: none;
 }
 
-    .btn_type:hover[b-lhk01efj60] {
+    .btn_accordion:hover[b-lhk01efj60] {
         background-color: var(--c-orange-025);
     }
+
+#Cbtn_reset[b-lhk01efj60] {
+    background-color: var(--c-blue---050);
+    color: white;
+}
+
+/*RWD*/
+@media(max-width: 768px) {
+    #btn_publisher3[b-lhk01efj60] {
+        font-size: .5rem;
+    }
+}
+
+@media(max-width: 992px) {
+    .btn_type[b-lhk01efj60],
+    .btn_author[b-lhk01efj60],
+    .btn_publisher[b-lhk01efj60],
+    .btn_lang[b-lhk01efj60],
+    .btn_year[b-lhk01efj60] {
+        font-size: .75rem;
+    }
+}

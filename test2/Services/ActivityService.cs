@@ -81,7 +81,7 @@ namespace test2.Services
         }
 
         /// <summary>
-        /// 使用 EF Core 從資料庫獲取指定數量的活動的列表。
+        /// 使用 EF Core 從資料庫獲取指定數量的活動的列表，若不指定數量預設為三筆。
         /// </summary>
         public async Task<List<ActivityViewModel>> GetActivitiesAsync(int count = 3)
         {
@@ -134,7 +134,7 @@ namespace test2.Services
                                                ActivityTypeId = a.ActivityTypeId,
                                                AudienceId = a.AudienceId,
                                                Audience = a.Audience, // 同樣確認 ViewModel 中 Audience 屬性型別
-                                               ActivityType = a.ActivityType
+                                               ActivityType = a.ActivityType,
                                            })
                                            .SingleOrDefaultAsync(); // 使用 SingleOrDefaultAsync 獲取單一結果或 null
 
@@ -201,7 +201,7 @@ namespace test2.Services
                                          ActivityTypeId = a.ActivityTypeId,
                                          AudienceId = a.AudienceId,
                                          Audience = a.Audience,
-                                         ActivityType = a.ActivityType
+                                         ActivityType = a.ActivityType,
                                      })
                                      .ToListAsync();
 

@@ -1,6 +1,7 @@
 ﻿/*sec1*/
 #sec1 {
     min-height: 60vh;
+    height: auto;
 }
 
 #box_result {
@@ -30,9 +31,8 @@
 
 /*sec2*/
 #sec2 {
-    min-height: 90vh;
+    min-height: 40vh;
     height: auto;
-    margin-top: 1rem;
 }
 
 #box_tab .nav-link {
@@ -54,4 +54,10 @@
 
 #box_relate {
     min-height: 45vh;
+}
+
+/*sec3*/
+#sec3 {
+    min-height: 40vh;
+    height: auto;
 }

@@ -1,22 +1,27 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.Google;   // Google 驗證的命名空間
-using Microsoft.AspNetCore.Authentication.Facebook; // Facebook 驗證的命名空間
 using Microsoft.EntityFrameworkCore;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using test2.Models;
 using test2.Services;
 
-var builder = WebApplication.CreateBuilder(args);
 
 
+#region 外部驗證套件命名空間
+using Microsoft.AspNetCore.Authentication.Google;   // Google 驗證的命名空間
+using Microsoft.AspNetCore.Authentication.Facebook; // Facebook 驗證的命名空間
+#endregion
+
+#region 環境變數
 var googleClentId = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_ID");
 var googleClientSecret = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_SECRET");
 var facebookAppId = Environment.GetEnvironmentVariable("FACEBOOK_APP_ID");
 var facebookAppSecret = Environment.GetEnvironmentVariable("FACEBOOK_APP_SECRET");
+#endregion
 
+var builder = WebApplication.CreateBuilder(args);
 
-#region 
+#region 註冊自訂服務 和 增加外部驗證設定
 // 註冊 ActivityService
 builder.Services.AddScoped<ActivityService>();
 
@@ -49,15 +54,15 @@ builder.Services.AddAuthentication(options => // 修改：將 AddAuthentication 調整
 })
 
 .AddFacebook(facebookOptions => // 新增：Facebook 驗證設定
- {
-     facebookOptions.AppId = facebookAppId!;
-     facebookOptions.AppSecret = facebookAppSecret!;
+{
+    facebookOptions.AppId = facebookAppId!;
+    facebookOptions.AppSecret = facebookAppSecret!;
 
-     // 只要求公開個人資料 (包含姓名)。
-     // Facebook 的 'public_profile' 範圍預設包含姓名。
-     facebookOptions.Scope.Add("public_profile");
-     facebookOptions.Scope.Add("email");
- });
+    // 只要求公開個人資料 (包含姓名)。
+    // Facebook 的 'public_profile' 範圍預設包含姓名。
+    facebookOptions.Scope.Add("public_profile");
+    facebookOptions.Scope.Add("email");
+});
 #endregion 
 
 //database service
@@ -87,6 +92,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     options.ExpireTimeSpan = TimeSpan.FromHours(1);
     options.SlidingExpiration = true;
     options.LoginPath = "/Frontend/Home/Index";
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+    options.SlidingExpiration = true;
 });
 
 var app = builder.Build();

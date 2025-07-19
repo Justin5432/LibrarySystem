@@ -2,22 +2,16 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Security.Claims;
+using test2.Controllers;
 
 namespace test2.Areas.Backend.Controllers
 {
     [Area("Backend")]
     [Authorize(Roles = "Admin, SuperAdmin")]
-    public class ManageController : Controller
+    public class ManageController : UserController
     {
         #region action
-        public IActionResult Index()
-        {
-            var userName = User.FindFirst("Name");
-
-            ViewData["UserName"] = (userName != null) ? userName.Value : string.Empty;
-
-            return View();
-        }
+        public IActionResult Index() { return View(); }
         #endregion
 
         //----葉忠憲處理部分------------------------------------------------------------------------------------------

@@ -1,14 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\v7.5.4\\test2\\test2\\",
+  "WorkspaceRootPath": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0\\v1.2.3\\test2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|c:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\my_work\\v7.5.4\\test2\\test2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|c:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\my_work\\\u65B0\\v1.2.3\\test2\\areas\\frontend\\views\\shared\\_partial\\_header\\_loginbefore.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|solutionrelative:areas\\frontend\\views\\shared\\_partial\\_header\\_loginbefore.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|c:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\my_work\\v7.5.4\\test2\\test2\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|c:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\my_work\\\u65B0\\v1.2.3\\test2\\areas\\frontend\\views\\shared\\_partial\\_header\\_loginafter.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|solutionrelative:areas\\frontend\\views\\shared\\_partial\\_header\\_loginafter.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|c:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\my_work\\\u65B0\\v1.2.3\\test2\\areas\\frontend\\views\\home\\activity.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|solutionrelative:areas\\frontend\\views\\home\\activity.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|c:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\my_work\\\u65B0\\v1.2.3\\test2\\areas\\frontend\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|solutionrelative:areas\\frontend\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,32 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\v7.5.4\\test2\\test2\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\v7.5.4\\test2\\test2\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAYwAcAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-16T04:50:07.386Z",
+              "DocumentIndex": 0,
+              "Title": "_loginBefore.cshtml",
+              "DocumentMoniker": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0\\v1.2.3\\test2\\Areas\\Frontend\\Views\\Shared\\_Partial\\_header\\_loginBefore.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Frontend\\Views\\Shared\\_Partial\\_header\\_loginBefore.cshtml",
+              "ToolTip": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0\\v1.2.3\\test2\\Areas\\Frontend\\Views\\Shared\\_Partial\\_header\\_loginBefore.cshtml",
+              "RelativeToolTip": "Areas\\Frontend\\Views\\Shared\\_Partial\\_header\\_loginBefore.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA4AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-19T04:09:11.04Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\v7.5.4\\test2\\test2\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\v7.5.4\\test2\\test2\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-16T04:33:35.36Z",
+              "DocumentIndex": 1,
+              "Title": "_loginAfter.cshtml",
+              "DocumentMoniker": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0\\v1.2.3\\test2\\Areas\\Frontend\\Views\\Shared\\_Partial\\_header\\_loginAfter.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Frontend\\Views\\Shared\\_Partial\\_header\\_loginAfter.cshtml",
+              "ToolTip": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0\\v1.2.3\\test2\\Areas\\Frontend\\Views\\Shared\\_Partial\\_header\\_loginAfter.cshtml",
+              "RelativeToolTip": "Areas\\Frontend\\Views\\Shared\\_Partial\\_header\\_loginAfter.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-19T04:09:24.97Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Activity.cshtml",
+              "DocumentMoniker": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0\\v1.2.3\\test2\\Areas\\Frontend\\Views\\Home\\Activity.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Frontend\\Views\\Home\\Activity.cshtml",
+              "ToolTip": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0\\v1.2.3\\test2\\Areas\\Frontend\\Views\\Home\\Activity.cshtml*",
+              "RelativeToolTip": "Areas\\Frontend\\Views\\Home\\Activity.cshtml*",
+              "ViewState": "AgIAAE4BAAAAAAAAAAAawIgBAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-18T18:44:28.832Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0\\v1.2.3\\test2\\Areas\\Frontend\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Frontend\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0\\v1.2.3\\test2\\Areas\\Frontend\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Areas\\Frontend\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAI8BAAAAAAAAAAAawJoBAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-18T15:30:13.669Z",
               "EditorCaption": ""
             }
           ]

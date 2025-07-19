@@ -19,11 +19,16 @@ public partial class Test2Context : DbContext
 
     public virtual DbSet<ActivityType> ActivityTypes { get; set; }
 
+    // 新增 ActivityRegistrations
+    public virtual DbSet<ActivityRegistration> ActivityRegistrations { get; set; }
+
     public virtual DbSet<Announcement> Announcements { get; set; }
 
     public virtual DbSet<AnnouncementType> AnnouncementTypes { get; set; }
 
     public virtual DbSet<Audience> Audiences { get; set; }
+
+    public virtual DbSet<Author> Authors { get; set; }
 
     public virtual DbSet<Book> Books { get; set; }
 
@@ -51,9 +56,14 @@ public partial class Test2Context : DbContext
 
     public virtual DbSet<Type> Types { get; set; }
 
+    //custom
+    public virtual DbSet<Type> cId { get; set; }
+    public virtual DbSet<Type> collectionId { get; set; }
+    public virtual DbSet<Type> reservationDate { get; set; }
+    public virtual DbSet<Type> reservationStatusId { get; set; }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=localhost;Database=TestLibrary_version_754;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
+        => optionsBuilder.UseSqlServer("Server=localhost;Database=test2;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -61,7 +71,7 @@ public partial class Test2Context : DbContext
         {
             entity.ToTable("Activity");
 
-            entity.HasIndex(e => e.ActivityTitle, "UQ__Activity__5F9FE5731BCA9DB5").IsUnique();
+            entity.HasIndex(e => e.ActivityTitle, "UQ__Activity__5F9FE5733FADB099").IsUnique();
 
             entity.Property(e => e.ActivityId).HasColumnName("activityId");
             entity.Property(e => e.ActivityDesc).HasColumnName("activityDesc");
@@ -90,7 +100,7 @@ public partial class Test2Context : DbContext
         {
             entity.ToTable("ActivityType");
 
-            entity.HasIndex(e => e.ActivityType1, "UQ__Activity__1F1EE4DD18D7793F").IsUnique();
+            entity.HasIndex(e => e.ActivityType1, "UQ__Activity__1F1EE4DDCFFFAE6E").IsUnique();
 
             entity.Property(e => e.ActivityTypeId).HasColumnName("activityTypeId");
             entity.Property(e => e.ActivityType1)
@@ -98,11 +108,54 @@ public partial class Test2Context : DbContext
                 .HasColumnName("activityType");
         });
 
+        // 新增 ActivityRegistrations
+
+        modelBuilder.Entity<ActivityRegistration>(entity =>
+        {
+            entity.ToTable("ActivityRegistrations"); // 指定對應的表格名稱
+
+            // 設定主鍵
+            entity.HasKey(e => e.ActivityRegistrationId);
+
+            // 設定外來鍵 ClientId 與 Client 表格的關聯
+            entity.HasOne(ar => ar.Client)
+                  .WithMany(c => c.ActivityRegistrations) // Client Model 中的導覽屬性名稱
+                  .HasForeignKey(ar => ar.ClientId)
+                  .OnDelete(DeleteBehavior.Cascade) // 與 SQL 的 ON DELETE CASCADE 一致
+                  .HasConstraintName("FK_ActivityRegistrations_Client"); // 與 SQL 的 CONSTRAINT 名稱一致
+
+            // 設定外來鍵 ActivityId 與 Activity 表格的關聯
+            entity.HasOne(ar => ar.Activity)
+                  .WithMany(a => a.ActivityRegistrations) // Activity Model 中的導覽屬性名稱
+                  .HasForeignKey(ar => ar.ActivityId)
+                  .OnDelete(DeleteBehavior.Cascade) // 與 SQL 的 ON DELETE CASCADE 一致
+                  .HasConstraintName("FK_ActivityRegistrations_Activity"); // 與 SQL 的 CONSTRAINT 名稱一致
+
+            // 設定複合唯一索引 (UQ_ActivityRegistrations_ClientActivity)
+            entity.HasIndex(ar => new { ar.ClientId, ar.ActivityId })
+                  .IsUnique()
+                  .HasDatabaseName("UQ_ActivityRegistrations_ClientActivity"); // 與 SQL 的 CONSTRAINT 名稱一致
+
+            // 設定欄位映射和屬性 (如果 Model 中的 Data Annotations 不夠，或需要更詳細的設定)
+            entity.Property(e => e.ActivityRegistrationId).HasColumnName("ActivityRegistrationId");
+            entity.Property(e => e.ClientId).HasColumnName("ClientId");
+            entity.Property(e => e.ActivityId).HasColumnName("ActivityId");
+            entity.Property(e => e.ActivityRegistrationDate)
+                  .HasColumnName("ActivityRegistrationDate")
+                  .HasColumnType("datetime")
+                  .HasDefaultValueSql("GETDATE()"); // 與 SQL 的 DEFAULT GETDATE() 一致
+
+            entity.Property(e => e.Status)
+                  .HasColumnName("Status")
+                  .HasMaxLength(50) // 與 SQL 的 NVARCHAR(50) 一致
+                  .HasDefaultValue("已報名"); // 與 SQL 的 DEFAULT '已報名' 一致 (EF Core 會轉換成 SQL)
+        });
+
         modelBuilder.Entity<Announcement>(entity =>
         {
             entity.ToTable("Announcement");
 
-            entity.HasIndex(e => e.AnnouncementTitle, "UQ__Announce__EBE0015FBE63EFE0").IsUnique();
+            entity.HasIndex(e => e.AnnouncementTitle, "UQ__Announce__EBE0015F579A2769").IsUnique();
 
             entity.Property(e => e.AnnouncementId).HasColumnName("announcementId");
             entity.Property(e => e.AnnouncementDesc).HasColumnName("announcementDesc");
@@ -121,7 +174,7 @@ public partial class Test2Context : DbContext
         {
             entity.ToTable("AnnouncementType");
 
-            entity.HasIndex(e => e.AnnouncementType1, "UQ__Announce__D53C87B218BE4E82").IsUnique();
+            entity.HasIndex(e => e.AnnouncementType1, "UQ__Announce__D53C87B22984DEC9").IsUnique();
 
             entity.Property(e => e.AnnouncementTypeId).HasColumnName("announcementTypeId");
             entity.Property(e => e.AnnouncementType1)
@@ -133,7 +186,7 @@ public partial class Test2Context : DbContext
         {
             entity.ToTable("Audience");
 
-            entity.HasIndex(e => e.Audience1, "UQ__Audience__2C1B51FCD1A3D92C").IsUnique();
+            entity.HasIndex(e => e.Audience1, "UQ__Audience__2C1B51FCF15D941B").IsUnique();
 
             entity.Property(e => e.AudienceId).HasColumnName("audienceId");
             entity.Property(e => e.Audience1)
@@ -141,11 +194,24 @@ public partial class Test2Context : DbContext
                 .HasColumnName("audience");
         });
 
+        modelBuilder.Entity<Author>(entity =>
+        {
+            entity.ToTable("Author");
+
+            entity.HasIndex(e => e.Author1, "UQ_Author_Name").IsUnique();
+
+            entity.Property(e => e.AuthorId).HasColumnName("authorId");
+            entity.Property(e => e.Author1)
+                .HasMaxLength(50)
+                .HasColumnName("author");
+            entity.Property(e => e.AuthorDesc).HasColumnName("authorDesc");
+        });
+
         modelBuilder.Entity<Book>(entity =>
         {
             entity.ToTable("Book");
 
-            entity.HasIndex(e => e.BookCode, "UQ__Book__3BB8DAE64D91A91A").IsUnique();
+            entity.HasIndex(e => e.BookCode, "UQ__Book__3BB8DAE6F11F54D2").IsUnique();
 
             entity.Property(e => e.BookId).HasColumnName("bookId");
             entity.Property(e => e.AccessionDate).HasColumnName("accessionDate");
@@ -171,7 +237,7 @@ public partial class Test2Context : DbContext
         {
             entity.ToTable("BookStatus");
 
-            entity.HasIndex(e => e.BookStatus1, "UQ__BookStat__6890475CC252A7B8").IsUnique();
+            entity.HasIndex(e => e.BookStatus1, "UQ__BookStat__6890475C2DC102B3").IsUnique();
 
             entity.Property(e => e.BookStatusId).HasColumnName("bookStatusId");
             entity.Property(e => e.BookStatus1)
@@ -216,7 +282,7 @@ public partial class Test2Context : DbContext
         {
             entity.ToTable("BorrowStatus");
 
-            entity.HasIndex(e => e.BorrowStatus1, "UQ__BorrowSt__EF08F8F41B6161FE").IsUnique();
+            entity.HasIndex(e => e.BorrowStatus1, "UQ__BorrowSt__EF08F8F4B409EFC7").IsUnique();
 
             entity.Property(e => e.BorrowStatusId).HasColumnName("borrowStatusId");
             entity.Property(e => e.BorrowStatus1)
@@ -230,9 +296,9 @@ public partial class Test2Context : DbContext
 
             entity.ToTable("Client");
 
-            entity.HasIndex(e => e.CPhone, "UQ__Client__0A376ADC3EE0427D").IsUnique();
+            entity.HasIndex(e => e.CPhone, "UQ__Client__0A376ADC5C14DAE8").IsUnique();
 
-            entity.HasIndex(e => e.CAccount, "UQ__Client__2F046D2399C5865D").IsUnique();
+            entity.HasIndex(e => e.CAccount, "UQ__Client__2F046D2399440AC9").IsUnique();
 
             entity.Property(e => e.CId).HasColumnName("cId");
             entity.Property(e => e.CAccount)
@@ -242,7 +308,7 @@ public partial class Test2Context : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("cName");
             entity.Property(e => e.CPassword)
-                .HasMaxLength(64)
+                .HasMaxLength(255)
                 .HasColumnName("cPassword");
             entity.Property(e => e.CPhone)
                 .HasMaxLength(20)
@@ -254,12 +320,10 @@ public partial class Test2Context : DbContext
         {
             entity.ToTable("Collection");
 
-            entity.HasIndex(e => e.Isbn, "UQ__Collecti__99F9D0A4F85DA8C6").IsUnique();
+            entity.HasIndex(e => e.Isbn, "UQ__Collecti__99F9D0A4B36171AF").IsUnique();
 
             entity.Property(e => e.CollectionId).HasColumnName("collectionId");
-            entity.Property(e => e.Author)
-                .HasMaxLength(50)
-                .HasColumnName("author");
+            entity.Property(e => e.AuthorId).HasColumnName("authorId");
             entity.Property(e => e.CollectionDesc).HasColumnName("collectionDesc");
             entity.Property(e => e.CollectionImg).HasColumnName("collectionImg");
             entity.Property(e => e.Isbn)
@@ -278,6 +342,11 @@ public partial class Test2Context : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("translator");
             entity.Property(e => e.TypeId).HasColumnName("typeId");
+
+            entity.HasOne(d => d.Author).WithMany(p => p.Collections)
+                .HasForeignKey(d => d.AuthorId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Author");
 
             entity.HasOne(d => d.Language).WithMany(p => p.Collections)
                 .HasForeignKey(d => d.LanguageId)
@@ -330,7 +399,7 @@ public partial class Test2Context : DbContext
         {
             entity.ToTable("Language");
 
-            entity.HasIndex(e => e.Language1, "UQ__Language__EFADA5D96468A573").IsUnique();
+            entity.HasIndex(e => e.Language1, "UQ__Language__EFADA5D93D30595A").IsUnique();
 
             entity.Property(e => e.LanguageId).HasColumnName("languageId");
             entity.Property(e => e.Language1)
@@ -389,7 +458,7 @@ public partial class Test2Context : DbContext
         {
             entity.ToTable("ReservationStatus");
 
-            entity.HasIndex(e => e.ReservationStatus1, "UQ__Reservat__C3518793DD33080F").IsUnique();
+            entity.HasIndex(e => e.ReservationStatus1, "UQ__Reservat__C351879309FCEE92").IsUnique();
 
             entity.Property(e => e.ReservationStatusId).HasColumnName("reservationStatusId");
             entity.Property(e => e.ReservationStatus1)
@@ -401,7 +470,7 @@ public partial class Test2Context : DbContext
         {
             entity.ToTable("Type");
 
-            entity.HasIndex(e => e.Type1, "UQ__Type__E3F8524879367E85").IsUnique();
+            entity.HasIndex(e => e.Type1, "UQ__Type__E3F8524832E04BDF").IsUnique();
 
             entity.Property(e => e.TypeId).HasColumnName("typeId");
             entity.Property(e => e.Type1)

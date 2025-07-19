@@ -194,7 +194,7 @@ h6[b-va0ehuapur] {
     }
 /* _content/test2/Areas/Frontend/Views/Access/LoginM.cshtml.rz.scp.css */
 #box_loginM[b-4nkxtast6c] {
-    width: 50%;
+    min-width: 80vw;
     height: 40%;
     background: white;
     border: 1px solid var(--c-gray2-050);
@@ -210,6 +210,11 @@ h6[b-va0ehuapur] {
     color: var(--c-black-075) !important;
 }
 
+.form-control:focus[b-4nkxtast6c] {
+    border-color: var(--bs-border-color) !important;
+    box-shadow: none !important;
+}
+
 #btn_loginM[b-4nkxtast6c] {
     width: 150%;
     height: 6rem;
@@ -221,8 +226,60 @@ h6[b-va0ehuapur] {
     #btn_loginM:hover[b-4nkxtast6c] {
         background-color: var(--c-blue---050);
         color: white;
-        animation: ani_btn .75s infinite;
     }
+
+/*RWD*/
+@media(max-width: 576px) {
+    #box_loginM[b-4nkxtast6c] {
+        min-width: 90vw;
+    }
+}
+
+@media(max-width: 768px) {
+    #box_btn[b-4nkxtast6c] {
+        margin-top: 1rem;
+    }
+
+    #btn_loginM[b-4nkxtast6c] {
+        width: 100%;
+        height: 3rem;
+        font-size: 1rem;
+    }
+
+        #btn_loginM:hover[b-4nkxtast6c] {
+            animation: none;
+        }
+}
+
+@media(min-width: 768px) {
+    #box_loginM[b-4nkxtast6c] {
+        min-width: 70vw;
+    }
+}
+
+@media(min-width: 992px) {
+    #box_loginM[b-4nkxtast6c] {
+        min-width: 60vw;
+    }
+}
+
+@media(min-width: 1200px) {
+    #box_loginM[b-4nkxtast6c] {
+        min-width: 50vw;
+    }
+}
+
+@media(min-width: 1400px) {
+    #box_loginM[b-4nkxtast6c] {
+        min-width: 40vw;
+    }
+}
+
+@media(min-width: 1600px) {
+    #box_loginM[b-4nkxtast6c] {
+        min-width: 30vw;
+    }
+}
 /* _content/test2/Areas/Frontend/Views/Home/Activity.cshtml.rz.scp.css */
 /* 全域設定 */
 body[b-8b1g04jrcw] {
@@ -242,7 +299,7 @@ body[b-8b1g04jrcw] {
     background-image: url(https://picsum.photos/id/11/1400/300);
     background-size: cover;
     background-position: center;
-    height: 50px;
+    height: 100px;
     /* 確保高度足夠，根據圖片調整 */
     position: relative;
     /* 為了背景圖可以覆蓋整個區域 */
@@ -606,6 +663,55 @@ body[b-0x5j5mdvmf] {
         .back-to-list a:hover[b-0x5j5mdvmf] {
             text-decoration: underline;
         }
+/* _content/test2/Areas/Frontend/Views/Home/Client.cshtml.rz.scp.css */
+.page-container[b-09m0byjk79] {
+    display: flex;
+    min-height: 100vh;
+    height: auto;
+}
+
+.sidebar[b-09m0byjk79] {
+    height: 70vh;
+    width: 15vw;
+    background-color: #343a40;
+    color: #fff;
+}
+
+.nav-pills .nav-link[b-09m0byjk79] {
+    color: #fff;
+}
+
+    .nav-pills .nav-link:hover[b-09m0byjk79] {
+        background-color: lightgreen;
+        color: black;
+        opacity: 0.4;
+    }
+
+    .nav-pills .nav-link.active[b-09m0byjk79] {
+        background-color: lightseagreen !important;
+        opacity: 1;
+    }
+
+/* 取消瀏覽器預設點button後的藍字效果 */
+button.nav-link:focus[b-09m0byjk79] {
+    color: inherit;
+    /* 使用繼承色，避免變藍 */
+    box-shadow: none;
+    /* 取消藍色 outline 陰影 */
+    outline: none;
+    /* 取消藍色外框線 */
+}
+
+.card[b-09m0byjk79] {
+    box-shadow: 0 120px 600px rgba(9, 174, 39, 0.2) !important;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.accordion-button:focus[b-09m0byjk79] {
+    background-color: var(--bs-accordion-btn-bg);
+    border-color: var(--bs-border-color);
+    box-shadow: none;
+}
 /* _content/test2/Areas/Frontend/Views/Home/Collection.cshtml.rz.scp.css */
 #sec1[b-qknn0ck6f6] {
     min-height: 90vh;
@@ -1019,11 +1125,10 @@ body[b-0x5j5mdvmf] {
     right: 10px;
 }
 
-/*
-        卡片翻轉效果的 CSS 樣式
-        目標是讓翻轉效果與 Bootstrap 的卡片樣式和排版協同運作，
-        並確保高度和視覺效果穩定。
-        */
+/* ------------------------------------------------------------------------------------ */
+/* ------------------------------卡片翻轉效果的 CSS 樣式 -------------------------------*/
+/* -- 目標是讓翻轉效果與 Bootstrap 的卡片樣式和排版協同運作，並確保高度和視覺效果穩定 --*/
+/* ------------------------------------------------------------------------------------ */
 
 /* 確保 col 內部的元素能撐滿高度，以便 flip-card-container 能佔據完整空間 */
 .row.g-4 > .col[b-swmj7ko65c] {
@@ -1047,7 +1152,6 @@ body[b-0x5j5mdvmf] {
     position: relative;
     width: 100%;
     height: 100%;
-    text-align: center;
     transition: transform 0.8s; /* 翻轉動畫時間 */
     transform-style: preserve-3d; /* 讓子元素在 3D 空間中呈現 */
 }
@@ -1066,8 +1170,8 @@ body[b-0x5j5mdvmf] {
     background-color: white; /* 確保背景色，以覆蓋 */
     display: flex; /* 使用 Flexbox 進行內部佈局 */
     flex-direction: column; /* 垂直排列內容 */
-    justify-content: flex-start; /* 讓內容從頂部開始 */
-    align-items: center; /* 水平居中 */
+    justify-content: flex-start; /* 從起始位置對齊 */
+    align-items: flex-start; /* 水平居中 */
     padding: 1rem; /* 內部填充 */
     box-sizing: border-box; /* 確保 padding 不會增加總寬高 */
 }
@@ -1115,7 +1219,6 @@ body[b-0x5j5mdvmf] {
     margin-bottom: 0.5rem;
     font-size: 0.95em;
     line-height: 1.5;
-    text-align: center;
 }
 
 .flip-card-back .btn[b-swmj7ko65c] {
@@ -1223,6 +1326,87 @@ body[b-0x5j5mdvmf] {
             cursor: not-allowed;
             background-color: #f0f0f0;
         }
+
+.faq-item[b-swmj7ko65c] {
+    background-color: #ffffff; /* 設定為白色背景 */
+}
+
+/* ---------------------------------------------------------- */
+/* --- 通用設定：適用於所有卡片內的圖片與文字區塊基礎樣式 --- */
+/* ---------------------------------------------------------- */
+
+/* 圖片父容器的基礎樣式 */
+.book-image-ratio-container[b-swmj7ko65c] {
+    position: relative;
+    overflow: hidden;
+    background-color: #f0f0f0; /* 可選：圖片載入前的背景色 */
+    display: flex; /* 讓圖片在容器內置中 */
+    justify-content: center;
+    align-items: center;
+    /* 如果有通用的 aspect-ratio 需求，放在這裡 */
+    /* aspect-ratio: 2 / 3; */
+}
+
+/* 圖片本身的基礎樣式 */
+.book-image[b-swmj7ko65c] {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 讓圖片填滿整個容器，裁切多餘部分 */
+    display: block;
+}
+
+/* card-body 的基礎樣式 */
+.card-body[b-swmj7ko65c] {
+    flex-grow: 1; /* 自動佔據剩下的空間，這是一個很好的通用設定 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+/* 卡片標題的基礎樣式 */
+/*.card-title {
+    height: 3em;*/ /* 確保至少有 2 行文字高度 */
+    /*overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;*/ /* 限制顯示兩行 */
+    /*-webkit-box-orient: vertical;
+    white-space: normal;*/ /* 允許換行 */
+    /*margin-top: auto;*/ /* 讓標題盡量靠下 */
+    /*margin-bottom: 0.25rem;
+}*/
+
+/* 卡片文字的基礎樣式 */
+/*.card-text {
+    height: 1.5em;*/ /* 確保 1 行文字高度 */
+    /*overflow: hidden;
+    white-space: nowrap;*/ /* 不換行 */
+    /*text-overflow: ellipsis;*/ /* 超出部分顯示省略號 */
+    /*margin-bottom: 0;
+}*/
+
+/* ----------------------------------------------- */
+/* 針對新書推薦輪播圖的特定設定 (覆蓋或細化通用設定) */
+/* ----------------------------------------------- */
+
+#newBooksCarousel .card[b-swmj7ko65c] {
+    height: 600px; /* <--- 核心：設定固定高度 */
+    /* 這裡不再需要 h-100 class，因為已經有了固定高度 */
+    /* 如果 .card 已經有 display: flex; flex-direction: column; 等設定，
+       且沒有其他卡片類型會衝突，這裡可以不重複設定 */
+}
+
+#newBooksCarousel .book-image-ratio-container[b-swmj7ko65c] {
+    flex: 0 0 85%; /* 圖片容器佔卡片總高 70% */
+}
+
+/* 新書推薦的 card-body 會自動佔據剩下空間，所以這裡只要寫 flex: 1 即可 */
+#newBooksCarousel .card-body[b-swmj7ko65c] {
+    flex: 1;
+}
 /* _content/test2/Areas/Frontend/Views/Home/Login.cshtml.rz.scp.css */
 :root[b-qdt2t2v2th] {
     --bs-primary: #5cb85c;
@@ -1420,6 +1604,7 @@ h6[b-qdt2t2v2th] {
 /*sec1*/
 #sec1[b-d8s75ebos9] {
     min-height: 60vh;
+    height: auto;
 }
 
 #box_result[b-d8s75ebos9] {
@@ -1449,9 +1634,8 @@ h6[b-qdt2t2v2th] {
 
 /*sec2*/
 #sec2[b-d8s75ebos9] {
-    min-height: 90vh;
+    min-height: 40vh;
     height: auto;
-    margin-top: 1rem;
 }
 
 #box_tab .nav-link[b-d8s75ebos9] {
@@ -1473,6 +1657,12 @@ h6[b-qdt2t2v2th] {
 
 #box_relate[b-d8s75ebos9] {
     min-height: 45vh;
+}
+
+/*sec3*/
+#sec3[b-d8s75ebos9] {
+    min-height: 40vh;
+    height: auto;
 }
 /* _content/test2/Areas/Frontend/Views/Home/Register.cshtml.rz.scp.css */
 :root[b-pqduqkbi5v] {
@@ -1673,15 +1863,37 @@ h6[b-pqduqkbi5v] {
     background-color: var(--c-green2-025);
 }
 
-.btn_type[b-lhk01efj60] {
+.btn_accordion[b-lhk01efj60] {
     display: block;
     padding: .5rem .25rem;
     text-decoration: none;
 }
 
-    .btn_type:hover[b-lhk01efj60] {
+    .btn_accordion:hover[b-lhk01efj60] {
         background-color: var(--c-orange-025);
     }
+
+#Cbtn_reset[b-lhk01efj60] {
+    background-color: var(--c-blue---050);
+    color: white;
+}
+
+/*RWD*/
+@media(max-width: 768px) {
+    #btn_publisher3[b-lhk01efj60] {
+        font-size: .5rem;
+    }
+}
+
+@media(max-width: 992px) {
+    .btn_type[b-lhk01efj60],
+    .btn_author[b-lhk01efj60],
+    .btn_publisher[b-lhk01efj60],
+    .btn_lang[b-lhk01efj60],
+    .btn_year[b-lhk01efj60] {
+        font-size: .75rem;
+    }
+}
 /* _content/test2/Areas/Frontend/Views/Shared/_Partial/_activityList_image.cshtml.rz.scp.css */
 .activity-card-bs[b-nbnnjf4o5m] {
     border: none;
@@ -1825,11 +2037,11 @@ h6[b-pqduqkbi5v] {
 .page[b-juqohieeu5] {
     border: solid 1px var(--c-gray2-050);
     border-radius: 1rem;
+    background-color: var(--c-brown1-010);
 }
 
 .box_book[b-juqohieeu5] {
     height: 35vh;
-    background-color: var(--c-brown1-010);
 }
 
     .box_book img[b-juqohieeu5] {
@@ -1850,18 +2062,35 @@ h6[b-pqduqkbi5v] {
     border-bottom: solid 1px var(--c-gray2-025);
 }
 
-.btn_book[b-juqohieeu5] {
+.btn_book1[b-juqohieeu5] {
+    width: 10%;
+    background-color: var(--c-green2-100);
+    color: white;
+}
+
+    .btn_book1:active[b-juqohieeu5] {
+        background-color: var(--c-green2-100) !important;
+        color: var(--c-orange-100) !important;
+    }
+
+    .btn_book1:hover[b-juqohieeu5] {
+        background-color: var(--c-green2-100);
+        color: var(--c-orange-100);
+        animation: ani_btn .75s infinite;
+    }
+
+.btn_book2[b-juqohieeu5] {
     width: 10%;
     background-color: var(--c-blue---050);
     color: white;
 }
 
-    .btn_book:active[b-juqohieeu5] {
+    .btn_book2:active[b-juqohieeu5] {
         background-color: var(--c-blue---050) !important;
         color: white !important;
     }
 
-    .btn_book:hover[b-juqohieeu5] {
+    .btn_book2:hover[b-juqohieeu5] {
         background-color: var(--c-blue---050);
         color: white;
         animation: ani_btn .75s infinite;
@@ -1871,7 +2100,7 @@ h6[b-pqduqkbi5v] {
     pointer-events: none;
     margin-left: .8rem;
     margin-right: .8rem;
-    color: var(--c-gray3-100);
+    color: transparent;
 }
 
 #box_pag[b-juqohieeu5] {
@@ -1896,6 +2125,11 @@ h6[b-pqduqkbi5v] {
         box-shadow: none;
     }
 
+.clickClass[b-juqohieeu5] {
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
 /*RWD*/
 @media(max-width: 992px) {
     .box_book table[b-juqohieeu5] {
@@ -1919,78 +2153,82 @@ figure:not(:hover)[b-wdh759udfa] {
 .carousel-control-next[b-wdh759udfa] {
     right: -10%
 }
-/* _content/test2/Areas/Frontend/Views/Shared/_Partial/_form.cshtml.rz.scp.css */
-.Qbtn_search[b-3pj4r2roh0] {
+/* _content/test2/Areas/Frontend/Views/Shared/_Partial/_clientHome.cshtml.rz.scp.css */
+.bi-circle-fill:hover[b-38q2e7thgi] {
+    color: black !important;
+}
+/* _content/test2/Areas/Frontend/Views/Shared/_Partial/_formQ.cshtml.rz.scp.css */
+.Qbtn_search[b-f48m6dj6jq] {
     width: 30%;
     margin-left: 10px;
     background-color: var(--c-green2-100);
     color: white;
 }
 
-    .Qbtn_search:active[b-3pj4r2roh0] {
+    .Qbtn_search:active[b-f48m6dj6jq] {
         background-color: var(--c-green2-100) !important;
         color: var(--c-orange-100) !important;
     }
 
-    .Qbtn_search:hover[b-3pj4r2roh0] {
+    .Qbtn_search:hover[b-f48m6dj6jq] {
         background-color: var(--c-green2-100);
         color: var(--c-orange-100);
         animation: ani_btn .75s infinite;
     }
 
-#Qsel_type1[b-3pj4r2roh0] {
+#Qsel_type1[b-f48m6dj6jq] {
     width: 30%;
     text-align: center;
     font-size: 1rem;
 }
 
-#Qbox_search_type[b-3pj4r2roh0] {
+#Qbox_search_type[b-f48m6dj6jq] {
     width: 65%;
     margin-left: 10px;
 }
 
-#Qbox_search_year1[b-3pj4r2roh0] {
+#Qbox_search_year1[b-f48m6dj6jq] {
     width: 44%;
     margin-right: 10px;
     text-align: center;
 }
 
-#Qbox_search_year2[b-3pj4r2roh0] {
+#Qbox_search_year2[b-f48m6dj6jq] {
     width: 44%;
     margin-left: 10px;
     text-align: center;
 }
 
-#Qsel_lang[b-3pj4r2roh0], #Qsel_type2[b-3pj4r2roh0] {
+#Qsel_lang[b-f48m6dj6jq], #Qsel_type2[b-f48m6dj6jq] {
     width: 98%;
     font-size: 1rem;
 }
 
-    #Qbox_search:focus[b-3pj4r2roh0],
-    #Qsel_type1:focus[b-3pj4r2roh0],
-    #Qbox_search_type:focus[b-3pj4r2roh0],
-    #Qbox_search_year1:focus[b-3pj4r2roh0],
-    #Qbox_search_year2:focus[b-3pj4r2roh0],
-    #Qsel_lang:focus[b-3pj4r2roh0],
-    #Qsel_type2:focus[b-3pj4r2roh0] {
+    #Qbox_search:focus[b-f48m6dj6jq],
+    #Qsel_type1:focus[b-f48m6dj6jq],
+    #Qbox_search_type:focus[b-f48m6dj6jq],
+    #Qbox_search_year1:focus[b-f48m6dj6jq],
+    #Qbox_search_year2:focus[b-f48m6dj6jq],
+    #Qsel_lang:focus[b-f48m6dj6jq],
+    #Qsel_type2:focus[b-f48m6dj6jq] {
         border-color: var(--bs-border-color);
         box-shadow: none;
     }
 
-.Qbtn_hot[b-3pj4r2roh0] {
+.Qbtn_hot[b-f48m6dj6jq] {
     min-width: 10%;
-    max-width: 20%;
+    max-width: 25%;
     margin-left: 20px;
     background-color: var(--c-blue---050);
     color: white;
 }
 
-    .Qbtn_hot:active[b-3pj4r2roh0] {
+    .Qbtn_hot:active[b-f48m6dj6jq] {
         background-color: var(--c-blue---050) !important;
         color: white !important;
     }
 
-    .Qbtn_hot:hover[b-3pj4r2roh0] {
+    .Qbtn_hot:hover[b-f48m6dj6jq] {
         background-color: var(--c-blue---050);
         color: white;
         animation: ani_btn .75s infinite;
@@ -2094,7 +2332,7 @@ figure:not(:hover)[b-wdh759udfa] {
 }
 /* _content/test2/Areas/Frontend/Views/Shared/_Partial/_tab.cshtml.rz.scp.css */
 .tab-content[b-g22xsxnnx9] {
-    height: 30vh;
+   height: 50vh;
     width: 100%;
     padding: 20px;
     background: var(--c-green1-025);
@@ -2247,79 +2485,3 @@ button.accept-policy[b-su1eutnfsn] {
   white-space: nowrap;
   line-height: 60px;
 }
-/* _content/test2/_form.cshtml.rz.scp.css */
-.Qbtn_search[b-3p9b5oi8hf] {
-    width: 30%;
-    margin-left: 10px;
-    background-color: var(--c-green2-100);
-    color: white;
-}
-
-    .Qbtn_search:active[b-3p9b5oi8hf] {
-        background-color: var(--c-green2-100) !important;
-        color: var(--c-orange-100) !important;
-    }
-
-    .Qbtn_search:hover[b-3p9b5oi8hf] {
-        background-color: var(--c-green2-100);
-        color: var(--c-orange-100);
-        animation: ani_btn .75s infinite;
-    }
-
-#Qsel_type1[b-3p9b5oi8hf] {
-    width: 30%;
-    text-align: center;
-    font-size: 1rem;
-}
-
-#Qbox_search_type[b-3p9b5oi8hf] {
-    width: 65%;
-    margin-left: 10px;
-}
-
-#Qbox_search_year1[b-3p9b5oi8hf] {
-    width: 44%;
-    margin-right: 10px;
-    text-align: center;
-}
-
-#Qbox_search_year2[b-3p9b5oi8hf] {
-    width: 44%;
-    margin-left: 10px;
-    text-align: center;
-}
-
-#Qsel_lang[b-3p9b5oi8hf], #Qsel_type2[b-3p9b5oi8hf] {
-    width: 98%;
-    font-size: 1rem;
-}
-
-    #Qbox_search:focus[b-3p9b5oi8hf],
-    #Qsel_type1:focus[b-3p9b5oi8hf],
-    #Qbox_search_type:focus[b-3p9b5oi8hf],
-    #Qbox_search_year1:focus[b-3p9b5oi8hf],
-    #Qbox_search_year2:focus[b-3p9b5oi8hf],
-    #Qsel_lang:focus[b-3p9b5oi8hf],
-    #Qsel_type2:focus[b-3p9b5oi8hf] {
-        border-color: var(--bs-border-color);
-        box-shadow: none;
-    }
-
-.Qbtn_hot[b-3p9b5oi8hf] {
-    min-width: 10%;
-    max-width: 20%;
-    margin-left: 20px;
-    background-color: var(--c-blue---050);
-    color: white;
-}
-
-    .Qbtn_hot:active[b-3p9b5oi8hf] {
-        background-color: var(--c-blue---050) !important;
-        color: white !important;
-    }
-
-    .Qbtn_hot:hover[b-3p9b5oi8hf] {
-        background-color: var(--c-blue---050);
-        color: white;
-        animation: ani_btn .75s infinite;
-    }

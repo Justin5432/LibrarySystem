@@ -395,11 +395,10 @@
     right: 10px;
 }
 
-/*
-        卡片翻轉效果的 CSS 樣式
-        目標是讓翻轉效果與 Bootstrap 的卡片樣式和排版協同運作，
-        並確保高度和視覺效果穩定。
-        */
+/* ------------------------------------------------------------------------------------ */
+/* ------------------------------卡片翻轉效果的 CSS 樣式 -------------------------------*/
+/* -- 目標是讓翻轉效果與 Bootstrap 的卡片樣式和排版協同運作，並確保高度和視覺效果穩定 --*/
+/* ------------------------------------------------------------------------------------ */
 
 /* 確保 col 內部的元素能撐滿高度，以便 flip-card-container 能佔據完整空間 */
 .row.g-4 > .col {
@@ -423,7 +422,6 @@
     position: relative;
     width: 100%;
     height: 100%;
-    text-align: center;
     transition: transform 0.8s; /* 翻轉動畫時間 */
     transform-style: preserve-3d; /* 讓子元素在 3D 空間中呈現 */
 }
@@ -442,8 +440,8 @@
     background-color: white; /* 確保背景色，以覆蓋 */
     display: flex; /* 使用 Flexbox 進行內部佈局 */
     flex-direction: column; /* 垂直排列內容 */
-    justify-content: flex-start; /* 讓內容從頂部開始 */
-    align-items: center; /* 水平居中 */
+    justify-content: flex-start; /* 從起始位置對齊 */
+    align-items: flex-start; /* 水平居中 */
     padding: 1rem; /* 內部填充 */
     box-sizing: border-box; /* 確保 padding 不會增加總寬高 */
 }
@@ -491,7 +489,6 @@
     margin-bottom: 0.5rem;
     font-size: 0.95em;
     line-height: 1.5;
-    text-align: center;
 }
 
 .flip-card-back .btn {
@@ -599,3 +596,84 @@
             cursor: not-allowed;
             background-color: #f0f0f0;
         }
+
+.faq-item {
+    background-color: #ffffff; /* 設定為白色背景 */
+}
+
+/* ---------------------------------------------------------- */
+/* --- 通用設定：適用於所有卡片內的圖片與文字區塊基礎樣式 --- */
+/* ---------------------------------------------------------- */
+
+/* 圖片父容器的基礎樣式 */
+.book-image-ratio-container {
+    position: relative;
+    overflow: hidden;
+    background-color: #f0f0f0; /* 可選：圖片載入前的背景色 */
+    display: flex; /* 讓圖片在容器內置中 */
+    justify-content: center;
+    align-items: center;
+    /* 如果有通用的 aspect-ratio 需求，放在這裡 */
+    /* aspect-ratio: 2 / 3; */
+}
+
+/* 圖片本身的基礎樣式 */
+.book-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 讓圖片填滿整個容器，裁切多餘部分 */
+    display: block;
+}
+
+/* card-body 的基礎樣式 */
+.card-body {
+    flex-grow: 1; /* 自動佔據剩下的空間，這是一個很好的通用設定 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+/* 卡片標題的基礎樣式 */
+/*.card-title {
+    height: 3em;*/ /* 確保至少有 2 行文字高度 */
+    /*overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;*/ /* 限制顯示兩行 */
+    /*-webkit-box-orient: vertical;
+    white-space: normal;*/ /* 允許換行 */
+    /*margin-top: auto;*/ /* 讓標題盡量靠下 */
+    /*margin-bottom: 0.25rem;
+}*/
+
+/* 卡片文字的基礎樣式 */
+/*.card-text {
+    height: 1.5em;*/ /* 確保 1 行文字高度 */
+    /*overflow: hidden;
+    white-space: nowrap;*/ /* 不換行 */
+    /*text-overflow: ellipsis;*/ /* 超出部分顯示省略號 */
+    /*margin-bottom: 0;
+}*/
+
+/* ----------------------------------------------- */
+/* 針對新書推薦輪播圖的特定設定 (覆蓋或細化通用設定) */
+/* ----------------------------------------------- */
+
+#newBooksCarousel .card {
+    height: 600px; /* <--- 核心：設定固定高度 */
+    /* 這裡不再需要 h-100 class，因為已經有了固定高度 */
+    /* 如果 .card 已經有 display: flex; flex-direction: column; 等設定，
+       且沒有其他卡片類型會衝突，這裡可以不重複設定 */
+}
+
+#newBooksCarousel .book-image-ratio-container {
+    flex: 0 0 85%; /* 圖片容器佔卡片總高 70% */
+}
+
+/* 新書推薦的 card-body 會自動佔據剩下空間，所以這裡只要寫 flex: 1 即可 */
+#newBooksCarousel .card-body {
+    flex: 1;
+}

@@ -16,7 +16,7 @@ body {
     background-image: url(https://picsum.photos/id/11/1400/300);
     background-size: cover;
     background-position: center;
-    height: 50px;
+    height: 100px;
     /* 確保高度足夠，根據圖片調整 */
     position: relative;
     /* 為了背景圖可以覆蓋整個區域 */

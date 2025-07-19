@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using test2.Areas.Frontend.Models.Dtos;
 using test2.Models;
 
 namespace test2.Areas.Frontend.Models.ViewModels
@@ -30,8 +31,18 @@ namespace test2.Areas.Frontend.Models.ViewModels
         public string? CurrentType { get; set; }
 
         /// <summary>
-        /// 每頁顯示的筆數。
+        /// 每頁顯示的公告筆數。
         /// </summary>
         public int PageSize { get; set; }
+
+        /// <summary>
+        /// 最新書籍
+        /// </summary>
+        public List<Book> NewBooks { get; set; } = new List<Book>();
+
+        /// <summary>
+        /// 熱門書籍
+        /// </summary>
+        public List<Book> PopularBooks { get; set; } = new List<Book>();
     }
 }

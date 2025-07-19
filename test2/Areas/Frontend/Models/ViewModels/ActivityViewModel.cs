@@ -16,7 +16,7 @@ namespace test2.Areas.Frontend.Models.ViewModels
         public string? ActivityDesc { get; set; }
 
         // 圖片通常會以 base64 字串或圖片 URL 的形式傳遞給 View 顯示
-        // 這裡我們假設圖片會轉換成 Base64 字串來顯示
+        // 這裡圖片是轉換成 Base64 字串來顯示
         [Display(Name = "活動圖片")]
         public string? ActivityImgBase64 { get; set; } // 用於在 View 顯示圖片
 
@@ -28,8 +28,11 @@ namespace test2.Areas.Frontend.Models.ViewModels
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm}", ApplyFormatInEditMode = true)]
         public DateTime EndDate { get; set; }
 
-        [Display(Name = "人數上限")] // 之前建議改成這個
+        [Display(Name = "人數上限")]
         public int Capacity { get; set; }
+
+        [Display(Name = "活動地點")]
+        public string ActivityLocation { get; set; } = string.Empty;
 
         [Display(Name = "活動類型 ID")]
         public int ActivityTypeId { get; set; }

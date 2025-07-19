@@ -1,8 +1,8 @@
 ﻿$(function () {
-    $(".book-img").on("click", function () {
-        const bookName = $(this).parent().find("h5").text()
+    $(".book-image").on("click", function () {
+        const bookName = $(this).parent().parent().find("h5").text()
 
-        //alert(bookName);
+        alert(bookName);
 
         $("#box_search").val(bookName)
 
@@ -11,9 +11,9 @@
     })
 
     $(".borrow-book-btn").on("click", function () {
-        const bookName = $(this).parent().find("h5").text()
+        const bookName = $(this).parent().parent().find("h5").text()
 
-        //alert(bookName);
+        alert(bookName);
 
         $("#box_search").val(bookName)
 
@@ -61,4 +61,3 @@
         }
     });
 })
-

@@ -14,7 +14,7 @@ else
 <main>
 	<div class="login-card">
 		<h3>會員登入</h3>
-		<form asp-area ="Frontend" asp-controller="Access" asp-action="AccessCard" method="post">
+		<form asp-area="Frontend" asp-controller="Access" asp-action="AccessCardC" method="post">
 			<div class="mb-4">
 				<label asp-for="Account" class="form-label">電子信箱</label>
 				<input asp-for="Account" type="text" class="form-control" id="username" placeholder="請輸入您的帳號">
@@ -22,6 +22,9 @@ else
 			<div class="mb-5">
 				<label asp-for="Password" class="form-label">密碼</label>
 				<input asp-for="Password" type="password" class="form-control" id="password" placeholder="請輸入您的密碼">
+			</div>
+			<div class="text-danger">
+				<div asp-validation-summary="ModelOnly"></div>
 			</div>
 			<div class="d-grid mb-3">
 				<button type="submit" class="btn btn-success">登入</button>
@@ -48,6 +51,7 @@ else
 			<span class="register-pipe">|</span>
 			<a class="ms-2" href="@Url.Action("Register", "Home")" style="color: #5cb85c; font-weight: bold;">立即註冊</a>
 		</div>
+
 	</div>
 </main>
 

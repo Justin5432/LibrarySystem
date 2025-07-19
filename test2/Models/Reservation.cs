@@ -15,7 +15,7 @@ public partial class Reservation
 
     public DateTime ReservationDate { get; set; }
 
-    public DateTime DueDateR { get; set; }
+    public DateTime? DueDateR { get; set; }
 
     public int ReservationStatusId { get; set; }
 

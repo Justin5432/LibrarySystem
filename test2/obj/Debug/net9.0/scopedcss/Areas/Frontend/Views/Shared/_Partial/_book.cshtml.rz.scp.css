@@ -1,11 +1,11 @@
 .page[b-juqohieeu5] {
     border: solid 1px var(--c-gray2-050);
     border-radius: 1rem;
+    background-color: var(--c-brown1-010);
 }
 
 .box_book[b-juqohieeu5] {
     height: 35vh;
-    background-color: var(--c-brown1-010);
 }
 
     .box_book img[b-juqohieeu5] {
@@ -26,18 +26,35 @@
     border-bottom: solid 1px var(--c-gray2-025);
 }
 
-.btn_book[b-juqohieeu5] {
+.btn_book1[b-juqohieeu5] {
+    width: 10%;
+    background-color: var(--c-green2-100);
+    color: white;
+}
+
+    .btn_book1:active[b-juqohieeu5] {
+        background-color: var(--c-green2-100) !important;
+        color: var(--c-orange-100) !important;
+    }
+
+    .btn_book1:hover[b-juqohieeu5] {
+        background-color: var(--c-green2-100);
+        color: var(--c-orange-100);
+        animation: ani_btn .75s infinite;
+    }
+
+.btn_book2[b-juqohieeu5] {
     width: 10%;
     background-color: var(--c-blue---050);
     color: white;
 }
 
-    .btn_book:active[b-juqohieeu5] {
+    .btn_book2:active[b-juqohieeu5] {
         background-color: var(--c-blue---050) !important;
         color: white !important;
     }
 
-    .btn_book:hover[b-juqohieeu5] {
+    .btn_book2:hover[b-juqohieeu5] {
         background-color: var(--c-blue---050);
         color: white;
         animation: ani_btn .75s infinite;
@@ -47,7 +64,7 @@
     pointer-events: none;
     margin-left: .8rem;
     margin-right: .8rem;
-    color: var(--c-gray3-100);
+    color: transparent;
 }
 
 #box_pag[b-juqohieeu5] {
@@ -71,6 +88,11 @@
         color: white !important;
         box-shadow: none;
     }
+
+.clickClass[b-juqohieeu5] {
+    pointer-events: none;
+    cursor: not-allowed;
+}
 
 /*RWD*/
 @media(max-width: 992px) {

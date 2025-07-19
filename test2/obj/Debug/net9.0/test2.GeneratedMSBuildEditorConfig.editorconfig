@@ -17,253 +17,293 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = test2
 build_property.RootNamespace = test2
-build_property.ProjectDir = C:\職訓局\大專\My_work\v7.5.4\test2\test2\
+build_property.ProjectDir = C:\職訓局\大專\My_work\新\v1.2.3\test2\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\職訓局\大專\My_work\v7.5.4\test2\test2
+build_property.MSBuildProjectDirectory = C:\職訓局\大專\My_work\新\v1.2.3\test2
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Backend/Views/Manage/AppoimtmentContent.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Backend/Views/Manage/AppoimtmentContent.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja2VuZFxWaWV3c1xNYW5hZ2VcQXBwb2ltdG1lbnRDb250ZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Backend/Views/Manage/AppoimtmentModeQuery.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Backend/Views/Manage/AppoimtmentModeQuery.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja2VuZFxWaWV3c1xNYW5hZ2VcQXBwb2ltdG1lbnRNb2RlUXVlcnkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Backend/Views/Manage/BorrowModeBook.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Backend/Views/Manage/BorrowModeBook.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja2VuZFxWaWV3c1xNYW5hZ2VcQm9ycm93TW9kZUJvb2suY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Backend/Views/Manage/BorrowModeContent.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Backend/Views/Manage/BorrowModeContent.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja2VuZFxWaWV3c1xNYW5hZ2VcQm9ycm93TW9kZUNvbnRlbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Backend/Views/Manage/BorrowModeUser.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Backend/Views/Manage/BorrowModeUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja2VuZFxWaWV3c1xNYW5hZ2VcQm9ycm93TW9kZVVzZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Backend/Views/Manage/Index.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Backend/Views/Manage/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja2VuZFxWaWV3c1xNYW5hZ2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Backend/Views/Manage/ReturnBookContent.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Backend/Views/Manage/ReturnBookContent.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja2VuZFxWaWV3c1xNYW5hZ2VcUmV0dXJuQm9va0NvbnRlbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Backend/Views/Shared/Error.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Backend/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja2VuZFxWaWV3c1xTaGFyZWRcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Backend/Views/Shared/_Partial/_appoimtmentPartial.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Backend/Views/Shared/_Partial/_appoimtmentPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja2VuZFxWaWV3c1xTaGFyZWRcX1BhcnRpYWxcX2FwcG9pbXRtZW50UGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Backend/Views/Shared/_Partial/_appointmentQueryPartial.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Backend/Views/Shared/_Partial/_appointmentQueryPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja2VuZFxWaWV3c1xTaGFyZWRcX1BhcnRpYWxcX2FwcG9pbnRtZW50UXVlcnlQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Backend/Views/Shared/_Partial/_appointmentResultPartial.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Backend/Views/Shared/_Partial/_appointmentResultPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja2VuZFxWaWV3c1xTaGFyZWRcX1BhcnRpYWxcX2FwcG9pbnRtZW50UmVzdWx0UGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Backend/Views/Shared/_Partial/_borrowModePartial.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Backend/Views/Shared/_Partial/_borrowModePartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja2VuZFxWaWV3c1xTaGFyZWRcX1BhcnRpYWxcX2JvcnJvd01vZGVQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Backend/Views/Shared/_Partial/_borrowQueryPartial.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Backend/Views/Shared/_Partial/_borrowQueryPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja2VuZFxWaWV3c1xTaGFyZWRcX1BhcnRpYWxcX2JvcnJvd1F1ZXJ5UGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Backend/Views/Shared/_Partial/_borrowResultPartial.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Backend/Views/Shared/_Partial/_borrowResultPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja2VuZFxWaWV3c1xTaGFyZWRcX1BhcnRpYWxcX2JvcnJvd1Jlc3VsdFBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Backend/Views/Shared/_Partial/_returnBookPartial.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Backend/Views/Shared/_Partial/_returnBookPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja2VuZFxWaWV3c1xTaGFyZWRcX1BhcnRpYWxcX3JldHVybkJvb2tQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Backend/Views/_ViewImports.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Backend/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja2VuZFxWaWV3c1xfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Backend/Views/_ViewStart.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Backend/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja2VuZFxWaWV3c1xfVmlld1N0YXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Layout/_Collection.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Layout/_Client.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9MYXlvdXRcX0NsaWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Layout/_Collection.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9MYXlvdXRcX0NvbGxlY3Rpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Layout/_Index.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Layout/_Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9MYXlvdXRcX0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Layout/_LoginBefore.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Layout/_LoginAfter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9MYXlvdXRcX0xvZ2luQWZ0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Layout/_LoginBefore.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9MYXlvdXRcX0xvZ2luQmVmb3JlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Layout/_LoginC.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Layout/_LoginC.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9MYXlvdXRcX0xvZ2luQy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Layout/_LoginM.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Layout/_LoginM.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9MYXlvdXRcX0xvZ2luTS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Layout/_Query.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Layout/_Query.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9MYXlvdXRcX1F1ZXJ5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Partial/_announcementList.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_announcementList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9hbm5vdW5jZW1lbnRMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Partial/_footer.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_clientBorrow.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9jbGllbnRCb3Jyb3cuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_clientFav.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9jbGllbnRGYXYuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_clientMesg.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9jbGllbnRNZXNnLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_clientReserve.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9jbGllbnRSZXNlcnZlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_footer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9mb290ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Partial/_header/_collection.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_formF.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9mb3JtRi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_formR.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9mb3JtUi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_header/_client.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9oZWFkZXJcX2NsaWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_header/_collection.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9oZWFkZXJcX2NvbGxlY3Rpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Partial/_header/_index.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_header/_index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9oZWFkZXJcX2luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Partial/_header/_loginAfter.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_header/_loginAfter.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9oZWFkZXJcX2xvZ2luQWZ0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Partial/_header/_loginBefore.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_header/_loginBefore.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9oZWFkZXJcX2xvZ2luQmVmb3JlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Partial/_header/_loginC.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_header/_loginC.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9oZWFkZXJcX2xvZ2luQy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Partial/_header/_loginM.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_header/_loginM.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9oZWFkZXJcX2xvZ2luTS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Partial/_header/_query.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_header/_query.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9oZWFkZXJcX3F1ZXJ5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/_ViewImports.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/_ViewStart.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Views/Home/Index.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Views/Shared/Error.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Views/_ViewImports.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Views/_ViewStart.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Backend/Views/Shared/_Layout.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Backend/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQmFja2VuZFxWaWV3c1xTaGFyZWRcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-o1nkj80nav
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Access/LoginC.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Access/LoginC.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcQWNjZXNzXExvZ2luQy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-va0ehuapur
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Access/LoginM.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Access/LoginM.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcQWNjZXNzXExvZ2luTS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-4nkxtast6c
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Home/Activity.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Home/Activity.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcSG9tZVxBY3Rpdml0eS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-8b1g04jrcw
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Home/ActivityInfo.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Home/ActivityInfo.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcSG9tZVxBY3Rpdml0eUluZm8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-0x5j5mdvmf
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Home/Collection.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Home/Client.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcSG9tZVxDbGllbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-09m0byjk79
+
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Home/Collection.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcSG9tZVxDb2xsZWN0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-qknn0ck6f6
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Home/Index.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-swmj7ko65c
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Home/Login.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Home/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-qdt2t2v2th
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Home/Query.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Home/Query.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcSG9tZVxRdWVyeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-d8s75ebos9
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Home/Register.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Home/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcSG9tZVxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-pqduqkbi5v
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Partial/_accordion.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_accordion.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9hY2NvcmRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-lhk01efj60
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Partial/_activityList_image.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_activityList_image.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9hY3Rpdml0eUxpc3RfaW1hZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-nbnnjf4o5m
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Partial/_activityList_table.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_activityList_table.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9hY3Rpdml0eUxpc3RfdGFibGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-5assuxjc9w
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Partial/_book.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_book.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9ib29rLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-juqohieeu5
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Partial/_carousel.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_carousel.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9jYXJvdXNlbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-wdh759udfa
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Partial/_form.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9mb3JtLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = b-3pj4r2roh0
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_clientHome.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9jbGllbnRIb21lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-38q2e7thgi
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Partial/_modal.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_formQ.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9mb3JtUS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-f48m6dj6jq
+
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_modal.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF9tb2RhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = b-dsyq76xjk6
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Partial/_tab.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_tab.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF90YWIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-g22xsxnnx9
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Areas/Frontend/Views/Shared/_Partial/_tree.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Areas/Frontend/Views/Shared/_Partial/_tree.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcRnJvbnRlbmRcVmlld3NcU2hhcmVkXF9QYXJ0aWFsXF90cmVlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = b-fn9haa9p0v
 
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/Views/Shared/_Layout.cshtml]
+[C:/職訓局/大專/My_work/新/v1.2.3/test2/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-su1eutnfsn
-
-[C:/職訓局/大專/My_work/v7.5.4/test2/test2/_form.cshtml]
-build_metadata.AdditionalFiles.TargetPath = X2Zvcm0uY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-3p9b5oi8hf

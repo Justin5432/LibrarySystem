@@ -26,4 +26,6 @@ public partial class Activity
     public virtual ActivityType ActivityType { get; set; } = null!;
 
     public virtual Audience Audience { get; set; } = null!;
+
+    public virtual ICollection<ActivityRegistration> ActivityRegistrations { get; set; } = new List<ActivityRegistration>();
 }

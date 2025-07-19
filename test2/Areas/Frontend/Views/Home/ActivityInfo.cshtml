@@ -11,8 +11,8 @@ else
 
 @await Html.PartialAsync("~/Areas/Frontend/Views/Shared/_Partial/_modal.cshtml")
 
-<div class="back-to-list">
-    <a href="index"><i class="bi bi-arrow-left"></i> 返回活動列表</a>
+<div class="mt-5 back-to-list">
+    <a href="@Url.Action("Activity", "Home")"><i class="bi bi-arrow-left"></i> 返回活動列表</a>
 </div>
 
 <div class="activity-detail-container">
@@ -20,7 +20,7 @@ else
     {
         <h1 class="activity-title">@Model.ActivityTitle</h1>
     }
-    <div class="activity-header-meta">
+    <div class="activity-header-meta" style="font-size: 1em;">
         @if ( Model.StartDate !=  default(DateTime) && Model.EndDate != default(DateTime))
         {
             <span class="me-4"><i class="bi bi-calendar-event"></i> 活動日期：@Model.StartDate.ToString() ~ @Model.EndDate.ToString()</span>
@@ -30,7 +30,7 @@ else
             <span class="me-4"><i class="bi bi-calendar-event"></i> 活動日期：目前尚無活動日期</span>
         }
 
-        <span class="me-4"><i class="bi bi-geo-alt-fill"></i> 活動地點：本館電子書服務平台</span>
+        @* <span class="me-4"><i class="bi bi-geo-alt-fill"></i> 活動地點：@Model.ActivityLocation </span> *@
 
         @if ( Model.Audience != null)
         {
@@ -56,9 +56,7 @@ else
     <div class="activity-content">
         @if ( Model.ActivityDesc != null)
         {
-            <p>
-                @Model.ActivityDesc
-            </p>
+            <p style="white-space: pre-wrap;">@Model.ActivityDesc</p>
         }
         else
         {
@@ -110,7 +108,7 @@ else
             else
             {
                 <p>
-                    <strong>報名狀態：</strong>已截止
+                    <strong>報名狀態：</strong>未開放報名
                 </p>
             }
         </div>
@@ -119,6 +117,18 @@ else
             {
                 <p>
                     <strong>剩餘名額：</strong>不限制
+                </p>
+            }
+            else if (DateTime.Now < Model.StartDate)
+            {
+                <p>
+                    <strong>剩餘名額：</strong>活動尚未開始
+                </p>
+            }
+            else if (DateTime.Now > Model.EndDate)
+            {
+                <p>
+                    <strong>剩餘名額：</strong>活動已結束
                 </p>
             }
             else
@@ -145,10 +155,140 @@ else
         }
         else
         {
-            <button type="button" class="btn btn-primary register-btn-detail">點我報名</button>
+            <button type="button" class="btn btn-primary register-btn-detail"
+                    data-activity-id="@Model.ActivityId" id="registerActivityDetailBtn">
+                    點我報名
+            </button>
             <small class="d-block text-center mt-2 text-muted">本活動正在開放報名，心動不如馬上行動！</small>
         }
 
     </div>
 
+    @*  Modal 的 HTML 結構  *@
+    <div class="modal fade" id="activityRegistrationMessageModal" tabindex="-1" aria-labelledby="activityRegistrationMessageModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="activityRegistrationMessageModalLabel">報名結果</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="message-content"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                    <button id="redirect-btn" type="button" class="btn btn-primary">立即跳轉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            const registerDetailBtn = document.getElementById('registerActivityDetailBtn'); // 取得詳細頁的報名按鈕
+
+            // ========================= 報名處理函式 =========================
+            async function handleActivityRegistration(activityId, $clickedBtn, originalBtnText) {
+                $clickedBtn.prop('disabled', true).text('處理中...'); // 按鈕進入處理中狀態
+
+                try {
+                    const response = await $.ajax({
+                        url: '@Url.Action("RegisterActivity", "Home", new { area = "Frontend" })',
+                        type: 'POST',
+                        data: { activityId: activityId }
+                    });
+
+                    const $messageContent = $('#message-content');
+                    const $redirectBtn = $('#redirect-btn');
+                    // 確保 modal 的實例只建立一次，並且透過變數引用
+                    const activityRegistrationMessageModal = new bootstrap.Modal(document.getElementById('activityRegistrationMessageModal'));
+
+                    if (response.success) {
+                        // 報名成功
+                        $messageContent.text(response.message);
+                        $redirectBtn.hide(); // 成功時不需要跳轉按鈕
+
+                        // 成功後，更新剩餘名額顯示
+                        const capacityElement = $('.register-box p:contains("剩餘名額：")');
+                        if (capacityElement.length > 0) {
+                            let currentCapacityText = capacityElement.text().replace('剩餘名額：', '').trim();
+                            if (currentCapacityText !== '不限制') {
+                                let currentCapacity = parseInt(currentCapacityText);
+                                if (!isNaN(currentCapacity) && currentCapacity > 0) {
+                                    currentCapacity--;
+                                    capacityElement.html(`<strong>剩餘名額：</strong>${currentCapacity}`);
+
+                                    // 如果名額變為0，還要更新按鈕狀態為「報名已截止」
+                                    if (currentCapacity === 0) {
+                                        // 檢查按鈕是否仍然可選中 (未被其他條件禁用)
+                                        if (registerDetailBtn && !registerDetailBtn.classList.contains('disabled')) {
+                                            registerDetailBtn.classList.add('disabled');
+                                            registerDetailBtn.textContent = '報名已截止';
+                                        }
+                                        // 更新小字提示
+                                        const smallText = $('.register-box small.text-muted');
+                                        if (smallText.length > 0) {
+                                            smallText.text('本活動報名人數已滿，下次請早。');
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        // 報名失敗
+                        $messageContent.text(response.message);
+                        if (response.redirectToLogin) {
+                            // 後端要求跳轉到登入頁面 (未登入)
+                            $redirectBtn.show(); // 顯示立即跳轉按鈕
+                            $redirectBtn.off('click').on('click', function() {
+                                window.location.href = response.redirectToLogin;
+                            });
+                        } else {
+                            // 其他錯誤訊息 (名額已滿、重複報名等)
+                            $redirectBtn.hide();
+                        }
+                        // 失敗時，恢復按鈕狀態，除非是要跳轉到登入頁
+                        if (!response.redirectToLogin) {
+                             $clickedBtn.prop('disabled', false).text(originalBtnText);
+                        }
+                    }
+                    activityRegistrationMessageModal.show(); // 顯示彈跳視窗
+
+                } catch (error) {
+                    console.error('AJAX 請求失敗:', error);
+                    $('#message-content').text('報名時發生了不明錯誤，請稍後再試。');
+                    $('#redirect-btn').hide();
+                    new bootstrap.Modal(document.getElementById('activityRegistrationMessageModal')).show(); // 顯示錯誤彈跳視窗
+                    $clickedBtn.prop('disabled', false).text(originalBtnText); // 發生錯誤時恢復按鈕狀態
+                }
+            }
+            // =========================================================================
+
+
+            // ========================= 報名按鈕點擊事件綁定 (活動詳細頁) =========================
+            // 由於這是在單一活動詳細頁，所以直接綁定 ID 是最精確的
+            if (registerDetailBtn) { // 確認按鈕存在才綁定事件
+                registerDetailBtn.addEventListener('click', async function () {
+                    const $clickedBtn = $(this);
+                    const originalBtnText = $clickedBtn.text();
+                    const activityId = parseInt($clickedBtn.data('activity-id')); // 取得活動 ID
+
+                    if (!isNaN(activityId)) {
+                        await handleActivityRegistration(activityId, $clickedBtn, originalBtnText);
+                    } else {
+                        console.error("無法取得活動 ID，請檢查 data-activity-id 屬性。");
+                        // 可以考慮這裡也彈出一個錯誤訊息給使用者
+                        const $messageContent = $('#message-content');
+                        const $redirectBtn = $('#redirect-btn');
+                        $messageContent.text('抱歉，無法識別活動資訊，請聯繫客服。');
+                        $redirectBtn.hide();
+                        new bootstrap.Modal(document.getElementById('activityRegistrationMessageModal')).show();
+                    }
+                });
+            }
+        });
+    </script>
+}
