@@ -1,20 +1,19 @@
 ﻿@model test2.Areas.Frontend.Models.Dtos.UserRegistrationDto
 
-@if (User.Identity != null && User.Identity.IsAuthenticated)
-{
-    Layout = "~/Areas/Frontend/Views/Shared/_Layout/_LoginAfter.cshtml";
-}
-else
-{
-    Layout = "~/Areas/Frontend/Views/Shared/_Layout/_LoginBefore.cshtml";
-}
-
 @await Html.PartialAsync("~/Areas/Frontend/Views/Shared/_Partial/_modal.cshtml")
 
 <main>
     <div class="login-card">
-        <h3>會員註冊</h3>
+        <h3 style="color: var(--c-green2-100)">會員註冊</h3>
         <form asp-controller="Home" asp-action="Register" method="post">
+            <div>
+                <label asp-for="Name" class="form-label">姓名</label>
+                <input asp-for="Name" class="form-control" placeholder="請輸入姓名"/>
+                <div class="error-message">
+                    <i class="icon-lg bi bi-exclamation-circle-fill"></i>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
             <div>
                 <label asp-for="PhoneNumber" class="form-label">電話號碼</label>
                 <input asp-for="PhoneNumber" class="form-control" placeholder="請輸入您的電話號碼">
@@ -36,7 +35,7 @@ else
                 <input asp-for="Password" class="form-control" placeholder="請輸入您的密碼">
                 <div class="error-message">
                     <i class="icon-lg bi bi-exclamation-circle-fill"></i>
-					<span asp-validation-for="Password" class="text-danger"></span>
+                    <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
             </div>
             <div class="mb-2">
@@ -44,7 +43,7 @@ else
                 <input asp-for="ConfirmPassword" class="form-control" placeholder="請再次輸入您的密碼">
                 <div class="error-message">
                     <i class="icon-lg bi bi-exclamation-circle-fill"></i>
-					<span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                 </div>
             </div>
             <div class="d-grid mb-3">
@@ -193,34 +192,41 @@ else
                     myModal.show(); // 顯示 Modal
 
                     let countdownElement = $('#countdown');
-                    let countdown = 3;
+                    let countdown = 5; // 初始倒數秒數
+                    let timer; // 用來儲存 setTimeout 的 ID
 
-                    // 每秒更新倒數計時
-                    let timer = setInterval(function() {
+                    // 定義倒數函式
+                    function updateCountdown() {
                         countdown--;
                         countdownElement.text(countdown);
+
                         if (countdown <= 0) {
-                            clearInterval(timer); // 停止計時器
-                            window.location.href = '@Url.Action("Login", "Home", new { area = "Frontend" })'; // 自動跳轉
+                            // 當倒數結束時，清除計時器並跳轉
+                            clearTimeout(timer);
+                            window.location.href = '@Url.Action("Index", "Home", new { area = "Frontend" })'; // 自動跳轉
+                        } else {
+                            // 否則，設定下一次的倒數
+                            timer = setTimeout(updateCountdown, 1000);
                         }
-                    }, 1000); // 每秒執行一次
+                    }
+
+                    // 第一次啟動倒數
+                    timer = setTimeout(updateCountdown, 1000);
 
                     // 如果使用者手動關閉 Modal，停止計時器
                     $('#registrationMessageModal').on('hidden.bs.modal', function () {
-                        clearInterval(timer);
+                        clearTimeout(timer);
                     });
-                }
-
-                else if (result === "fail"){
-                      $('#MessageContent').text(resultMessage); // 將訊息顯示在 Modal 內容中
+                } else if (result === "fail"){
+                    $('#MessageContent').text(resultMessage); // 將訊息顯示在 Modal 內容中
                     var myModal = new bootstrap.Modal(document.getElementById('registrationMessageModal'));
                     myModal.show(); // 顯示 Modal
 
                     let countdownMessageElement = $('#countdownMessage');
-                    countdownMessageElement.css("visibility", "hidden");
+                    countdownMessageElement.css("visibility", "hidden"); // 隱藏倒數訊息
 
                     const redirectBtn = $('#redirect-btn');
-                    redirectBtn.css("display", "none");
+                    redirectBtn.css("display", "none"); // 隱藏立即跳轉按鈕
                 }
             }
         });

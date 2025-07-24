@@ -1,192 +1,96 @@
-:root[b-va0ehuapur] {
-    --bs-primary: #5cb85c;
-    /* 綠色主題 */
-    --bs-primary-rgb: 92, 184, 92;
-    --bs-light-green: #e9f0e6;
-    /* 淺綠色，用於背景或邊框 */
-    --bs-dark-green: #3d793d;
-    /* 深綠色，用於強調 */
-    --bs-text-dark: #212529;
-    /* 深色文字 */
-}
-
-body[b-va0ehuapur] {
-    font-family: 'Noto Sans TC', '微軟正黑體', 'Microsoft JhengHei', sans-serif;
-    /* 設定常用繁體中文字體，優先使用思源黑體 */
+#box_loginC[b-va0ehuapur] {
+    min-width: 80vw;
+    height: 40%;
+    background: white;
+    border: 1px solid var(--c-gray2-050);
+    border-radius: 1rem;
     display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    /* 讓頁面至少佔滿整個視窗高度 */
-    background-color: #fcfaf7;
-    /* 更柔和、溫暖的淺米白背景色 */
-    color: #333;
-    /* 預設文字顏色 */
-}
-
-main[b-va0ehuapur] {
-    display: flex;
-    flex-direction: column;
-    /* 垂直排列子元素 */
-    min-height: 100vh;
-    margin: 0;
-    /* 移除預設邊距 */
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    font-size: 1.25rem;
 }
 
-#tree-section[b-va0ehuapur] {
-    height: 0;
+.i_loginC:hover[b-va0ehuapur] {
+    color: var(--c-black-075) !important;
 }
 
-#sec5[b-va0ehuapur] {
-    height: 0;
+.form-control:focus[b-va0ehuapur] {
+    border-color: var(--bs-border-color) !important;
+    box-shadow: none !important;
 }
 
-
-h1[b-va0ehuapur],
-h2[b-va0ehuapur],
-h3[b-va0ehuapur],
-h4[b-va0ehuapur],
-h5[b-va0ehuapur],
-h6[b-va0ehuapur] {
-    font-family: 'Noto Serif TC', serif;
-    /* 標題使用思源宋體，更有書卷氣 */
-    color: #4a6b52;
-    /* 深綠色調，沉穩有質感 */
+#btn_loginC[b-va0ehuapur] {
+    width: 150%;
+    height: 6rem;
+    font-size: 1.25rem;
+    background-color: var(--c-blue---050);
+    color: white;
 }
 
-/* 登入卡片樣式 */
-.login-card[b-va0ehuapur] {
-    background-color: #ffffff;
-    padding: 3rem;
-    /* 增加內距 */
-    border-radius: 12px;
-    /* 圓角更柔和 */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-    /* 更細緻的陰影 */
-    max-width: 420px;
-    /* 卡片最大寬度 */
-    width: 100%;
-    border: 1px solid #e0e0e0;
-    /* 輕微的邊框，增加質感 */
-}
-
-    .login-card h3[b-va0ehuapur] {
-        color: #4a6b52;
-        /* 深綠色標題 */
-        margin-bottom: 2.5rem;
-        /* 增加標題下邊距 */
-        text-align: center;
-        font-weight: 700;
-        /* 更粗的字體 */
-        letter-spacing: 1px;
-        /* 字母間距稍微大一點 */
+    #btn_loginC:hover[b-va0ehuapur] {
+        background-color: var(--c-blue---050);
+        color: white;
+        animation: ani_btn .75s infinite;
     }
 
-    .login-card .form-label[b-va0ehuapur] {
-        color: #555;
-        font-weight: 500;
-        margin-bottom: 0.5rem;
+.bi-facebook:hover[b-va0ehuapur] {
+    color: white !important;
+}
+
+#btn_google:hover[b-va0ehuapur] {
+    background-color: rgb(248, 249, 250);
+}
+
+/*RWD*/
+@media(max-width: 576px) {
+    #box_loginC[b-va0ehuapur] {
+        min-width: 90vw;
+    }
+}
+
+@media(max-width: 768px) {
+    #box_btn[b-va0ehuapur] {
+        margin-top: 1rem;
     }
 
-    .login-card .form-control[b-va0ehuapur] {
-        border-radius: 8px;
-        /* 輸入框圓角 */
-        padding: 0.9rem 1.2rem;
-        border: 1px solid #dcdcdc;
-        /* 輕微的邊框 */
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    #btn_loginC[b-va0ehuapur] {
+        width: 100%;
+        height: 3rem;
+        font-size: 1rem;
     }
 
-        .login-card .form-control:focus[b-va0ehuapur] {
-            border-color: #8cc63f;
-            /* focus 時邊框顏色 */
-            box-shadow: 0 0 0 0.25rem rgba(140, 198, 63, 0.25);
-            /* focus 時陰影 */
-            outline: none;
+        #btn_loginC:hover[b-va0ehuapur] {
+            animation: none;
         }
-
-    .login-card .btn-success[b-va0ehuapur] {
-        background-color: #6a9955;
-        /* 更柔和的綠色按鈕 */
-        border-color: #6a9955;
-        padding: 0.9rem 2.5rem;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 1.1rem;
-        transition: background-color 0.3s ease, border-color 0.3s ease;
-        letter-spacing: 1px;
-    }
-
-        .login-card .btn-success:hover[b-va0ehuapur] {
-            background-color: #4a6b52;
-            /* 滑鼠移過變成深綠色 */
-            border-color: #4a6b52;
-        }
-
-    .login-card .form-text[b-va0ehuapur] {
-        text-align: center;
-        margin-top: 1.5rem;
-        font-size: 0.9rem;
-    }
-
-        .login-card .form-text a[b-va0ehuapur] {
-            font-weight: 500;
-            color: #6a9955;
-            /* 連結顏色改成綠色系 */
-        }
-
-
-    .login-card .btn-google[b-va0ehuapur],
-    .login-card .btn-facebook[b-va0ehuapur] {
-        font-weight: bold;
-        font-family: 'Noto Sans TC', '微軟正黑體', 'Microsoft JhengHei', sans-serif;
-    }
-
-    .login-card .btn-google[b-va0ehuapur] {
-        background-color: #DB4437;
-        /* Google 紅色 */
-        border-color: #DB4437;
-        color: #fff;
-    }
-
-        .login-card .btn-google:hover[b-va0ehuapur] {
-            background-color: #c0392b;
-            border-color: #c0392b;
-        }
-
-    .login-card .btn-facebook[b-va0ehuapur] {
-        background-color: #4267B2;
-        /* Facebook 藍色 */
-        border-color: #4267B2;
-        color: #fff;
-    }
-
-/* 調整註冊div連結佈局 */
-.register-links[b-va0ehuapur] {
-    display: flex;
-    justify-content: center;
-    /* 讓內容居中 */
-    margin-top: 1.5rem;
-    /* 調整上邊距 */
 }
 
-    .register-links a[b-va0ehuapur] {
-        font-weight: 500;
-        color: #6a9955;
-        /* 連結顏色改成綠色系 */
-        text-decoration: none;
-        /* 移除底線 */
+@media(min-width: 768px) {
+    #box_loginC[b-va0ehuapur] {
+        min-width: 70vw;
     }
+}
 
-        .register-links a:hover[b-va0ehuapur] {
-            text-decoration: underline;
-            /* 滑鼠移過時顯示底線 */
-        }
-
-    .register-links span[b-va0ehuapur] {
-        margin: 0 10px;
-        /* 增加連結間的間距 */
-        color: #aaa;
-        /* 分隔符號顏色 */
+@media(min-width: 992px) {
+    #box_loginC[b-va0ehuapur] {
+        min-width: 60vw;
     }
+}
+
+@media(min-width: 1200px) {
+    #box_loginC[b-va0ehuapur] {
+        min-width: 50vw;
+    }
+}
+
+@media(min-width: 1400px) {
+    #box_loginC[b-va0ehuapur] {
+        min-width: 40vw;
+    }
+}
+
+@media(min-width: 1600px) {
+    #box_loginC[b-va0ehuapur] {
+        min-width: 30vw;
+    }
+}

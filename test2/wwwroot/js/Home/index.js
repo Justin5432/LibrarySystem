@@ -2,8 +2,6 @@
     $(".book-image").on("click", function () {
         const bookName = $(this).parent().parent().find("h5").text()
 
-        alert(bookName);
-
         $("#box_search").val(bookName)
 
         $("#box_status").val("1")
@@ -13,8 +11,6 @@
     $(".borrow-book-btn").on("click", function () {
         const bookName = $(this).parent().parent().find("h5").text()
 
-        alert(bookName);
-
         $("#box_search").val(bookName)
 
         $("#box_status").val("1")
@@ -23,8 +19,6 @@
 
     $(".activity-img").on("click", function () {
         const activityName = $(this).parent().find("h5").text()
-
-        alert(activityName);
     })
 
     // 抓取 DOM 元素
@@ -43,13 +37,13 @@
     // 處理「上一張」按鈕點擊事件
     prevBtn.addEventListener('click', () => {
         currentRotation += rotateAngle; // 每次旋轉一個項目的角度
-        carouselSpinner.style.transform = `translateY(20vh) translateZ(-500px) rotateY(${currentRotation}deg)`;
+        carouselSpinner.style.transform = `translateZ(-500px) rotateY(${currentRotation}deg)`;
     });
 
     // 處理「下一張」按鈕點擊事件
     nextBtn.addEventListener('click', () => {
         currentRotation -= rotateAngle; // 每次旋轉一個項目的角度
-        carouselSpinner.style.transform = `translateY(20vh) translateZ(-500px) rotateY(${currentRotation}deg)`;
+        carouselSpinner.style.transform = `translateZ(-500px) rotateY(${currentRotation}deg)`;
     });
 
     // 監聽鍵盤左右箭頭

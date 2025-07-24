@@ -1,197 +1,101 @@
 /* _content/test2/Areas/Backend/Views/Shared/_Layout.cshtml.rz.scp.css */
 /* _content/test2/Areas/Frontend/Views/Access/LoginC.cshtml.rz.scp.css */
-:root[b-va0ehuapur] {
-    --bs-primary: #5cb85c;
-    /* 綠色主題 */
-    --bs-primary-rgb: 92, 184, 92;
-    --bs-light-green: #e9f0e6;
-    /* 淺綠色，用於背景或邊框 */
-    --bs-dark-green: #3d793d;
-    /* 深綠色，用於強調 */
-    --bs-text-dark: #212529;
-    /* 深色文字 */
-}
-
-body[b-va0ehuapur] {
-    font-family: 'Noto Sans TC', '微軟正黑體', 'Microsoft JhengHei', sans-serif;
-    /* 設定常用繁體中文字體，優先使用思源黑體 */
+#box_loginC[b-va0ehuapur] {
+    min-width: 80vw;
+    height: 40%;
+    background: white;
+    border: 1px solid var(--c-gray2-050);
+    border-radius: 1rem;
     display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    /* 讓頁面至少佔滿整個視窗高度 */
-    background-color: #fcfaf7;
-    /* 更柔和、溫暖的淺米白背景色 */
-    color: #333;
-    /* 預設文字顏色 */
-}
-
-main[b-va0ehuapur] {
-    display: flex;
-    flex-direction: column;
-    /* 垂直排列子元素 */
-    min-height: 100vh;
-    margin: 0;
-    /* 移除預設邊距 */
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    font-size: 1.25rem;
 }
 
-#tree-section[b-va0ehuapur] {
-    height: 0;
+.i_loginC:hover[b-va0ehuapur] {
+    color: var(--c-black-075) !important;
 }
 
-#sec5[b-va0ehuapur] {
-    height: 0;
+.form-control:focus[b-va0ehuapur] {
+    border-color: var(--bs-border-color) !important;
+    box-shadow: none !important;
 }
 
-
-h1[b-va0ehuapur],
-h2[b-va0ehuapur],
-h3[b-va0ehuapur],
-h4[b-va0ehuapur],
-h5[b-va0ehuapur],
-h6[b-va0ehuapur] {
-    font-family: 'Noto Serif TC', serif;
-    /* 標題使用思源宋體，更有書卷氣 */
-    color: #4a6b52;
-    /* 深綠色調，沉穩有質感 */
+#btn_loginC[b-va0ehuapur] {
+    width: 150%;
+    height: 6rem;
+    font-size: 1.25rem;
+    background-color: var(--c-blue---050);
+    color: white;
 }
 
-/* 登入卡片樣式 */
-.login-card[b-va0ehuapur] {
-    background-color: #ffffff;
-    padding: 3rem;
-    /* 增加內距 */
-    border-radius: 12px;
-    /* 圓角更柔和 */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-    /* 更細緻的陰影 */
-    max-width: 420px;
-    /* 卡片最大寬度 */
-    width: 100%;
-    border: 1px solid #e0e0e0;
-    /* 輕微的邊框，增加質感 */
-}
-
-    .login-card h3[b-va0ehuapur] {
-        color: #4a6b52;
-        /* 深綠色標題 */
-        margin-bottom: 2.5rem;
-        /* 增加標題下邊距 */
-        text-align: center;
-        font-weight: 700;
-        /* 更粗的字體 */
-        letter-spacing: 1px;
-        /* 字母間距稍微大一點 */
+    #btn_loginC:hover[b-va0ehuapur] {
+        background-color: var(--c-blue---050);
+        color: white;
+        animation: ani_btn .75s infinite;
     }
 
-    .login-card .form-label[b-va0ehuapur] {
-        color: #555;
-        font-weight: 500;
-        margin-bottom: 0.5rem;
+.bi-facebook:hover[b-va0ehuapur] {
+    color: white !important;
+}
+
+#btn_google:hover[b-va0ehuapur] {
+    background-color: rgb(248, 249, 250);
+}
+
+/*RWD*/
+@media(max-width: 576px) {
+    #box_loginC[b-va0ehuapur] {
+        min-width: 90vw;
+    }
+}
+
+@media(max-width: 768px) {
+    #box_btn[b-va0ehuapur] {
+        margin-top: 1rem;
     }
 
-    .login-card .form-control[b-va0ehuapur] {
-        border-radius: 8px;
-        /* 輸入框圓角 */
-        padding: 0.9rem 1.2rem;
-        border: 1px solid #dcdcdc;
-        /* 輕微的邊框 */
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    #btn_loginC[b-va0ehuapur] {
+        width: 100%;
+        height: 3rem;
+        font-size: 1rem;
     }
 
-        .login-card .form-control:focus[b-va0ehuapur] {
-            border-color: #8cc63f;
-            /* focus 時邊框顏色 */
-            box-shadow: 0 0 0 0.25rem rgba(140, 198, 63, 0.25);
-            /* focus 時陰影 */
-            outline: none;
+        #btn_loginC:hover[b-va0ehuapur] {
+            animation: none;
         }
-
-    .login-card .btn-success[b-va0ehuapur] {
-        background-color: #6a9955;
-        /* 更柔和的綠色按鈕 */
-        border-color: #6a9955;
-        padding: 0.9rem 2.5rem;
-        border-radius: 8px;
-        font-weight: 600;
-        font-size: 1.1rem;
-        transition: background-color 0.3s ease, border-color 0.3s ease;
-        letter-spacing: 1px;
-    }
-
-        .login-card .btn-success:hover[b-va0ehuapur] {
-            background-color: #4a6b52;
-            /* 滑鼠移過變成深綠色 */
-            border-color: #4a6b52;
-        }
-
-    .login-card .form-text[b-va0ehuapur] {
-        text-align: center;
-        margin-top: 1.5rem;
-        font-size: 0.9rem;
-    }
-
-        .login-card .form-text a[b-va0ehuapur] {
-            font-weight: 500;
-            color: #6a9955;
-            /* 連結顏色改成綠色系 */
-        }
-
-
-    .login-card .btn-google[b-va0ehuapur],
-    .login-card .btn-facebook[b-va0ehuapur] {
-        font-weight: bold;
-        font-family: 'Noto Sans TC', '微軟正黑體', 'Microsoft JhengHei', sans-serif;
-    }
-
-    .login-card .btn-google[b-va0ehuapur] {
-        background-color: #DB4437;
-        /* Google 紅色 */
-        border-color: #DB4437;
-        color: #fff;
-    }
-
-        .login-card .btn-google:hover[b-va0ehuapur] {
-            background-color: #c0392b;
-            border-color: #c0392b;
-        }
-
-    .login-card .btn-facebook[b-va0ehuapur] {
-        background-color: #4267B2;
-        /* Facebook 藍色 */
-        border-color: #4267B2;
-        color: #fff;
-    }
-
-/* 調整註冊div連結佈局 */
-.register-links[b-va0ehuapur] {
-    display: flex;
-    justify-content: center;
-    /* 讓內容居中 */
-    margin-top: 1.5rem;
-    /* 調整上邊距 */
 }
 
-    .register-links a[b-va0ehuapur] {
-        font-weight: 500;
-        color: #6a9955;
-        /* 連結顏色改成綠色系 */
-        text-decoration: none;
-        /* 移除底線 */
+@media(min-width: 768px) {
+    #box_loginC[b-va0ehuapur] {
+        min-width: 70vw;
     }
+}
 
-        .register-links a:hover[b-va0ehuapur] {
-            text-decoration: underline;
-            /* 滑鼠移過時顯示底線 */
-        }
-
-    .register-links span[b-va0ehuapur] {
-        margin: 0 10px;
-        /* 增加連結間的間距 */
-        color: #aaa;
-        /* 分隔符號顏色 */
+@media(min-width: 992px) {
+    #box_loginC[b-va0ehuapur] {
+        min-width: 60vw;
     }
+}
+
+@media(min-width: 1200px) {
+    #box_loginC[b-va0ehuapur] {
+        min-width: 50vw;
+    }
+}
+
+@media(min-width: 1400px) {
+    #box_loginC[b-va0ehuapur] {
+        min-width: 40vw;
+    }
+}
+
+@media(min-width: 1600px) {
+    #box_loginC[b-va0ehuapur] {
+        min-width: 30vw;
+    }
+}
 /* _content/test2/Areas/Frontend/Views/Access/LoginM.cshtml.rz.scp.css */
 #box_loginM[b-4nkxtast6c] {
     min-width: 80vw;
@@ -279,6 +183,195 @@ h6[b-va0ehuapur] {
     #box_loginM[b-4nkxtast6c] {
         min-width: 30vw;
     }
+}
+/* _content/test2/Areas/Frontend/Views/Account/ExternalRegistration.cshtml.rz.scp.css */
+:root[b-var6zhpd09] {
+    --bs-primary: #5cb85c;
+    /* 綠色主題 */
+    --bs-primary-rgb: 92, 184, 92;
+    --bs-light-green: #e9f0e6;
+    /* 淺綠色，用於背景或邊框 */
+    --bs-dark-green: #3d793d;
+    /* 深綠色，用於強調 */
+    --bs-text-dark: #212529;
+    /* 深色文字 */
+}
+
+
+
+body[b-var6zhpd09] {
+    font-family: 'Noto Sans TC', '微軟正黑體', 'Microsoft JhengHei', sans-serif;
+    /* 設定常用繁體中文字體，優先使用思源黑體 */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* 讓頁面至少佔滿整個視窗高度 */
+    background-color: #fcfaf7;
+    /* 更柔和、溫暖的淺米白背景色 */
+    color: #333;
+    /* 預設文字顏色 */
+}
+
+    body.modal-open .login-card[b-var6zhpd09] {
+        margin-right: -14px;
+    }
+
+main[b-var6zhpd09] {
+    display: flex;
+    flex-direction: column;
+    /* 垂直排列子元素 */
+    min-height: 100vh;
+    margin: 0;
+    /* 移除預設邊距 */
+    justify-content: center;
+    align-items: center;
+}
+
+#tree-section[b-var6zhpd09] {
+    height: 0;
+}
+
+
+h1[b-var6zhpd09],
+h2[b-var6zhpd09],
+h3[b-var6zhpd09],
+h4[b-var6zhpd09],
+h5[b-var6zhpd09],
+h6[b-var6zhpd09] {
+    font-family: 'Noto Serif TC', serif;
+    /* 標題使用思源宋體，更有書卷氣 */
+    color: #4a6b52;
+    /* 深綠色調，沉穩有質感 */
+}
+
+/* 註冊卡片樣式 (沿用 login-card 的樣式) */
+.login-card[b-var6zhpd09] {
+    background-color: #ffffff;
+    padding: 3rem;
+    /* 增加內距 */
+    border-radius: 12px;
+    /* 圓角更柔和 */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    /* 更細緻的陰影 */
+    max-width: 420px;
+    /* 卡片最大寬度 */
+    width: 100%;
+    border: 1px solid #e0e0e0;
+    /* 輕微的邊框，增加質感 */
+}
+
+    .login-card h3[b-var6zhpd09] {
+        color: #4a6b52;
+        /* 深綠色標題 */
+        margin-bottom: 2.5rem;
+        /* 增加標題下邊距 */
+        text-align: center;
+        font-weight: 700;
+        /* 更粗的字體 */
+        letter-spacing: 1px;
+        /* 字母間距稍微大一點 */
+    }
+
+    .login-card .form-label[b-var6zhpd09] {
+        color: #555;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+
+    .login-card .form-control[b-var6zhpd09] {
+        border-radius: 8px;
+        /* 輸入框圓角 */
+        padding: 0.9rem 1.2rem;
+        border: 1px solid #dcdcdc;
+        /* 輕微的邊框 */
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .login-card .form-control:focus[b-var6zhpd09] {
+            border-color: #8cc63f;
+            /* focus 時邊框顏色 */
+            box-shadow: 0 0 0 0.25rem rgba(140, 198, 63, 0.25);
+            /* focus 時陰影 */
+            outline: none;
+        }
+
+    .login-card .btn-success[b-var6zhpd09] {
+        background-color: #6a9955;
+        /* 更柔和的綠色按鈕 */
+        border-color: #6a9955;
+        padding: 0.9rem 2.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+        letter-spacing: 1px;
+    }
+
+        .login-card .btn-success:hover[b-var6zhpd09] {
+            background-color: #4a6b52;
+            /* 滑鼠移過變成深綠色 */
+            border-color: #4a6b52;
+        }
+
+    .login-card .form-text[b-var6zhpd09] {
+        text-align: center;
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+    }
+
+        .login-card .form-text a[b-var6zhpd09] {
+            font-weight: 500;
+            color: #6a9955; /* 連結顏色改成綠色系 */
+        }
+
+    .login-card .btn-google[b-var6zhpd09],
+    .login-card .btn-facebook[b-var6zhpd09] {
+        font-weight: bold;
+        font-family: 'Noto Sans TC', '微軟正黑體', 'Microsoft JhengHei', sans-serif;
+        display: none; /* 註冊頁面通常沒有第三方登入按鈕，所以先隱藏 */
+    }
+
+/* 調整註冊頁面的連結佈局 */
+.register-links[b-var6zhpd09] {
+    display: flex;
+    justify-content: center; /* 讓內容居中 */
+    margin-top: 1.5rem; /* 調整上邊距 */
+}
+
+    .register-links a[b-var6zhpd09] {
+        font-weight: 500;
+        color: #6a9955; /* 連結顏色改成綠色系 */
+        text-decoration: none; /* 移除底線 */
+    }
+
+        .register-links a:hover[b-var6zhpd09] {
+            text-decoration: underline; /* 滑鼠移過時顯示底線 */
+        }
+
+    .register-links span[b-var6zhpd09] {
+        margin: 0 10px; /* 增加連結間的間距 */
+        color: #aaa; /* 分隔符號顏色 */
+    }
+
+/* 預設隱藏整個錯誤訊息容器 */
+.error-message[b-var6zhpd09] {
+    min-height: 2em;
+    visibility: hidden; /* 隱藏內容但保留空間 */
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+/* 當 input 有驗證錯誤時，顯示 .error-message */
+.input-validation-error + .error-message[b-var6zhpd09] {
+    visibility: visible;
+    opacity: 1;
+}
+
+.icon-lg[b-var6zhpd09] {
+    font-size: 1em;
+    margin-right: 0.5em; /* icon 和文字間距 */
+    color: #ff0000;
 }
 /* _content/test2/Areas/Frontend/Views/Home/Activity.cshtml.rz.scp.css */
 /* 全域設定 */
@@ -766,11 +859,22 @@ button.nav-link:focus[b-09m0byjk79] {
     }
 
 .btn-primary[b-swmj7ko65c] {
-    background-color: #5cb85c;
+    background-color: var(--c-green2-100);
     border-color: #e9f0e6;
     /*    --bs-btn-hover-bg: #3d793d;
     --bs-btn-active-bg: #212529;
     --bs-btn-active-border-color: #3d793d;*/
+}
+    .btn-primary:hover[b-swmj7ko65c] {
+        background-color: #5cb85c;
+        border-color: #e9f0e6;
+        /*    --bs-btn-hover-bg: #3d793d;
+        --bs-btn-active-bg: #212529;
+        --bs-btn-active-border-color: #3d793d;*/
+    }
+
+body.modal-open #main-container[b-swmj7ko65c] {
+    margin-right: -14px;
 }
 
 #main-container[b-swmj7ko65c] {
@@ -1036,7 +1140,7 @@ button.nav-link:focus[b-09m0byjk79] {
     align-items: center;
     /* 為了箭頭的定位 */
     position: relative;
-    max-height: 100vh;
+    max-height: 75vh;
 }
 
 /* 輪播容器，負責旋轉 */
@@ -1052,7 +1156,7 @@ button.nav-link:focus[b-09m0byjk79] {
     transform-origin: center center;
     /* 旋轉中心設定在中間 */
     transition: transform 0.8s ease-out; /* 加入過渡效果，讓旋轉更平滑 */
-    transform: translateY(20vh) translateZ(-500px);
+    transform: translateZ(-500px);
 }
 
 /* 輪播項目 */
@@ -1075,15 +1179,18 @@ button.nav-link:focus[b-09m0byjk79] {
     /* 計算方式：rotateY(360deg / 項目數量 * 當前項目索引) translateZ(圓半徑) */
     /* 這裡的 translateZ(500px) 是半徑，可以根據實際效果調整 */
     .my-carousel-item:nth-child(1)[b-swmj7ko65c] {
-        transform: rotateY(0deg) translateZ(500px);
+        top: 50%;
+        transform: rotateY(0deg) translateY(-50%) translateZ(500px);
     }
 
     .my-carousel-item:nth-child(2)[b-swmj7ko65c] {
-        transform: rotateY(120deg) translateZ(500px);
+        top: 50%;
+        transform: rotateY(120deg) translateY(-50%) translateZ(500px);
     }
 
     .my-carousel-item:nth-child(3)[b-swmj7ko65c] {
-        transform: rotateY(240deg) translateZ(500px);
+        top: 50%;
+        transform: rotateY(240deg) translateY(-50%) translateZ(500px);
     }
 
     /* 圖片樣式 */
@@ -1100,15 +1207,14 @@ button.nav-link:focus[b-09m0byjk79] {
 /* 旋轉控制箭頭樣式 */
 .carousel-control-btn[b-swmj7ko65c] {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     background-color: rgba(0, 0, 0, 0.5);
+    top: 50%;
     color: white;
     border: none;
-    padding: 15px 10px;
+    padding: 30px 20px;
     cursor: pointer;
     z-index: 10;
-    font-size: 2rem;
+    font-size: 3rem;
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
@@ -1119,10 +1225,12 @@ button.nav-link:focus[b-09m0byjk79] {
 
 .my-carousel-control-prev[b-swmj7ko65c] {
     left: 10px;
+    transform: translateX(-20vw) translateY(-50%) translateZ(-500px);
 }
 
 .my-carousel-control-next[b-swmj7ko65c] {
     right: 10px;
+    transform: translateX(20vw) translateY(-50%) translateZ(-500px);
 }
 
 /* ------------------------------------------------------------------------------------ */
@@ -1367,26 +1475,26 @@ button.nav-link:focus[b-09m0byjk79] {
 }
 
 /* 卡片標題的基礎樣式 */
-/*.card-title {
-    height: 3em;*/ /* 確保至少有 2 行文字高度 */
-    /*overflow: hidden;
-    text-overflow: ellipsis;
+.card-title[b-swmj7ko65c] {
+    overflow: hidden;
+    text-overflow: ellipsis; /* 超出部分顯示省略號 */
     display: -webkit-box;
-    -webkit-line-clamp: 2;*/ /* 限制顯示兩行 */
-    /*-webkit-box-orient: vertical;
-    white-space: normal;*/ /* 允許換行 */
-    /*margin-top: auto;*/ /* 讓標題盡量靠下 */
-    /*margin-bottom: 0.25rem;
-}*/
+    -webkit-line-clamp: 1; /* 限制顯示一行 */
+    text-overflow: ellipsis; /* 超出部分顯示省略號 */
+    -webkit-box-orient: vertical;
+    white-space: normal; /* 允許換行 */
+    margin-top: auto; /* 讓標題盡量靠下 */
+    margin-bottom: 0.25rem;
+}
 
 /* 卡片文字的基礎樣式 */
-/*.card-text {
-    height: 1.5em;*/ /* 確保 1 行文字高度 */
-    /*overflow: hidden;
-    white-space: nowrap;*/ /* 不換行 */
-    /*text-overflow: ellipsis;*/ /* 超出部分顯示省略號 */
-    /*margin-bottom: 0;
-}*/
+.card-text[b-swmj7ko65c] {
+    height: 1.5em; /* 確保 1 行文字高度 */
+    overflow: hidden;
+    white-space: nowrap; /* 不換行 */
+    text-overflow: ellipsis; /* 超出部分顯示省略號 */
+    margin-bottom: 0;
+}
 
 /* ----------------------------------------------- */
 /* 針對新書推薦輪播圖的特定設定 (覆蓋或細化通用設定) */
@@ -1396,7 +1504,7 @@ button.nav-link:focus[b-09m0byjk79] {
     height: 600px; /* <--- 核心：設定固定高度 */
     /* 這裡不再需要 h-100 class，因為已經有了固定高度 */
     /* 如果 .card 已經有 display: flex; flex-direction: column; 等設定，
-       且沒有其他卡片類型會衝突，這裡可以不重複設定 */
+       且沒有其他卡片類別會衝突，這裡可以不重複設定 */
 }
 
 #newBooksCarousel .book-image-ratio-container[b-swmj7ko65c] {
@@ -1583,9 +1691,9 @@ h6[b-pqduqkbi5v] {
         }
 
     .login-card .btn-success[b-pqduqkbi5v] {
-        background-color: #6a9955;
+        background-color: var(--c-green2-100);
         /* 更柔和的綠色按鈕 */
-        border-color: #6a9955;
+        border-color: #e9f0e6;
         padding: 0.9rem 2.5rem;
         border-radius: 8px;
         font-weight: 600;
@@ -1595,7 +1703,7 @@ h6[b-pqduqkbi5v] {
     }
 
         .login-card .btn-success:hover[b-pqduqkbi5v] {
-            background-color: #4a6b52;
+            background-color: #6a9955;
             /* 滑鼠移過變成深綠色 */
             border-color: #4a6b52;
         }
@@ -1616,6 +1724,19 @@ h6[b-pqduqkbi5v] {
         font-weight: bold;
         font-family: 'Noto Sans TC', '微軟正黑體', 'Microsoft JhengHei', sans-serif;
         display: none; /* 註冊頁面通常沒有第三方登入按鈕，所以先隱藏 */
+    }
+
+/* 隱私權政策、會員條款樣式 */
+
+.btn-secondary[b-pqduqkbi5v] {
+    background-color: var(--c-green2-100);
+    border-color: #e9f0e6;
+}
+
+    .btn-secondary:hover[b-pqduqkbi5v] {
+        background-color: #6a9955;
+        /* 滑鼠移過變成深綠色 */
+        border-color: #4a6b52;
     }
 
 /* 調整註冊頁面的連結佈局 */
@@ -1960,9 +2081,76 @@ figure:not(:hover)[b-wdh759udfa] {
 .carousel-control-next[b-wdh759udfa] {
     right: -10%
 }
+/* _content/test2/Areas/Frontend/Views/Shared/_Partial/_clientBorrow.cshtml.rz.scp.css */
+.btn_cFav[b-1rzojwzdvy] {
+    background-color: var(--c-green2-100);
+}
+
+    .btn_cFav:focus[b-1rzojwzdvy] {
+        background-color: var(--c-green2-100);
+        color: white;
+    }
+
+.btn_dFav[b-1rzojwzdvy] {
+    background-color: var(--c-red----100);
+}
+
+    .btn_dFav:focus[b-1rzojwzdvy] {
+        background-color: var(--c-red----100);
+        color: white;
+    }
+
+.btn-open-comment[b-1rzojwzdvy] {
+    background-color: var(--c-blue1--075);
+}
+
+    .btn-open-comment:focus[b-1rzojwzdvy] {
+        background-color: var(--c-blue1--075);
+        color: white;
+    }
+
+    .btn_cFav:hover[b-1rzojwzdvy],
+    .btn_dFav:hover[b-1rzojwzdvy],
+    .btn-open-comment:hover[b-1rzojwzdvy] {
+        color: white;
+    }
+/* _content/test2/Areas/Frontend/Views/Shared/_Partial/_clientFav.cshtml.rz.scp.css */
+.btn_dFav[b-n84bzx34u8] {
+    background-color: var(--c-red----100);
+}
+
+    .btn_dFav:focus[b-n84bzx34u8] {
+        background-color: var(--c-red----100);
+        color: white;
+    }
+
+    .btn_dFav:hover[b-n84bzx34u8] {
+        color: white;
+    }
 /* _content/test2/Areas/Frontend/Views/Shared/_Partial/_clientHome.cshtml.rz.scp.css */
 .bi-circle-fill:hover[b-38q2e7thgi] {
     color: black !important;
+}
+
+#editPasswordBtn[b-38q2e7thgi],
+#editPhoneBtn[b-38q2e7thgi] {
+    background-color: var(--c-blue1--075);
+    color: white;
+}
+
+#confirmPasswordBtn[b-38q2e7thgi],
+#savePasswordBtn[b-38q2e7thgi],
+#savePhoneBtn[b-38q2e7thgi] {
+    background-color: var(--c-green2-100);
+    color: white;
+}
+
+.bi-facebook:hover[b-38q2e7thgi] {
+    color: white !important;
+}
+
+#btn_google:hover[b-38q2e7thgi] {
+    background-color: rgb(248, 249, 250);
 }
 /* _content/test2/Areas/Frontend/Views/Shared/_Partial/_formQ.cshtml.rz.scp.css */
 .Qbtn_search[b-f48m6dj6jq] {

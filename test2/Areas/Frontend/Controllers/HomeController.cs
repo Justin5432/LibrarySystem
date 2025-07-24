@@ -29,9 +29,7 @@ namespace test2.Areas.Frontend.Controllers
         public const string sk8 = "status";
 
         private readonly Test2Context _context;
-        #endregion
 
-        #region 新增field
         private readonly ILogger<HomeController> _logger;
         private readonly ActivityService _activityService;
         private readonly AnnouncementService _announcementService;
@@ -39,7 +37,8 @@ namespace test2.Areas.Frontend.Controllers
         #endregion
 
         #region constructor
-        public HomeController(ILogger<HomeController> logger, Test2Context context, ActivityService activityService, AnnouncementService announcementService, UserService userService) {
+        public HomeController(ILogger<HomeController> logger, Test2Context context, ActivityService activityService, AnnouncementService announcementService, UserService userService)
+        {
             _logger = logger;
             _activityService = activityService;
             _announcementService = announcementService;
@@ -49,11 +48,8 @@ namespace test2.Areas.Frontend.Controllers
         #endregion
 
         #region action
-        //[HttpGet]
-        //public IActionResult Index() { return View(); }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Query(string query1, string type1, string query2, string year1, string year2, string lang, string type2, string status)
         {
             if (string.IsNullOrEmpty(query1)) { query1 = string.Empty; }
@@ -267,9 +263,26 @@ namespace test2.Areas.Frontend.Controllers
 
             return RedirectToAction("Client");
         }
-        #endregion
 
-        #region 新增action
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateComment(string borrowIdInput, string rate, string comment)
+        {
+            int.TryParse(borrowIdInput, out int borrowId);
+            int.TryParse(rate, out int score);
+
+            var borrowIdX = await _context.Histories.FindAsync(borrowId);
+
+            borrowIdX!.Score = score;
+            borrowIdX!.Feedback = comment;
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Client");
+        }
+
+        #region 有修改的部分
+
         public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 10, string displayType = "", string searchQuery = "")
         {
             var viewModel = new HomeIndexViewModel();
@@ -278,6 +291,8 @@ namespace test2.Areas.Frontend.Controllers
             {
                 // 從 AnnouncementService 獲取公告資料
                 viewModel = await _announcementService.GetPagedAnnouncementsAsync(pageNumber, pageSize, displayType, searchQuery);
+                // 從 ActivityService 獲取公告資料
+                viewModel.Activities = await _activityService.GetActivitiesAsync();
 
                 // 查詢最新書籍 (分兩階段處理以避免翻譯錯誤)
                 // 第一階段：先從資料庫取出所有書籍及其 Collection 資訊
@@ -325,13 +340,15 @@ namespace test2.Areas.Frontend.Controllers
             return View(viewModel);
         }
 
+        #endregion
+
         [HttpPost]
         /// <summary>
-        /// 透過 AJAX POST 請求取得公告列表的資料，並可根據頁碼、公告類型進行篩選。
+        /// 透過 AJAX POST 請求取得公告列表的資料，並可根據頁碼、公告類別進行篩選。
         /// </summary>
         /// <param name="pageNumber">當前頁碼。</param>
         /// <param name="pageSize">每頁顯示公告數量</param>
-        /// <param name="displayType">要篩選的公告類型Id。</param>
+        /// <param name="displayType">要篩選的公告類別Id。</param>
         /// <param name="searchQuery">要搜尋的活動標題</param>
         public async Task<IActionResult> UpdateAnnouncementList(
             [FromForm] int pageNumber,
@@ -343,7 +360,7 @@ namespace test2.Areas.Frontend.Controllers
             {
 
                 // 確保 displayType 有預設值，避免 null 參考錯誤
-                displayType ??= "";  // 預設全部類型
+                displayType ??= "";  // 預設全部類別
 
                 HomeIndexViewModel viewModel;
 
@@ -390,11 +407,11 @@ namespace test2.Areas.Frontend.Controllers
 
         [HttpPost]
         /// <summary>
-        /// 透過 AJAX POST 請求取得活動列表的資料，並可根據頁碼、顯示模式和活動類型進行篩選。
+        /// 透過 AJAX POST 請求取得活動列表的資料，並可根據頁碼、顯示模式和活動類別進行篩選。
         /// </summary>
         /// <param name="page">當前頁碼。</param>
         /// <param name="displayMode">要切換到的顯示模式 ("image" 或 "table")。</param>
-        /// <param name="displayType">要篩選的活動類型 ("全部"、"講座" 等)。</param>
+        /// <param name="displayType">要篩選的活動類別 ("全部"、"講座" 等)。</param>
         /// <param name="searchQuery">要搜尋的活動標題</param>
         public async Task<IActionResult> UpdateActivityList(
             [FromForm] int page,
@@ -407,7 +424,7 @@ namespace test2.Areas.Frontend.Controllers
 
                 // 確保 displayMode 和 displayType 有預設值，避免 null 參考錯誤
                 displayMode ??= "image"; // 預設圖片模式
-                displayType ??= "全部";  // 預設全部類型
+                displayType ??= "全部";  // 預設全部類別
 
                 // 根據 displayMode 決定 pageSize
                 int pageSize = displayMode switch
@@ -526,8 +543,8 @@ namespace test2.Areas.Frontend.Controllers
             }
 
             // 檢查是否已重複報名
-            var existingRegistration = await _context.ActivityRegistrations
-                                                     .FirstOrDefaultAsync(ar => ar.ClientId == clientId && ar.ActivityId == activityId);
+            var existingRegistration = await _context.Participations
+                                                     .FirstOrDefaultAsync(ar => ar.CId == clientId && ar.ActivityId == activityId);
             if (existingRegistration != null)
             {
                 return Json(new { success = false, message = "您已經報名過此活動了！" });
@@ -538,14 +555,14 @@ namespace test2.Areas.Frontend.Controllers
             {
                 try
                 {
-                    var newRegistration = new ActivityRegistration
+                    var newRegistration = new Participation
                     {
-                        ClientId = clientId,
+                        CId = clientId,
                         ActivityId = activityId,
-                        ActivityRegistrationDate = DateTime.Now,
-                        Status = "已報名" // 預設狀態
+                        ParticipationDate = DateTime.Now,
+                        ParticipationStatusId = 1
                     };
-                    _context.ActivityRegistrations.Add(newRegistration);
+                    _context.Participations.Add(newRegistration);
 
                     // 如果活動需要扣除名額 (Capacity 不是 -1)
                     if (activity.Capacity > 0)
@@ -574,10 +591,26 @@ namespace test2.Areas.Frontend.Controllers
             return View();
         }
 
+        #region 有修改的部分
+
         [HttpGet]
         public IActionResult Register()
         {
-            return View(new UserRegistrationDto());
+            UserRegistrationDto model = new UserRegistrationDto();
+
+            if (TempData["PreFillName"] != null)
+            {
+                model.Name = TempData["PreFillName"] as string ?? string.Empty;
+            }
+            if (TempData["PreFillPhoneNumber"] != null)
+            {
+                model.PhoneNumber = TempData["PreFillPhoneNumber"] as string ?? string.Empty;
+            }
+            if (TempData["PreFillEmail"] != null)
+            {
+                model.Email = TempData["PreFillEmail"] as string ?? string.Empty;
+            }
+            return View(model);
         }
 
         [HttpPost]
@@ -593,7 +626,7 @@ namespace test2.Areas.Frontend.Controllers
                 return View(model);
             }
 
-            var registerResult = await _userService.UserRegister(model.PhoneNumber, model.Email, model.Password);
+            var registerResult = await _userService.RegisterNewUser(model.Name, model.PhoneNumber, model.Email, model.Password);
 
             if (registerResult.IsSuccess)
             {
@@ -608,9 +641,19 @@ namespace test2.Areas.Frontend.Controllers
                 TempData["Result"] = "fail";
                 TempData["ShowModal"] = true;
                 TempData["ResultMessage"] = registerResult.FailMessage;
-                return View(model);
+
+                // 失敗時，將部分數據存入 TempData
+                TempData["PreFillName"] = model.Name;
+                TempData["PreFillPhoneNumber"] = model.PhoneNumber;
+                TempData["PreFillEmail"] = model.Email;
+
+                // 重定向到 GET 版本的 Register 避免重複提交表單問題
+                return RedirectToAction("Register");
             }
         }
+
+        #endregion
+
         #endregion
     }
 }

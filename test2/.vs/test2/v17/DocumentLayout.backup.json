@@ -1,12 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0\\v1.2.3\\test2\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0 v1.5.3\\test2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|c:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\my_work\\\u65B0 v1.5.3\\test2\\wwwroot\\js\\home\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|solutionrelative:wwwroot\\js\\home\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "index.js",
+              "DocumentMoniker": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0 v1.5.3\\test2\\wwwroot\\js\\Home\\index.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\Home\\index.js",
+              "ToolTip": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0 v1.5.3\\test2\\wwwroot\\js\\Home\\index.js",
+              "RelativeToolTip": "wwwroot\\js\\Home\\index.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-07-24T06:29:30.504Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

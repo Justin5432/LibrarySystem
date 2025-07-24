@@ -1,6 +1,12 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+using test2.Models.ManagementModels.Services;
+using test2.Models.ManagementModels.ZhongXian.Appoimtment;
+using test2.Models.ManagementModels.ZhongXian.BookQuery;
+using test2.Models.ManagementModels.ZhongXian.Borrow;
+using test2.Models.ManagementModels.ZhongXian.Normal;
+using test2.Models.ManagementModels.ZhongXian.ReturnBook;
 
 namespace test2.Models;
 
@@ -18,9 +24,6 @@ public partial class Test2Context : DbContext
     public virtual DbSet<Activity> Activities { get; set; }
 
     public virtual DbSet<ActivityType> ActivityTypes { get; set; }
-
-    // 新增 ActivityRegistrations
-    public virtual DbSet<ActivityRegistration> ActivityRegistrations { get; set; }
 
     public virtual DbSet<Announcement> Announcements { get; set; }
 
@@ -50,20 +53,37 @@ public partial class Test2Context : DbContext
 
     public virtual DbSet<Notification> Notifications { get; set; }
 
+    public virtual DbSet<Participation> Participations { get; set; }
+
+    public virtual DbSet<ParticipationStatus> ParticipationStatuses { get; set; }
+
     public virtual DbSet<Reservation> Reservations { get; set; }
 
     public virtual DbSet<ReservationStatus> ReservationStatuses { get; set; }
 
     public virtual DbSet<Type> Types { get; set; }
 
-    //custom
+    // custom
     public virtual DbSet<Type> cId { get; set; }
     public virtual DbSet<Type> collectionId { get; set; }
     public virtual DbSet<Type> reservationDate { get; set; }
     public virtual DbSet<Type> reservationStatusId { get; set; }
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=localhost;Database=test2;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
+    public virtual DbSet<Type> score { get; set; }
+    public virtual DbSet<Type> feedback { get; set; }
+
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlServer("Server=DESKTOP-I57EDSL\\SQLEXPRESS;Database=test2;Integrated Security=True;Trusted_Connection=True;TrustServerCertificate=True;User ID=sa;Password=1234;");
+
+    // 憲custom
+    public virtual DbSet<AppoimtmentKeywordDTO> AppoimtmentKeywordShows { get; set; }
+    public virtual DbSet<BorrowBookInfomationDTO> BorrowBookInfomationDTOs { get; set; }
+    public virtual DbSet<MessageDTO> BorrwoMessageDTOs { get; set; }
+    public virtual DbSet<MessageDTO2> MessageDTO2 { get; set; }
+    public virtual DbSet<LanguageAndTypeViewModel> LanguageAndTypes { get; set; }
+    public virtual DbSet<BookQueryDTO> BookQueryDTOs { get; set; }
+    public virtual DbSet<NotificationUserDTO> NotificationUserDTOs { get; set; }
+    public virtual DbSet<ReturnDTO> LateReturnDTOs { get; set; }
+    public virtual DbSet<OverDueDTO> OverDueDTOs { get; set; }
+    public virtual DbSet<ReturnBookDTO> ReturnBookDTOs { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -106,49 +126,6 @@ public partial class Test2Context : DbContext
             entity.Property(e => e.ActivityType1)
                 .HasMaxLength(50)
                 .HasColumnName("activityType");
-        });
-
-        // 新增 ActivityRegistrations
-
-        modelBuilder.Entity<ActivityRegistration>(entity =>
-        {
-            entity.ToTable("ActivityRegistrations"); // 指定對應的表格名稱
-
-            // 設定主鍵
-            entity.HasKey(e => e.ActivityRegistrationId);
-
-            // 設定外來鍵 ClientId 與 Client 表格的關聯
-            entity.HasOne(ar => ar.Client)
-                  .WithMany(c => c.ActivityRegistrations) // Client Model 中的導覽屬性名稱
-                  .HasForeignKey(ar => ar.ClientId)
-                  .OnDelete(DeleteBehavior.Cascade) // 與 SQL 的 ON DELETE CASCADE 一致
-                  .HasConstraintName("FK_ActivityRegistrations_Client"); // 與 SQL 的 CONSTRAINT 名稱一致
-
-            // 設定外來鍵 ActivityId 與 Activity 表格的關聯
-            entity.HasOne(ar => ar.Activity)
-                  .WithMany(a => a.ActivityRegistrations) // Activity Model 中的導覽屬性名稱
-                  .HasForeignKey(ar => ar.ActivityId)
-                  .OnDelete(DeleteBehavior.Cascade) // 與 SQL 的 ON DELETE CASCADE 一致
-                  .HasConstraintName("FK_ActivityRegistrations_Activity"); // 與 SQL 的 CONSTRAINT 名稱一致
-
-            // 設定複合唯一索引 (UQ_ActivityRegistrations_ClientActivity)
-            entity.HasIndex(ar => new { ar.ClientId, ar.ActivityId })
-                  .IsUnique()
-                  .HasDatabaseName("UQ_ActivityRegistrations_ClientActivity"); // 與 SQL 的 CONSTRAINT 名稱一致
-
-            // 設定欄位映射和屬性 (如果 Model 中的 Data Annotations 不夠，或需要更詳細的設定)
-            entity.Property(e => e.ActivityRegistrationId).HasColumnName("ActivityRegistrationId");
-            entity.Property(e => e.ClientId).HasColumnName("ClientId");
-            entity.Property(e => e.ActivityId).HasColumnName("ActivityId");
-            entity.Property(e => e.ActivityRegistrationDate)
-                  .HasColumnName("ActivityRegistrationDate")
-                  .HasColumnType("datetime")
-                  .HasDefaultValueSql("GETDATE()"); // 與 SQL 的 DEFAULT GETDATE() 一致
-
-            entity.Property(e => e.Status)
-                  .HasColumnName("Status")
-                  .HasMaxLength(50) // 與 SQL 的 NVARCHAR(50) 一致
-                  .HasDefaultValue("已報名"); // 與 SQL 的 DEFAULT '已報名' 一致 (EF Core 會轉換成 SQL)
         });
 
         modelBuilder.Entity<Announcement>(entity =>
@@ -313,6 +290,8 @@ public partial class Test2Context : DbContext
             entity.Property(e => e.CPhone)
                 .HasMaxLength(20)
                 .HasColumnName("cPhone");
+            entity.Property(e => e.FacebookId).HasMaxLength(255);
+            entity.Property(e => e.GoogleId).HasMaxLength(255);
             entity.Property(e => e.Permission).HasColumnName("permission");
         });
 
@@ -422,6 +401,42 @@ public partial class Test2Context : DbContext
                 .HasConstraintName("FK_ClientN");
         });
 
+        modelBuilder.Entity<Participation>(entity =>
+        {
+            entity.ToTable("Participation");
+
+            entity.Property(e => e.ParticipationId).HasColumnName("participationId");
+            entity.Property(e => e.ActivityId).HasColumnName("activityId");
+            entity.Property(e => e.CId).HasColumnName("cId");
+            entity.Property(e => e.ParticipationDate).HasColumnName("participationDate");
+            entity.Property(e => e.ParticipationStatusId).HasColumnName("participationStatusId");
+
+            entity.HasOne(d => d.Activity).WithMany(p => p.Participations)
+                .HasForeignKey(d => d.ActivityId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Activity");
+
+            entity.HasOne(d => d.CIdNavigation).WithMany(p => p.Participations)
+                .HasForeignKey(d => d.CId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_ClientP");
+
+            entity.HasOne(d => d.ParticipationStatus).WithMany(p => p.Participations)
+                .HasForeignKey(d => d.ParticipationStatusId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_ParticipationStatus");
+        });
+
+        modelBuilder.Entity<ParticipationStatus>(entity =>
+        {
+            entity.ToTable("ParticipationStatus");
+
+            entity.Property(e => e.ParticipationStatusId).HasColumnName("participationStatusId");
+            entity.Property(e => e.ParticipationStatus1)
+                .HasMaxLength(50)
+                .HasColumnName("participationStatus");
+        });
+
         modelBuilder.Entity<Reservation>(entity =>
         {
             entity.ToTable("Reservation");
@@ -477,6 +492,18 @@ public partial class Test2Context : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("type");
         });
+
+        // 憲custom
+        modelBuilder.Entity<BorrowBookInfomationDTO>().HasNoKey();
+        modelBuilder.Entity<MessageDTO>().HasNoKey();
+        modelBuilder.Entity<MessageDTO2>().HasNoKey();
+        modelBuilder.Entity<AppoimtmentKeywordDTO>().HasNoKey();
+        modelBuilder.Entity<LanguageAndTypeViewModel>().HasNoKey();
+        modelBuilder.Entity<BookQueryDTO>().HasNoKey();
+        modelBuilder.Entity<NotificationUserDTO>().HasNoKey();
+        modelBuilder.Entity<ReturnDTO>().HasNoKey();
+        modelBuilder.Entity<OverDueDTO>().HasNoKey();
+        modelBuilder.Entity<ReturnBookDTO>().HasNoKey();
 
         OnModelCreatingPartial(modelBuilder);
     }

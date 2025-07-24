@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace test2.Models;
 
@@ -12,11 +11,15 @@ public partial class Client
 
     public string CAccount { get; set; } = null!;
 
-    public string CPassword { get; set; } = null!;
+    public string? CPassword { get; set; }
 
-    public string CPhone { get; set; } = null!;
+    public string? CPhone { get; set; }
 
     public int Permission { get; set; }
+
+    public string? FacebookId { get; set; }
+
+    public string? GoogleId { get; set; }
 
     public virtual ICollection<Borrow> Borrows { get; set; } = new List<Borrow>();
 
@@ -24,7 +27,7 @@ public partial class Client
 
     public virtual ICollection<Notification> Notifications { get; set; } = new List<Notification>();
 
-    public virtual ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
+    public virtual ICollection<Participation> Participations { get; set; } = new List<Participation>();
 
-    public virtual ICollection<ActivityRegistration> ActivityRegistrations { get; set; } = new List<ActivityRegistration>();
+    public virtual ICollection<Reservation> Reservations { get; set; } = new List<Reservation>();
 }

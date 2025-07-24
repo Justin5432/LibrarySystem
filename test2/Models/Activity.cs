@@ -27,5 +27,5 @@ public partial class Activity
 
     public virtual Audience Audience { get; set; } = null!;
 
-    public virtual ICollection<ActivityRegistration> ActivityRegistrations { get; set; } = new List<ActivityRegistration>();
+    public virtual ICollection<Participation> Participations { get; set; } = new List<Participation>();
 }

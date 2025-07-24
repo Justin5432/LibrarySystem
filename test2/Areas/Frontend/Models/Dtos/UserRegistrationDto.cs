@@ -4,6 +4,10 @@ namespace test2.Areas.Frontend.Models.Dtos
 {
     public class UserRegistrationDto
     {
+        [Required(ErrorMessage = "姓名不能為空")]
+        [StringLength(30, ErrorMessage = "姓名長度不能超過50個字元")]
+        public string Name { get; set; } = string.Empty;
+
         [Required(ErrorMessage = "電話號碼不能為空")]
         [RegularExpression(@"^09\d{8}$", ErrorMessage = "請輸入有效的行動電話號碼")]
         public string PhoneNumber { get; set; } = string.Empty;
