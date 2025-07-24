@@ -3,8 +3,24 @@
   "WorkspaceRootPath": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0 v1.5.3\\test2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|c:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\my_work\\\u65B0 v1.5.3\\test2\\wwwroot\\js\\home\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|solutionrelative:wwwroot\\js\\home\\index.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|c:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\my_work\\\u65B0 v1.5.3\\test2\\areas\\frontend\\views\\shared\\_layout\\_index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|solutionrelative:areas\\frontend\\views\\shared\\_layout\\_index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|c:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\my_work\\\u65B0 v1.5.3\\test2\\wwwroot\\css\\home\\modalopen.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|solutionrelative:wwwroot\\css\\home\\modalopen.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|c:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\my_work\\\u65B0 v1.5.3\\test2\\areas\\frontend\\views\\home\\index.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|solutionrelative:areas\\frontend\\views\\home\\index.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|c:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\my_work\\\u65B0 v1.5.3\\test2\\areas\\frontend\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|solutionrelative:areas\\frontend\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|c:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\my_work\\\u65B0 v1.5.3\\test2\\areas\\frontend\\views\\home\\register.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{6B2EC332-3590-4C88-B20C-7E2BF63F50B3}|test2.csproj|solutionrelative:areas\\frontend\\views\\home\\register.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "modalOpen.css",
+              "DocumentMoniker": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0 v1.5.3\\test2\\wwwroot\\css\\Home\\modalOpen.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\Home\\modalOpen.css",
+              "ToolTip": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0 v1.5.3\\test2\\wwwroot\\css\\Home\\modalOpen.css",
+              "RelativeToolTip": "wwwroot\\css\\Home\\modalOpen.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-07-24T08:32:36.211Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "index.js",
-              "DocumentMoniker": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0 v1.5.3\\test2\\wwwroot\\js\\Home\\index.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\Home\\index.js",
-              "ToolTip": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0 v1.5.3\\test2\\wwwroot\\js\\Home\\index.js",
-              "RelativeToolTip": "wwwroot\\js\\Home\\index.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-07-24T06:29:30.504Z",
+              "Title": "_Index.cshtml",
+              "DocumentMoniker": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0 v1.5.3\\test2\\Areas\\Frontend\\Views\\Shared\\_Layout\\_Index.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Frontend\\Views\\Shared\\_Layout\\_Index.cshtml",
+              "ToolTip": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0 v1.5.3\\test2\\Areas\\Frontend\\Views\\Shared\\_Layout\\_Index.cshtml*",
+              "RelativeToolTip": "Areas\\Frontend\\Views\\Shared\\_Layout\\_Index.cshtml*",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-24T08:31:21.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0 v1.5.3\\test2\\Areas\\Frontend\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Areas\\Frontend\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0 v1.5.3\\test2\\Areas\\Frontend\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Areas\\Frontend\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAPkAAAAAAAAAAAAgwBUBAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-24T08:20:56.623Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml.css",
+              "DocumentMoniker": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0 v1.5.3\\test2\\Areas\\Frontend\\Views\\Home\\Index.cshtml.css",
+              "RelativeDocumentMoniker": "Areas\\Frontend\\Views\\Home\\Index.cshtml.css",
+              "ToolTip": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0 v1.5.3\\test2\\Areas\\Frontend\\Views\\Home\\Index.cshtml.css",
+              "RelativeToolTip": "Areas\\Frontend\\Views\\Home\\Index.cshtml.css",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAADMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-07-24T06:32:47.691Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Register.cshtml.css",
+              "DocumentMoniker": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0 v1.5.3\\test2\\Areas\\Frontend\\Views\\Home\\Register.cshtml.css",
+              "RelativeDocumentMoniker": "Areas\\Frontend\\Views\\Home\\Register.cshtml.css",
+              "ToolTip": "C:\\\u8077\u8A13\u5C40\\\u5927\u5C08\\My_work\\\u65B0 v1.5.3\\test2\\Areas\\Frontend\\Views\\Home\\Register.cshtml.css",
+              "RelativeToolTip": "Areas\\Frontend\\Views\\Home\\Register.cshtml.css",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABwAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-07-24T08:18:17.391Z",
               "EditorCaption": ""
             }
           ]

@@ -97,10 +97,6 @@ public class AccountController : Controller
                     var principal = await _userService.CreateUserClaimsPrincipalAsync(user!);
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
-                    TempData["Result"] = "success";
-                    TempData["ShowModal"] = true;
-                    TempData["ResultMessage"] = $"這個外部登入方式（{providerName}）的 Email 已經在我們系統註冊過了，我們已經自動幫你綁定{providerName}登入方式到本地帳號囉！";
-
                     // 登入成功後重新導向到首頁
                     return RedirectToAction("Index", "Home", new { Area = "Frontend" });
                 }
@@ -110,16 +106,16 @@ public class AccountController : Controller
                     // 自動將外部帳號 Id 與本地帳號綁定 
                     user!.GoogleId = externalUserId;
 
+                    TempData["Result"] = "success";
+                    TempData["ShowModal"] = true;
+                    TempData["ResultMessage"] = $"這個外部登入方式（{providerName}）的 Email 已經在我們系統註冊過了，我們已經自動幫你綁定{providerName}登入方式到本地帳號囉！";
+
                     // 儲存變更
                     await _context.SaveChangesAsync();
 
                     // 執行登入
                     var principal = await _userService.CreateUserClaimsPrincipalAsync(user!);
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-
-                    TempData["Result"] = "success";
-                    TempData["ShowModal"] = true;
-                    TempData["ResultMessage"] = $"這個外部登入方式（{providerName}）的 Email 已經在我們系統註冊過了，我們已經自動幫你綁定{providerName}登入方式到本地帳號囉！";
 
                     // 登入成功後重新導向到首頁
                     return RedirectToAction("Index", "Home", new { Area = "Frontend" });
@@ -143,6 +139,10 @@ public class AccountController : Controller
                 {
                     // 自動將外部帳號 Id 與本地帳號綁定 
                     user!.FacebookId = externalUserId;
+
+                    TempData["Result"] = "success";
+                    TempData["ShowModal"] = true;
+                    TempData["ResultMessage"] = $"這個外部登入方式（{providerName}）的 Email 已經在我們系統註冊過了，我們已經自動幫你綁定{providerName}登入方式到本地帳號囉！";
 
                     // 儲存變更
                     await _context.SaveChangesAsync();
