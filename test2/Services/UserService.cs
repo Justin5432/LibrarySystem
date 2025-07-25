@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 using System.Net.Mail;
 using System.Security.Claims;
+using test2.Areas.Frontend.Models;
 using test2.Areas.Frontend.Models.Dtos;
 using test2.Models;
 
@@ -34,6 +35,7 @@ namespace test2.Services
             RegisterResult result = new RegisterResult();
 
             bool isEmailRegistered = await IsEmailRegisteredAsync(email);
+            bool isPhoneRegistered = await _context.Clients.AnyAsync(c => c.CPhone == phoneNumber);
 
             if (isEmailRegistered)
             {
@@ -42,7 +44,14 @@ namespace test2.Services
                 return result;
             }
 
-            else 
+            else if (isPhoneRegistered)
+            {
+                result.IsSuccess = false;
+                result.FailMessage = "電話號碼已經註冊過";
+                return result;
+            }
+
+            else
             {
                 var newUser = new Client
                 {
@@ -71,6 +80,16 @@ namespace test2.Services
             RegisterResult result = new RegisterResult();
 
             // 外部登入時，會先檢查電子信箱是否存在資料庫，所以不需要再檢查電子信箱是否已註冊
+
+            // 檢查電話號碼是否已經註冊過
+            bool isPhoneRegistered = await _context.Clients.AnyAsync(c => c.CPhone == phoneNumber);
+
+            if (isPhoneRegistered)
+            {
+                result.IsSuccess = false;
+                result.FailMessage = "電話號碼已經註冊過";
+                return result;
+            }
 
             // 根據提供者建立新使用者物件
 
@@ -154,11 +173,11 @@ namespace test2.Services
             var borrowCount = await _context.Borrows.CountAsync(x => x.CId == user!.CId);
 
             var claims = new List<Claim>{
-                new Claim(ClaimTypes.Name, user!.CAccount),
-                new Claim(ClaimTypes.NameIdentifier, user!.CId.ToString()),
-                new Claim("Name", user!.CName),
-                new Claim("BorrowStatus", borrowStatus.ToString()),
-                new Claim("BorrowCount", borrowCount.ToString())
+                new Claim(InternalClaimTypes.IAccount, user!.CAccount),
+                new Claim(InternalClaimTypes.IId, user!.CId.ToString()),
+                new Claim(InternalClaimTypes.IName, user!.CName),
+                new Claim(InternalClaimTypes.IBorrowStatus, borrowStatus.ToString()),
+                new Claim(InternalClaimTypes.IBorrowCount, borrowCount.ToString())
             };
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

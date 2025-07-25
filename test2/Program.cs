@@ -65,7 +65,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         googleOptions.Scope.Add("profile");
         googleOptions.Scope.Add("email");
 
-        // ·í Google ©Úµ´¦s¨ú (¨Ò¦p¨Ï¥ÎªÌ«ö¨ú®ø) ®É¡A¾É¦V¨ì³o­Ó¸ô®|
+        // ç•¶ Google æ‹’çµ•å­˜å– (ä¾‹å¦‚ä½¿ç”¨è€…æŒ‰å–æ¶ˆ) æ™‚ï¼Œå°å‘åˆ°é€™å€‹è·¯å¾‘
         googleOptions.AccessDeniedPath = "/Frontend/Home/Index";
     })
     .AddFacebook(facebookOptions =>
@@ -75,7 +75,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         facebookOptions.Scope.Add("public_profile");
         facebookOptions.Scope.Add("email");
 
-        // ·í Facebook ©Úµ´¦s¨ú (¨Ò¦p¨Ï¥ÎªÌ«ö¨ú®ø) ®É¡A¾É¦V¨ì³o­Ó¸ô®|
+        // ç•¶ Facebook æ‹’çµ•å­˜å– (ä¾‹å¦‚ä½¿ç”¨è€…æŒ‰å–æ¶ˆ) æ™‚ï¼Œå°å‘åˆ°é€™å€‹è·¯å¾‘
         facebookOptions.AccessDeniedPath = "/Frontend/Home/Index";
     });
 
