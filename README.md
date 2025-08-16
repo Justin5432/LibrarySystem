@@ -1,3 +1,56 @@
+
+# 林間書語 圖書管理系統
+
+基於 ASP.NET Core 開發的全方位圖書館管理系統，專為圖書借閱、預約與日常管理流程而設計。系統整合預約、自動訊息通知與管理介面，旨在提升圖書館運營效率與使用者體驗。
+
+## 雲端部署
+
+本系統所有服務都部署在 Microsoft Azure 雲端平台上，不依賴任何本地伺服器，因此具備高可用性、可擴展性及維護便利性等優勢。
+
+- 應用程式層：使用 Azure App Service 託管 ASP.NET Core 應用程式，並透過自動擴展與負載平衡，確保系統能輕鬆應對流量變化，維持高可用性。
+
+- 資料庫層：使用 Azure SQL Database 提供高可用性的資料庫服務，具備自動備份和異地復原功能，保障資料安全。
+
+## 核心技術
+
+- **前端技術**
+
+  jQuery - 前端 JavaScript 框架，處理 AJAX 請求和 DOM 操作
+
+  Bootstrap - UI 框架，提供響應式設計和組件
+
+- **後端框架**
+
+  ASP.NET Core MVC - 主要的 Web 框架，採用 Area 架構分離前後台功能
+
+  Entity Framework Core - ORM 框架，用於資料庫操作和模型映射
+
+- **資料庫**
+
+  MS SQL Server
+
+- **雲端平台**
+
+  Azure App Service - 雲端應用程式託管服務，提供自動擴展和高可用性
+
+  Azure SQL Database - 雲端關聯式資料庫服務，具備自動備份和災難復原功能
+
+- **資料處理技術**
+
+  LINQ - 用於複雜的資料查詢和篩選
+
+- **安全性技術**
+
+  Argon2 - 密碼雜湊處理，提供高安全性的密碼加密
+
+- **第三方登入**
+
+  支援 Facebook 和 Google 登入
+
+- **自動訊息通知**
+
+  Background Service - 實現定時任務處理，包括逾期檢查和通知
+
 ## 系統架構
 
 本系統利用 ASP.NET Core Area 將功能模組化，有效區隔前台與後台的職責，提升了專案的可維護性與擴展性。
@@ -16,7 +69,7 @@
 
 - **活動頁**：使用者可瀏覽活動列表及報名活動。
 
-- **個人中心**：管理個人的借閱記錄、預約狀態等資訊。
+- **個人中心**：管理個人的借閱記錄、預約狀態等資訊，並可進行第三方帳號綁定。
 
 **Backend Area (後台)**
 
@@ -28,7 +81,7 @@
 
 ## 資料庫實體關係圖
 
-![image](https://github.com/Justin5432/LibrarySystem/blob/61011a7bceec803cc66eb16a5e7445a5352e7b4b/%E8%B3%87%E6%96%99%E5%BA%ABER%E5%9C%96(MS%20SQL).png)
+![image](https://github.com/Justin5432/LibrarySystem/blob/df82101b1776a872e1af82314b3b2605421e5f4e/%E8%B3%87%E6%96%99%E5%BA%ABER%E5%9C%96(MS%20SQL).png)
 
 - **Client** (使用者/客戶)：儲存了所有使用者的基本資料，像是 ID、帳號、密碼、姓名、電話、權限等等。
 
