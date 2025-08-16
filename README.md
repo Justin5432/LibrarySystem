@@ -28,6 +28,8 @@
 
 ## 資料庫實體關係圖
 
+![image](https://github.com/Justin5432/LibrarySystem/blob/61011a7bceec803cc66eb16a5e7445a5352e7b4b/%E8%B3%87%E6%96%99%E5%BA%ABER%E5%9C%96(MS%20SQL).png)
+
 - **Client** (使用者/客戶)：儲存了所有使用者的基本資料，像是 ID、帳號、密碼、姓名、電話、權限等等。
 
 - **Borrow** (借閱)：這個表格記錄了每一次的借書行為。它會連結到 Client (誰借的) 和 Book (借了哪本書)。裡面有借書日期、應還日期、還書日期等等資訊。
