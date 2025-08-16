@@ -176,16 +176,57 @@ namespace test2.Areas.Frontend.Controllers
         {
             var userNameX = Convert.ToString(ViewData["Name"]);
 
-            IQueryable<Client> client = _context.Clients.Include(x => x.Reservations).ThenInclude(y => y.ReservationStatus)
-                                                                                     .Include(x => x.Reservations).ThenInclude(y => y.Collection).ThenInclude(z => z.Author)
-                                                                                     .Include(x => x.Borrows).ThenInclude(y => y.BorrowStatus)
-                                                                                     .Include(w => w.Borrows).ThenInclude(x => x.Book).ThenInclude(y => y.Collection).ThenInclude(z => z.Author)
-                                                                                     .Include(x => x.Borrows).ThenInclude(y => y.Histories)
-                                                                                     .Include(x => x.Favorites).ThenInclude(y => y.Collection).ThenInclude(z => z.Author)
-                                                                                     .Include(x => x.Notifications)
-                                                                                     .Where(x => x.CName.Contains(userNameX!));
+            //IQueryable<Client> client = _context.Clients.Include(x => x.Reservations).ThenInclude(y => y.ReservationStatus)
+            //                                                                         .Include(x => x.Reservations).ThenInclude(y => y.Collection).ThenInclude(z => z.Author)
+            //                                                                         .Include(x => x.Borrows).ThenInclude(y => y.BorrowStatus)
+            //                                                                         .Include(w => w.Borrows).ThenInclude(x => x.Book).ThenInclude(y => y.Collection).ThenInclude(z => z.Author)
+            //                                                                         .Include(x => x.Borrows).ThenInclude(y => y.Histories)
+            //                                                                         .Include(x => x.Favorites).ThenInclude(y => y.Collection).ThenInclude(z => z.Author)
+            //                                                                         .Include(x => x.Notifications)
+            //                                                                         .Where(x => x.CName.Contains(userNameX!));
 
-            return View(await client.ToListAsync());
+            // 1. 查詢使用者基本資料
+            var client = await _context.Clients
+                .Where(x => x.CName == userNameX)
+                .FirstOrDefaultAsync();
+
+            if (client == null)
+            {
+                return View(new List<Client>());
+            }
+
+            // 2. 分別查詢各個關聯資料
+            // 使用 Where 來篩選出屬於該 client 的資料
+            client.Reservations = await _context.Reservations
+                .Include(r => r.ReservationStatus)
+                .Include(r => r.Collection).ThenInclude(c => c.Author)
+                .Where(r => r.CId == client.CId)
+                .ToListAsync();
+
+            client.Borrows = await _context.Borrows
+                .Include(b => b.BorrowStatus)
+                .Include(b => b.Book).ThenInclude(bk => bk.Collection).ThenInclude(c => c.Author)
+                .Include(b => b.Histories)
+                .Where(b => b.CId == client.CId)
+                .ToListAsync();
+
+            client.Favorites = await _context.Favorites
+                .Include(f => f.Collection).ThenInclude(c => c.Author)
+                .Where(f => f.CId == client.CId)
+                .ToListAsync();
+
+            client.Notifications = await _context.Notifications
+                .Where(n => n.CId == client.CId)
+                .ToListAsync();
+
+            client.Participations = await _context.Participations
+                .Include(p => p.Activity)
+                .Include(p => p.ParticipationStatus)
+                .Where(p => p.CId == client.CId)
+                .ToListAsync();
+
+            // 3. 將包含所有載入資料的 client 物件放入 List 中傳遞給 View
+            return View(new List<Client> { client });
         }
 
         [HttpPost]

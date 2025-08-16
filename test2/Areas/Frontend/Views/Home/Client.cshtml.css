@@ -6,9 +6,14 @@
 
 .sidebar {
     height: 70vh;
-    width: 15vw;
+    width: 10vw;
     background-color: #343a40;
     color: #fff;
+    flex-shrink: 0; /* 讓它不要被壓縮 */
+}
+
+.content {
+    width: 90vw;
 }
 
 .nav-pills .nav-link {
