@@ -3,6 +3,16 @@
 
 基於 ASP.NET Core 開發的全方位圖書館管理系統，專為圖書借閱、預約與日常管理流程而設計。系統整合預約、自動訊息通知與管理介面，旨在提升圖書館運營效率與使用者體驗。
 
+網站網址：https://test2-adhedrgzdfh9g0ck.japanwest-01.azurewebsites.net
+
+測試帳號(一般讀者)：`user1@gmail.com` ~ `user97@gmail.com` 對應密碼：`user1` ~ `user97`
+
+<br>
+
+管理者登入獨立網址：https://test2-adhedrgzdfh9g0ck.japanwest-01.azurewebsites.net/Frontend/Access/LoginM
+
+測試帳號(圖書館員)：`admin1@gmail.com` ~ `admin3@gmail.com` 對應密碼：`admin1` ~ `admin3`
+
 ## 雲端部署
 
 本系統所有服務都部署在 Microsoft Azure 雲端平台上，不依賴任何本地伺服器，因此具備高可用性、可擴展性及維護便利性等優勢。
