@@ -27,14 +27,14 @@
                             <td>@participation.Activity.ActivityTitle</td>
                             <td>@participation.ParticipationDate.ToString("yyyy-MM-dd")</td>
                             <td><span class="badge bg-secondary" style="font-size: 1rem">@participation.ParticipationStatus.ParticipationStatus1</span></td>
-                        </tr>
+                        </tr>   
                     }
                 }
                 else
                 {
                     // 當沒有報名紀錄時，顯示提示訊息
                     <tr>
-                        <td colspan="5">目前沒有任何活動報名紀錄。</td>
+                        <td colspan="3">目前沒有任何活動報名紀錄。</td>
                     </tr>
                 }
             </tbody>

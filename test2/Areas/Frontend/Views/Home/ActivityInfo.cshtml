@@ -183,6 +183,11 @@
 
             // ========================= 報名處理函式 =========================
             async function handleActivityRegistration(activityId, $clickedBtn, originalBtnText) {
+                // 檢查按鈕是否已經被禁用，避免重複點擊
+                if ($clickedBtn.prop('disabled')) {
+                    return;
+                }
+
                 $clickedBtn.prop('disabled', true).text('處理中...'); // 按鈕進入處理中狀態
 
                 try {
@@ -194,13 +199,12 @@
 
                     const $messageContent = $('#message-content');
                     const $redirectBtn = $('#redirect-btn');
-                    // 確保 modal 的實例只建立一次，並且透過變數引用
                     const activityRegistrationMessageModal = new bootstrap.Modal(document.getElementById('activityRegistrationMessageModal'));
 
                     if (response.success) {
                         // 報名成功
                         $messageContent.text(response.message);
-                        $redirectBtn.hide(); // 成功時不需要跳轉按鈕
+                        $redirectBtn.hide();
 
                         // 成功後，更新剩餘名額顯示
                         const capacityElement = $('.register-box p:contains("剩餘名額：")');
@@ -212,39 +216,36 @@
                                     currentCapacity--;
                                     capacityElement.html(`<strong>剩餘名額：</strong>${currentCapacity}`);
 
-                                    // 如果名額變為0，還要更新按鈕狀態為「報名已截止」
                                     if (currentCapacity === 0) {
-                                        // 檢查按鈕是否仍然可選中 (未被其他條件禁用)
-                                        if (registerDetailBtn && !registerDetailBtn.classList.contains('disabled')) {
+                                        // 名額歸零，更新按鈕為「報名已截止」並永久禁用
+                                        if (registerDetailBtn) {
                                             registerDetailBtn.classList.add('disabled');
                                             registerDetailBtn.textContent = '報名已截止';
+                                            $('.register-box small.text-muted').text('本活動報名人數已滿，下次請早。');
                                         }
-                                        // 更新小字提示
-                                        const smallText = $('.register-box small.text-muted');
-                                        if (smallText.length > 0) {
-                                            smallText.text('本活動報名人數已滿，下次請早。');
-                                        }
+                                    } else {
+                                        // 報名成功但名額沒歸零，恢復按鈕狀態
+                                        $clickedBtn.prop('disabled', false).text(originalBtnText);
                                     }
                                 }
+                            } else {
+                                // 無需報名，按鈕原本就應該是禁用狀態，這邊不做處理
+                                $clickedBtn.prop('disabled', false).text(originalBtnText);
                             }
                         }
                     } else {
                         // 報名失敗
                         $messageContent.text(response.message);
                         if (response.redirectToLogin) {
-                            // 後端要求跳轉到登入頁面 (未登入)
-                            $redirectBtn.show(); // 顯示立即跳轉按鈕
+                            $redirectBtn.show();
                             $redirectBtn.off('click').on('click', function() {
                                 window.location.href = response.redirectToLogin;
                             });
-                            $clickedBtn.prop('disabled', false).text(originalBtnText);
+                            // 失敗要跳轉，就不需要恢復按鈕狀態
                         } else {
-                            // 其他錯誤訊息 (名額已滿、重複報名等)
                             $redirectBtn.hide();
-                        }
-                        // 失敗時，恢復按鈕狀態，除非是要跳轉到登入頁
-                        if (!response.redirectToLogin) {
-                             $clickedBtn.prop('disabled', false).text(originalBtnText);
+                            // 其他錯誤，恢復按鈕狀態
+                            $clickedBtn.prop('disabled', false).text(originalBtnText);
                         }
                     }
                     activityRegistrationMessageModal.show(); // 顯示彈跳視窗
@@ -253,30 +254,26 @@
                     console.error('AJAX 請求失敗:', error);
                     $('#message-content').text('報名時發生了不明錯誤，請稍後再試。');
                     $('#redirect-btn').hide();
-                    new bootstrap.Modal(document.getElementById('activityRegistrationMessageModal')).show(); // 顯示錯誤彈跳視窗
+                    new bootstrap.Modal(document.getElementById('activityRegistrationMessageModal')).show();
                     $clickedBtn.prop('disabled', false).text(originalBtnText); // 發生錯誤時恢復按鈕狀態
                 }
             }
-            // =========================================================================
-
 
             // ========================= 報名按鈕點擊事件綁定 (活動詳細頁) =========================
-            // 由於這是在單一活動詳細頁，所以直接綁定 ID 是最精確的
-            if (registerDetailBtn) { // 確認按鈕存在才綁定事件
+            if (registerDetailBtn) {
+                const $clickedBtn = $(registerDetailBtn);
+                const originalBtnText = $clickedBtn.text(); // 預先儲存按鈕的原始文字
+
                 registerDetailBtn.addEventListener('click', async function () {
-                    const $clickedBtn = $(this);
-                    const originalBtnText = $clickedBtn.text();
-                    const activityId = parseInt($clickedBtn.data('activity-id')); // 取得活動 ID
+                    const activityId = parseInt($clickedBtn.data('activity-id'));
 
                     if (!isNaN(activityId)) {
                         await handleActivityRegistration(activityId, $clickedBtn, originalBtnText);
                     } else {
                         console.error("無法取得活動 ID，請檢查 data-activity-id 屬性。");
-                        // 可以考慮這裡也彈出一個錯誤訊息給使用者
                         const $messageContent = $('#message-content');
-                        const $redirectBtn = $('#redirect-btn');
                         $messageContent.text('抱歉，無法識別活動資訊，請聯繫客服。');
-                        $redirectBtn.hide();
+                        $('#redirect-btn').hide();
                         new bootstrap.Modal(document.getElementById('activityRegistrationMessageModal')).show();
                     }
                 });
