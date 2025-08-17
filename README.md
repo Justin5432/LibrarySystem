@@ -5,13 +5,17 @@
 
 網站網址：https://test2-adhedrgzdfh9g0ck.japanwest-01.azurewebsites.net
 
-測試帳號(一般讀者)：`user1@gmail.com` ~ `user97@gmail.com` 對應密碼：`user1` ~ `user97`
+測試帳號(一般讀者)：`user1@gmail.com` ~ `user97@gmail.com`
+
+對應密碼：`user1` ~ `user97`
 
 <br>
 
 管理者登入獨立網址：https://test2-adhedrgzdfh9g0ck.japanwest-01.azurewebsites.net/Frontend/Access/LoginM
 
-測試帳號(圖書館員)：`admin1@gmail.com` ~ `admin3@gmail.com` 對應密碼：`admin1` ~ `admin3`
+測試帳號(圖書館員)：`admin1@gmail.com` ~ `admin3@gmail.com`
+
+對應密碼：`admin1` ~ `admin3`
 
 ## 雲端部署
 
@@ -23,35 +27,39 @@
 
 ## 核心技術
 
-- **前端技術**
+- **前端**
 
-  jQuery - 前端 JavaScript 框架，處理 AJAX 請求和 DOM 操作
+  jQuery
 
-  Bootstrap - UI 框架，提供響應式設計和組件
+  Bootstrap
 
-- **後端框架**
+- **後端**
 
-  ASP.NET Core MVC - 主要的 Web 框架，採用 Area 架構分離前後台功能
+  ASP.NET Core MVC
 
-  Entity Framework Core - ORM 框架，用於資料庫操作和模型映射
+  ASP.NET Core Background Service: 定時任務處理服務，用於自動通知
 
 - **資料庫**
 
   MS SQL Server
 
-- **雲端平台**
+- **ORM**
 
-  Azure App Service - 雲端應用程式託管服務，提供自動擴展和高可用性
+  Entity Framework Core
 
-  Azure SQL Database - 雲端關聯式資料庫服務，具備自動備份和災難復原功能
+- **資料查詢技術**
 
-- **資料處理技術**
+  LINQ
 
-  LINQ - 用於複雜的資料查詢和篩選
+- **雲端服務**
 
-- **安全性技術**
+  Azure App Service
 
-  Argon2 - 密碼雜湊處理，提供高安全性的密碼加密
+  Azure SQL Database
+  
+- **安全性**
+
+  Argon2 密碼雜湊處理
 
 - **第三方登入**
 
@@ -60,11 +68,7 @@
 - **自動訊息通知**
 
   Background Service - 實現定時任務處理，包括逾期檢查和通知
-
-## 系統架構
-
-本系統利用 ASP.NET Core Area 將功能模組化，有效區隔前台與後台的職責，提升了專案的可維護性與擴展性。
-
+  
 **Frontend Area (前台)**
 
 主要供一般使用者使用，功能包括：
@@ -134,3 +138,20 @@
 - **ParticipationStatus (參與狀態)**：定義參與活動的狀態，像是「已報名」、「已簽到」等等。
 
 - **Audience (觀眾)**：這個表格用來定義活動的目標受眾。
+
+## Demo
+
+**前台展示**
+
+https://github.com/user-attachments/assets/867ba225-e2e7-4db6-8fc6-2c36bb82f23e
+
+**後台展示**
+
+https://github.com/user-attachments/assets/860a8483-1d68-4937-812d-386130c4c52f
+
+
+
+
+
+
+
