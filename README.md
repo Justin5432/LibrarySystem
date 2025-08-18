@@ -1,7 +1,7 @@
 
 # 林間書語 圖書管理系統
 
-基於 ASP.NET Core 開發並部屬在 Microsoft Azure 雲端平台圖書館管理系統，專為圖書借閱、預約與日常管理流程而設計。系統整合預約、自動訊息通知與管理介面，旨在提升圖書館運營效率與使用者體驗。
+基於 ASP.NET Core 開發並部屬在 Microsoft Azure 雲端平台的圖書館管理系統，專為圖書借閱、預約與日常管理流程而設計。系統整合預約、自動訊息通知與管理介面，旨在提升圖書館運營效率與使用者體驗。
 
 網站網址：https://test2-adhedrgzdfh9g0ck.japanwest-01.azurewebsites.net
 
